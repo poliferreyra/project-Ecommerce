@@ -4,6 +4,7 @@ import { Home } from './pages/Home'
 import { Products } from './pages/Products'
 import { Login } from './pages/Login'
 import { Cart } from './pages/Cart'
+import { NotFound } from './pages/NotFound'
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/login" element={<Login />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </AppLayout>
   )

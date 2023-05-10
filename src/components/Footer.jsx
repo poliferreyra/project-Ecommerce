@@ -1,24 +1,57 @@
-import { EmailIcon, PhoneIcon } from '@chakra-ui/icons'
-import { Flex, Heading, Stack, AvatarGroup, Avatar } from '@chakra-ui/react'
+import { EmailIcon } from '@chakra-ui/icons'
+import { FiTwitter, FiInstagram } from 'react-icons/fi'
+import { Flex, Stack, AvatarGroup, Avatar, Link } from '@chakra-ui/react'
+import { NavLink } from 'react-router-dom'
 
 export const Footer = () => {
   return (
-    <Flex
-      justifyContent="space-between"
-      alignItems="center"
-      m={6}
-      color="red.500"
-    >
-      <Heading>Footer</Heading>
-      <Heading as="h6" size="xs">
-        Made by Poli Ferreyra
-      </Heading>
-      <Stack direction="row" spacing="20px">
-        <AvatarGroup spacing="1rem">
-          <Avatar bg="red.500" icon={<EmailIcon fontSize="1.5rem" />} />
-          <Avatar bg="red.500" icon={<PhoneIcon fontSize="1.5rem" />} />
-        </AvatarGroup>
-      </Stack>
-    </Flex>
+    <>
+      <Flex justifyContent="center" alignItems="center" p={6}>
+        <Stack spacing={4} direction="row" align="center" fontWeight="bold">
+          <Link
+            p={4}
+            as={NavLink}
+            to="/"
+            _hover={{
+              fontWeight: 'semibold',
+              color: '#F29101',
+            }}
+          >
+            Home
+          </Link>
+          <Link
+            p={2}
+            as={NavLink}
+            to="/products"
+            _hover={{
+              fontWeight: 'semibold',
+              color: '#F29101',
+            }}
+          >
+            Shop
+          </Link>
+          <Link
+            p={2}
+            as={NavLink}
+            to="/about"
+            _hover={{
+              fontWeight: 'semibold',
+              color: '#F29101',
+            }}
+          >
+            About us
+          </Link>
+        </Stack>
+      </Flex>
+      <Flex justifyContent="center" alignItems="center">
+        <Stack direction="row" spacing="20px">
+          <AvatarGroup spacing="1rem">
+            <Avatar bg="#F29101" icon={<FiTwitter fontSize="1.5rem" />} />
+            <Avatar bg="#F29101" icon={<FiInstagram fontSize="1.5rem" />} />
+            <Avatar bg="#F29101" icon={<EmailIcon fontSize="1.5rem" />} />
+          </AvatarGroup>
+        </Stack>
+      </Flex>
+    </>
   )
 }
