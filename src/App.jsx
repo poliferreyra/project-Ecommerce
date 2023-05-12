@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom'
 import { AppLayout } from './layout/AppLayout'
 import { Home } from './pages/Home'
 import { Products } from './pages/Products'
-import { Login } from './pages/Login'
+import { Login } from './pages/aut/Login'
 import { Cart } from './pages/Cart'
 import { NotFound } from './pages/NotFound'
 

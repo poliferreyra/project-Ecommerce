@@ -12,7 +12,7 @@ export const NotFound = () => {
           borderRadius="lg"
           boxSize="500px"
         />
-        <Text textAlign="center" color="tomato">
+        <Text textAlign="center" color="tomato" fontWeight="bold">
           Sorry, the page you're searching for doesn't exist
         </Text>
       </Stack>

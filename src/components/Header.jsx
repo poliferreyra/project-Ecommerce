@@ -6,15 +6,16 @@ import {
   Spacer,
   Button,
   Stack,
+  IconButton,
 } from '@chakra-ui/react'
 import { NavLink } from 'react-router-dom'
 import { BsCart3 } from 'react-icons/bs'
 
 export const Header = () => {
   return (
-    <Flex alignItems="center" p={6} fontWeights="bold">
+    <Flex alignItems="center" p={3} fontWeight="bold">
       <Heading mr={8}>EShop</Heading>
-      <Stack spacing={4} direction="row" align="center" fontWeight="bold">
+      <Stack spacing={2} direction="row" align="center" fontWeight="bold">
         <Link
           p={4}
           as={NavLink}
@@ -53,7 +54,7 @@ export const Header = () => {
             Login
           </Link>
         </Button>
-        <Button bg="#F29101" color="white">
+        <IconButton bg="#F29101" color="white">
           <Link
             p={4}
             as={NavLink}
@@ -65,7 +66,7 @@ export const Header = () => {
           >
             <Icon as={BsCart3} />
           </Link>
-        </Button>
+        </IconButton>
       </Stack>
     </Flex>
   )
