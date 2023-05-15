@@ -1,20 +1,23 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app'
 import { getAuth } from 'firebase/auth'
+// import { getFirestore } from 'firebase/fireStore'
+import { getFirestore } from 'firebase/firestore'
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: 'AIzaSyDBm_iP6u5AlpCpNYZK1J3uQMI7nhwm4so',
-  authDomain: 'ecommerce-6aef3.firebaseapp.com',
-  projectId: 'ecommerce-6aef3',
-  storageBucket: 'ecommerce-6aef3.appspot.com',
-  messagingSenderId: '472697800542',
-  appId: '1:472697800542:web:4d3f86a7131424234e71cf',
+  apiKey: import.meta.env.VITE_FIREBASE_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
 }
 
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig)
 // Initialize Firebase Authentication and get a reference to the service
 export const auth = getAuth(app)
+export const db = getFirestore(app)

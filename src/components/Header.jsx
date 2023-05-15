@@ -13,11 +13,11 @@ import { BsCart3 } from 'react-icons/bs'
 
 export const Header = () => {
   return (
-    <Flex alignItems="center" p={3} fontWeight="bold">
+    <Flex alignItems="center" p={1} fontWeight="bold">
       <Heading mr={8}>EShop</Heading>
       <Stack spacing={2} direction="row" align="center" fontWeight="bold">
         <Link
-          p={4}
+          p={2}
           as={NavLink}
           to="/"
           _hover={{
@@ -56,7 +56,7 @@ export const Header = () => {
         </Button>
         <IconButton bg="#F29101" color="white">
           <Link
-            p={4}
+            p={2}
             as={NavLink}
             to="/cart"
             _hover={{

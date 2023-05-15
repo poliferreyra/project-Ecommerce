@@ -10,7 +10,7 @@ export const Footer = () => {
       <Flex justifyContent="center" alignItems="center" p={2}>
         <Stack spacing={4} direction="row" align="center" fontWeight="bold">
           <Link
-            p={4}
+            p={2}
             as={NavLink}
             to="/"
             _hover={{
