@@ -8,6 +8,10 @@ import {
   Stack,
   IconButton,
   Divider,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
 } from '@chakra-ui/react'
 import { NavLink } from 'react-router-dom'
 import { BsCart3 } from 'react-icons/bs'
@@ -19,8 +23,9 @@ export const Header = () => {
   const { user, handleLogout } = useContext(UserContext)
   return (
     <>
-      <Flex alignItems="center" p={6} fontWeight="bold">
+      <Flex alignItems="center" p={5} fontWeight="bold">
         <Heading mr={8}>EShop</Heading>
+        {/* links de home & product */}
         <Stack spacing={2} direction="row" align="center" fontWeight="bold">
           <Link
             p={2}
@@ -46,23 +51,28 @@ export const Header = () => {
           </Link>
         </Stack>
         <Spacer />
+        {/* links de login & cart */}
         <Stack direction="row" spacing={4}>
-          <Button bg="#F29101" color="white" fontWeight="bold">
-            {user ? (
-              <IconButton bg="#F29101" color="white">
-                <Link
-                  p={2}
-                  as={NavLink}
-                  onClick={handleLogout}
-                  _hover={{
-                    fontWeight: 'semibold',
-                    color: '#282445',
-                  }}
-                >
-                  <Icon as={BiUser} />
-                </Link>
-              </IconButton>
-            ) : (
+          {user ? (
+            <Menu>
+              <MenuButton
+                bg="#F29101"
+                color="white"
+                _hover={{
+                  fontWeight: 'semibold',
+                  color: '#282445',
+                }}
+                as={Button}
+              >
+                <Icon as={BiUser} />
+              </MenuButton>
+              <MenuList>
+                <MenuItem>My orders</MenuItem>
+                <MenuItem onClick={handleLogout}>Logout</MenuItem>
+              </MenuList>
+            </Menu>
+          ) : (
+            <Button bg="#F29101" color="white" fontWeight="bold">
               <Link
                 p={2}
                 as={NavLink}
@@ -74,33 +84,9 @@ export const Header = () => {
               >
                 Login
               </Link>
-            )}
-          </Button>
-          {/* <Button bg="#F29101" color="white" fontWeight="bold">
-          <Link
-            p={2}
-            as={NavLink}
-            to="/login"
-            _hover={{
-              fontWeight: 'semibold',
-              color: '#282445',
-            }}
-          >
-            {user ? (
-              <IconButton bg="#F29101" color="white">
-                <Icon
-                  as={BiUser}
-                  _hover={{
-                    fontWeight: 'semibold',
-                    color: '#282445',
-                  }}
-                />
-              </IconButton>
-            ) : (
-              'Login'
-            )}
-          </Link>
-        </Button> */}
+            </Button>
+          )}
+
           <IconButton bg="#F29101" color="white">
             <Link
               p={2}

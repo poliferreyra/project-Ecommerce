@@ -17,8 +17,8 @@ import { NavLink } from 'react-router-dom'
 export const Home = () => {
   return (
     <>
-      <Stack bg="#9DE8F3" w="100%" minH="800px">
-        <Box p={6}>
+      <Stack bg="#9DE8F3" w="100%" minH="80vh">
+        <Box maxH="40vh" p={6}>
           <SimpleGrid columns={2} spacing={10}>
             <Box maxW="600px" minH="300" textAlign="center" p={10} mt={5}>
               <Heading size="sm" p={10} color="#282445">
