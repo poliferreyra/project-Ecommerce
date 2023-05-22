@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
-import { useEffect, useState } from 'react'
-import { getAllProducts } from '../../services/products'
+// import { useEffect, useState } from 'react'
+// import { getAllProducts } from '../../services/products'
 import {
   Button,
   ButtonGroup,
@@ -14,27 +14,29 @@ import {
   Text,
 } from '@chakra-ui/react'
 import { Filter } from './Filter'
+import { useGetData } from '../../hook/useGetData'
 
 export const Products = () => {
-  const [products, setProducts] = useState([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(false)
-  // aca voy a renderizar mis productos por lo que tengo que ejecutar la funcion que trae toda la db con todos mis productos
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const allProducts = await getAllProducts()
-        // console.log(allProducts)
-        setLoading(false)
-        setProducts(allProducts)
-      } catch (error) {
-        setError(true)
-      } finally {
-        setLoading(false)
-      }
-    }
-    getData()
-  }, [])
+  const { products, loading, error } = useGetData()
+  // const [products, setProducts] = useState([])
+  // const [loading, setLoading] = useState(true)
+  // const [error, setError] = useState(false)
+  // // aca voy a renderizar mis productos por lo que tengo que ejecutar la funcion que trae toda la db con todos mis productos
+  // useEffect(() => {
+  //   const getData = async () => {
+  //     try {
+  //       const allProducts = await getAllProducts()
+  //       console.log(allProducts)
+  //       setLoading(false)
+  //       setProducts(allProducts)
+  //     } catch (error) {
+  //       setError(true)
+  //     } finally {
+  //       setLoading(false)
+  //     }
+  //   }
+  //   getData()
+  // }, [])
   return (
     <>
       {error && <Text>There's an error</Text>}
@@ -62,7 +64,12 @@ export const Products = () => {
             </CardBody>
             <CardFooter>
               <ButtonGroup m={2}>
-                <Button size="sm" variant="solid" colorScheme="blue">
+                <Button
+                  size="sm"
+                  variant="solid"
+                  colorScheme="blue"
+                  to={`/products/${product.id}`}
+                >
                   See detail
                 </Button>
                 <Button size="sm" variant="ghost" colorScheme="blue">
