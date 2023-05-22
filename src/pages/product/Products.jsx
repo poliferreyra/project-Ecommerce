@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useEffect, useState } from 'react'
-import { getAllProducts } from '../services/products'
+import { getAllProducts } from '../../services/products'
 import {
   Button,
   ButtonGroup,
@@ -13,6 +13,7 @@ import {
   Stack,
   Text,
 } from '@chakra-ui/react'
+import { Filter } from './Filter'
 
 export const Products = () => {
   const [products, setProducts] = useState([])
@@ -39,6 +40,7 @@ export const Products = () => {
       {error && <Text>There's an error</Text>}
       {loading && <Text>Loading...</Text>}
       {!products.length && !loading && <Text>There're not products</Text>}
+      <Filter />
       <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} p={2}>
         {products.map((product) => (
           <Card key={product.id} maxW="sm" align="center">

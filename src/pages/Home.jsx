@@ -20,22 +20,31 @@ export const Home = () => {
       <Stack bg="#9DE8F3" w="100%" minH="80vh">
         <Box maxH="40vh" p={6}>
           <SimpleGrid columns={2} spacing={10}>
-            <Box maxW="600px" minH="300" textAlign="center" p={10} mt={5}>
-              <Heading size="sm" p={10} color="#282445">
+            <Box
+              maxW="600px"
+              maxH="300"
+              textAlign="center"
+              p={10}
+              mt={5}
+              bg="#F29101"
+              borderRadius="53% 47% 67% 33% / 44% 46% 54% 56% "
+            >
+              <Heading size="sm" p={10} color="white">
                 Welcome to our online perfume and cosmetics store! <br />
                 Discover a wide variety of high-quality products to enhance your
                 natural beauty and highlight your personal style.
               </Heading>
               <Link
-                p={3}
-                bg="#F29101"
-                color="white"
+                p={2}
+                color="#282445"
                 borderRadius="10px"
                 fontWeight="semibold"
+                border="1px"
+                borderColor="#282445"
                 as={NavLink}
                 to="/aboutUs"
                 _hover={{
-                  color: '#282445',
+                  color: 'white',
                 }}
               >
                 About us

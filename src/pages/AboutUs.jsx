@@ -2,20 +2,20 @@ import { Box, Flex, Heading, Text } from '@chakra-ui/react'
 
 export const AboutUs = () => {
   return (
-    <Flex h="100vh" alignItems="center" justifyContent="center">
+    <Flex h="80vh" alignItems="center" justifyContent="center" bg="#9DE8F3">
       <Box
         display="flex"
         flexDirection="column"
         alignItems="center"
         minH="700px"
-        maxW="60%"
-        color="#282445"
-        bg="#9DE8F3"
+        maxW="50%"
+        color="white"
         fontWeight="semibold"
         p={10}
-        borderRadius="10px"
+        bg="#F29101"
+        borderRadius="68% 32% 27% 73% / 23% 30% 70% 77% "
       >
-        <Heading mt={4} size="xl">
+        <Heading mt={10} size="xl">
           Welcome to our e-commerce!
         </Heading>
         <Text fontSize="lg" p={5} textAlign="center">
