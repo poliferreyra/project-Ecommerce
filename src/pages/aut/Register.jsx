@@ -26,11 +26,14 @@ import { FaEyeSlash } from 'react-icons/fa'
 import { NavLink } from 'react-router-dom'
 
 import { useState } from 'react'
-import { createUserWithEmailAndPassword } from 'firebase/auth'
+// import { createUserWithEmailAndPassword } from 'firebase/auth'
 // import { auth } from '../firebase/config'
-import { auth } from '../../firebase/config'
+// import { auth } from '../../firebase/config'
+import { register } from '../../services/auth'
+import { useNavigate } from 'react-router-dom'
 
 const Register = () => {
+  const navigate = useNavigate()
   const [values, setValues] = useState({
     password: '',
     email: '',
@@ -38,68 +41,43 @@ const Register = () => {
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value })
   }
-  const createAccount = (e) => {
+  const createAccount = async (e) => {
     e.preventDefault()
-    createUserWithEmailAndPassword(auth, values.email, values.password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user
-        console.log(user)
-        // ...
-      })
-      .catch((error) => {
-        const errorCode = error.code
-        const errorMessage = error.message
-        console.log(errorCode)
-        console.log(errorMessage)
-      })
+    const user = await register(values)
+    navigate('/')
+    console.log(user)
+    // try {
+    //   const userCredential = await createUserWithEmailAndPassword(
+    //     auth,
+    //     values.email,
+    //     values.password
+    //   )
+    //   // email y uid cuando creo la cuenta
+    //   const uid = userCredential.user.uid
+    //   const userEmail = userCredential.user.email
+    //   console.log(userEmail)
+    //   console.log(uid)
+    // } catch (error) {
+    //   const errorCode = error.code
+    //   const errorMessage = error.message
+    //   console.log(errorCode)
+    //   console.log(errorMessage)
+    // }
+    // createUserWithEmailAndPassword(auth, values.email, values.password)
+    //   .then((userCredential) => {
+    //     // Signed in
+    //     const user = userCredential.user
+    //     console.log(user)
+    //     // ...
+    //   })
+    //   .catch((error) => {
+    //     const errorCode = error.code
+    //     const errorMessage = error.message
+    //     console.log(errorCode)
+    //     console.log(errorMessage)
+    //   })
   }
   return (
-    // <Center
-    //   paddingTop={5}
-    //   backgroundImage="src/assets/Free Vector _ Decorative background with an elegant gold border.jpeg"
-    //   backgroundSize="cover"
-    //   onSubmit={createCount}
-    //   as="form"
-    //   gap="4"
-    //   flexDirection="column"
-    //   minHeight="100vh"
-    //   // bg="black"
-    //   color="yellow.400"
-    // >
-    //   <Heading>Welcome to Arian</Heading>
-    //   <Avatar size="2xl" name="logo resto" src="./src/assets/favicon.png" />
-
-    //   <Text>Please you must create an account to continue!</Text>
-    //   <VStack>
-    //     <FormControl isRequired>
-    //       <FormLabel>E-mail</FormLabel>
-    //       <Input
-    //         onChange={handleChange}
-    //         value={values.email}
-    //         name="email"
-    //         placeholder="Email"
-    //       />
-    //     </FormControl>
-    //     <FormControl isRequired>
-    //       <FormLabel>Password</FormLabel>
-    //       <Input
-    //         type="password"
-    //         onChange={handleChange}
-    //         value={values.password}
-    //         name="password"
-    //         placeholder="Password"
-    //       />
-    //     </FormControl>
-    //     <ButtonGroup>
-    //       <Button type="submit" colorScheme="yellow">
-    //         Create Account
-    //       </Button>
-    //       <Button colorScheme="red">Go out</Button>
-    //     </ButtonGroup>
-    //   </VStack>
-    // </Center>
-
     <Stack alignItems="center">
       <Heading mb={2}>Hello!</Heading>
       <Heading as="h5" size="sm" mb={2}>

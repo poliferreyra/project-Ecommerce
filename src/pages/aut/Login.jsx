@@ -14,12 +14,13 @@ import {
 } from '@chakra-ui/react'
 import { FcGoogle } from 'react-icons/fc'
 import { FaEyeSlash } from 'react-icons/fa'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../firebase/config'
 
 export const Login = () => {
+  const navigate = useNavigate()
   const [values, setValues] = useState({
     password: '',
     email: '',
@@ -27,21 +28,26 @@ export const Login = () => {
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value })
   }
-  const userLogin = (e) => {
+  const userLogin = async (e) => {
     e.preventDefault()
-    signInWithEmailAndPassword(auth, values.email, values.password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user
-        console.log(user)
-        // ...
-      })
-      .catch((error) => {
-        const errorCode = error.code
-        const errorMessage = error.message
-        console.log(errorCode)
-        console.log(errorMessage)
-      })
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        values.email,
+        values.password
+      )
+      // email y uid cuando me logueo
+      const uid = userCredential.user.uid
+      const userEmail = userCredential.user.email
+      console.log(userEmail)
+      console.log(uid)
+    } catch (error) {
+      const errorCode = error.code
+      const errorMessage = error.message
+      console.log(errorCode)
+      console.log(errorMessage)
+    }
+    navigate('/')
   }
   return (
     <>

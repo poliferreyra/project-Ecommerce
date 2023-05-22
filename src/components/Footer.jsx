@@ -34,7 +34,7 @@ export const Footer = () => {
           <Link
             p={2}
             as={NavLink}
-            to="/about"
+            to="/aboutUs"
             _hover={{
               fontWeight: 'semibold',
               color: '#F29101',
