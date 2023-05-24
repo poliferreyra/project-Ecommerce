@@ -7,6 +7,7 @@ import { Cart } from './pages/Cart'
 import { NotFound } from './pages/NotFound'
 import Register from './pages/aut/Register'
 import { AboutUs } from './pages/AboutUs'
+import { Detail } from './pages/product/Detail'
 
 function App() {
   return (
@@ -14,8 +15,8 @@ function App() {
       <Route element={<AppLayout />}>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
+        <Route path="/products/:id" element={<Detail />} />
         <Route path="/aboutUs" element={<AboutUs />} />
-
         <Route path="/cart" element={<Cart />} />
         <Route path="*" element={<NotFound />} />
       </Route>

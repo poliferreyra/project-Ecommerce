@@ -14,35 +14,19 @@ import {
   Text,
 } from '@chakra-ui/react'
 import { Filter } from './Filter'
-import { useGetData } from '../../hook/useGetData'
+import { useGetProducts } from '../../hook/useGetProducts'
+import { Link } from 'react-router-dom'
+import { Loading } from '../../components/Loading'
 
 export const Products = () => {
-  const { products, loading, error } = useGetData()
-  // const [products, setProducts] = useState([])
-  // const [loading, setLoading] = useState(true)
-  // const [error, setError] = useState(false)
-  // // aca voy a renderizar mis productos por lo que tengo que ejecutar la funcion que trae toda la db con todos mis productos
-  // useEffect(() => {
-  //   const getData = async () => {
-  //     try {
-  //       const allProducts = await getAllProducts()
-  //       console.log(allProducts)
-  //       setLoading(false)
-  //       setProducts(allProducts)
-  //     } catch (error) {
-  //       setError(true)
-  //     } finally {
-  //       setLoading(false)
-  //     }
-  //   }
-  //   getData()
-  // }, [])
+  const { products, loading, error } = useGetProducts()
+
   return (
     <>
       {error && <Text>There's an error</Text>}
-      {loading && <Text>Loading...</Text>}
       {!products.length && !loading && <Text>There're not products</Text>}
       <Filter />
+      {loading && <Loading />}
       <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} p={2}>
         {products.map((product) => (
           <Card key={product.id} maxW="sm" align="center">
@@ -65,16 +49,17 @@ export const Products = () => {
             <CardFooter>
               <ButtonGroup m={2}>
                 <Button
+                  as={Link}
                   size="sm"
                   variant="solid"
                   colorScheme="blue"
-                  to={`/products/${product.id}`}
+                  to={product.id}
                 >
                   See detail
                 </Button>
-                <Button size="sm" variant="ghost" colorScheme="blue">
+                {/* <Button size="sm" variant="ghost" colorScheme="blue">
                   Add to cart
-                </Button>
+                </Button> */}
               </ButtonGroup>
             </CardFooter>
           </Card>

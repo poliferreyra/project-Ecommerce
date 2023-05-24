@@ -1,23 +1,23 @@
 import {
   Box,
-  Button,
-  Card,
-  CardBody,
-  CardFooter,
-  Divider,
+  // Button,
+  // Card,
+  // CardBody,
+  // CardFooter,
+  // Divider,
+  // Text,
   Heading,
   Image,
   Link,
   SimpleGrid,
   Stack,
-  Text,
 } from '@chakra-ui/react'
 import { NavLink } from 'react-router-dom'
 
 export const Home = () => {
   return (
     <>
-      <Stack bg="#9DE8F3" w="100%" minH="80vh">
+      <Stack bg="#9DE8F3" w="100%" minH="85vh">
         <Box maxH="40vh" p={6}>
           <SimpleGrid columns={2} spacing={10}>
             <Box
@@ -27,7 +27,7 @@ export const Home = () => {
               p={10}
               mt={5}
               bg="#F29101"
-              borderRadius="53% 47% 67% 33% / 44% 46% 54% 56% "
+              borderRadius="53% 47% 67% 33% / 44% 46% 54% 56%"
             >
               <Heading size="sm" p={10} color="white">
                 Welcome to our online perfume and cosmetics store! <br />
@@ -61,8 +61,8 @@ export const Home = () => {
             </Box>
           </SimpleGrid>
         </Box>
-        <Divider />
-        <SimpleGrid>
+        {/* <Divider /> */}
+        {/* <SimpleGrid>
           <Stack maxW="200px" maxH="150px" m={3}>
             <Heading size="md">Recently Visited</Heading>
             <Card maxW="md">
@@ -82,7 +82,7 @@ export const Home = () => {
               </CardFooter>
             </Card>
           </Stack>
-        </SimpleGrid>
+        </SimpleGrid> */}
       </Stack>
     </>
   )
