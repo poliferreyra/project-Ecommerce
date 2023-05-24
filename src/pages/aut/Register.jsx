@@ -31,6 +31,7 @@ import { useState } from 'react'
 // import { auth } from '../../firebase/config'
 import { register } from '../../services/auth'
 import { useNavigate } from 'react-router-dom'
+import { BsEye } from 'react-icons/bs'
 
 const Register = () => {
   const navigate = useNavigate()
@@ -38,6 +39,9 @@ const Register = () => {
     password: '',
     email: '',
   })
+  const [showPassword, setShowPassword] = useState(false)
+
+  const toggleEyeSlash = () => setShowPassword(!showPassword)
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value })
   }
@@ -46,36 +50,6 @@ const Register = () => {
     const user = await register(values)
     navigate('/')
     console.log(user)
-    // try {
-    //   const userCredential = await createUserWithEmailAndPassword(
-    //     auth,
-    //     values.email,
-    //     values.password
-    //   )
-    //   // email y uid cuando creo la cuenta
-    //   const uid = userCredential.user.uid
-    //   const userEmail = userCredential.user.email
-    //   console.log(userEmail)
-    //   console.log(uid)
-    // } catch (error) {
-    //   const errorCode = error.code
-    //   const errorMessage = error.message
-    //   console.log(errorCode)
-    //   console.log(errorMessage)
-    // }
-    // createUserWithEmailAndPassword(auth, values.email, values.password)
-    //   .then((userCredential) => {
-    //     // Signed in
-    //     const user = userCredential.user
-    //     console.log(user)
-    //     // ...
-    //   })
-    //   .catch((error) => {
-    //     const errorCode = error.code
-    //     const errorMessage = error.message
-    //     console.log(errorCode)
-    //     console.log(errorMessage)
-    //   })
   }
   return (
     <Stack alignItems="center">
@@ -93,13 +67,18 @@ const Register = () => {
           <FormLabel>Password</FormLabel>
         </FormControl>
         <InputGroup>
-          <Input type="password" name="password" onChange={handleChange} />
+          <Input
+            type={showPassword ? 'text' : 'password'}
+            name="password"
+            onChange={handleChange}
+          />
           <InputRightElement>
             <IconButton
+              onClick={toggleEyeSlash}
               variant="link"
               color="#282445"
               aria-label="EyeSlash"
-              icon={<FaEyeSlash />}
+              icon={showPassword ? <BsEye /> : <FaEyeSlash />}
             />
           </InputRightElement>
         </InputGroup>

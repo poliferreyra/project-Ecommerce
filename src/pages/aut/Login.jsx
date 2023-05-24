@@ -14,6 +14,8 @@ import {
 } from '@chakra-ui/react'
 import { FcGoogle } from 'react-icons/fc'
 import { FaEyeSlash } from 'react-icons/fa'
+import { BsEye } from 'react-icons/bs'
+
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { signInWithEmailAndPassword } from 'firebase/auth'
@@ -25,6 +27,9 @@ export const Login = () => {
     password: '',
     email: '',
   })
+  const [showPassword, setShowPassword] = useState(false)
+
+  const toggleEyeSlash = () => setShowPassword(!showPassword)
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value })
   }
@@ -86,13 +91,18 @@ export const Login = () => {
             <FormLabel>Password</FormLabel>
           </FormControl>
           <InputGroup>
-            <Input type="password" name="password" onChange={handleChange} />
+            <Input
+              type={showPassword ? 'text' : 'password'}
+              name="password"
+              onChange={handleChange}
+            />
             <InputRightElement>
               <IconButton
+                onClick={toggleEyeSlash}
                 variant="link"
                 color="#282445"
                 aria-label="EyeSlash"
-                icon={<FaEyeSlash />}
+                icon={showPassword ? <BsEye /> : <FaEyeSlash />}
               />
             </InputRightElement>
           </InputGroup>
