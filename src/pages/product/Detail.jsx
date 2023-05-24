@@ -17,14 +17,15 @@ import {
   NumberIncrementStepper,
   NumberDecrementStepper,
   ListItem,
+  HStack,
 } from '@chakra-ui/react'
 import { useParams } from 'react-router-dom'
 
 // import { useEffect, useState } from 'react'
 // import { getAllProducts } from '../../services/products'
-import { Loading } from '../../components/Loading'
 import { useGetProducts } from '../../hook/useGetProducts'
 import { useState } from 'react'
+import { Spinner } from '../../ui/spinner'
 
 // import { useMemo } from 'react'
 
@@ -39,7 +40,11 @@ export const Detail = () => {
   // console.log(products)
 
   if (!products.length) {
-    return <Loading />
+    return (
+      <HStack justifyContent="center">
+        <Spinner />
+      </HStack>
+    )
   } else {
     const product = products.find((p) => p.id === id)
     return (

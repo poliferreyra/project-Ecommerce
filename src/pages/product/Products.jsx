@@ -7,6 +7,7 @@ import {
   Card,
   CardBody,
   CardFooter,
+  HStack,
   Heading,
   Image,
   SimpleGrid,
@@ -16,7 +17,7 @@ import {
 import { Filter } from './Filter'
 import { useGetProducts } from '../../hook/useGetProducts'
 import { Link } from 'react-router-dom'
-import { Loading } from '../../components/Loading'
+import { Spinner } from '../../ui/spinner'
 
 export const Products = () => {
   const { products, loading, error } = useGetProducts()
@@ -26,7 +27,11 @@ export const Products = () => {
       {error && <Text>There's an error</Text>}
       {!products.length && !loading && <Text>There're not products</Text>}
       <Filter />
-      {loading && <Loading />}
+      {loading && (
+        <HStack justifyContent="center">
+          <Spinner />
+        </HStack>
+      )}
       <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} p={2}>
         {products.map((product) => (
           <Card key={product.id} maxW="sm" align="center">
