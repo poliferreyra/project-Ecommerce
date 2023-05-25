@@ -30,6 +30,7 @@ export const Login = () => {
   const [showPassword, setShowPassword] = useState(false)
 
   const toggleEyeSlash = () => setShowPassword(!showPassword)
+
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value })
   }
@@ -43,9 +44,9 @@ export const Login = () => {
       )
       // email y uid cuando me logueo
       const uid = userCredential.user.uid
-      const userEmail = userCredential.user.email
-      console.log(userEmail)
-      console.log(uid)
+      // const userEmail = userCredential.user.email
+      // console.log(userEmail)
+      // console.log(uid)
     } catch (error) {
       const errorCode = error.code
       const errorMessage = error.message

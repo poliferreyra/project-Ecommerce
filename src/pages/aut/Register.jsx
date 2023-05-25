@@ -49,7 +49,7 @@ const Register = () => {
     e.preventDefault()
     const user = await register(values)
     navigate('/')
-    console.log(user)
+    // console.log(user.email)
   }
   return (
     <Stack alignItems="center">

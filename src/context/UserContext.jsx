@@ -8,6 +8,7 @@ export const UserContext = createContext()
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null)
+  // console.log(user)
   const handleLogout = () => {
     signOut(auth)
       .then(() => {
@@ -23,13 +24,9 @@ export const UserProvider = ({ children }) => {
       if (user) {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
-        const uid = user
+        const uid = user.email
         setUser(uid)
-        // console.log(user)
       } else {
-        // User is signed out
-        // ...
-        // console.log('no estaba logueado');
         setUser(null)
       }
     })

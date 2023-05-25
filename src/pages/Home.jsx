@@ -13,6 +13,7 @@ import {
   Stack,
 } from '@chakra-ui/react'
 import { NavLink } from 'react-router-dom'
+import img2 from '../assets/img2.png'
 
 export const Home = () => {
   return (

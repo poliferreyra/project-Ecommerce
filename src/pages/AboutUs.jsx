@@ -7,15 +7,15 @@ export const AboutUs = () => {
         display="flex"
         flexDirection="column"
         alignItems="center"
-        minH="700px"
+        minH="300px"
         maxW="50%"
-        color="white"
+        color="black"
         fontWeight="semibold"
         p={10}
         bg="#F29101"
         borderRadius="68% 32% 27% 73% / 23% 30% 70% 77% "
       >
-        <Heading mt={10} size="xl">
+        <Heading mt={10} size="lg">
           Welcome to our e-commerce!
         </Heading>
         <Text fontSize="lg" p={5} textAlign="center">

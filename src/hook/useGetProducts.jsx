@@ -10,7 +10,7 @@ export const useGetProducts = () => {
     const getData = async () => {
       try {
         const allProducts = await getAllProducts()
-        // console.log(allProducts)
+
         setLoading(false)
         setProducts(allProducts)
       } catch (error) {

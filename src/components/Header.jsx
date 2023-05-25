@@ -12,10 +12,13 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
+  Text,
+  Portal,
 } from '@chakra-ui/react'
 import { NavLink } from 'react-router-dom'
 import { BsCart3 } from 'react-icons/bs'
 import { BiUser } from 'react-icons/bi'
+
 import { useContext } from 'react'
 import { UserContext } from '../context/UserContext'
 
@@ -55,6 +58,7 @@ export const Header = () => {
         <Stack direction="row" spacing={4}>
           {user ? (
             <Menu>
+              <Text color="#F29101">Hi! {user}</Text>
               <MenuButton
                 bg="#F29101"
                 color="white"
@@ -66,10 +70,12 @@ export const Header = () => {
               >
                 <Icon as={BiUser} />
               </MenuButton>
-              <MenuList>
-                <MenuItem>My orders</MenuItem>
-                <MenuItem onClick={handleLogout}>Logout</MenuItem>
-              </MenuList>
+              <Portal>
+                <MenuList>
+                  <MenuItem>My orders</MenuItem>
+                  <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                </MenuList>
+              </Portal>
             </Menu>
           ) : (
             <Button bg="#F29101" color="white" fontWeight="bold">
