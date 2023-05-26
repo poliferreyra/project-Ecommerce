@@ -13,7 +13,8 @@ import { CartContext } from '../../context/CartContext'
 import { useContext } from 'react'
 
 export const Cart = () => {
-  const { emptyCart } = useContext(CartContext)
+  const { emptyCart, cartTotalPrice } = useContext(CartContext)
+
   return (
     <Flex flexDirection="column" minH="75vh" m={6}>
       <Heading>Shopping Cart</Heading>
@@ -26,7 +27,7 @@ export const Cart = () => {
         align="stretch"
       >
         <Box h="40px">
-          <Heading fontSize="2xl">Total : $ 0</Heading>
+          <Heading fontSize="2xl">Total : $ {cartTotalPrice()}</Heading>
         </Box>
         <Box h="40px">
           <ButtonGroup spacing="6">
