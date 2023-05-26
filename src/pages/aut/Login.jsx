@@ -74,7 +74,7 @@ export const Login = () => {
           Login with Google
         </Button>
         <Box as="form" onSubmit={handleSubmit(onSubmit)} minW="40%">
-          <FormControl mt={2}>
+          <FormControl isInvalid={errors.email} mt={2}>
             <FormLabel>Email</FormLabel>
             <Input
               type="email"
@@ -91,34 +91,34 @@ export const Login = () => {
               {errors.email && errors.email?.message}
             </FormErrorMessage>
           </FormControl>
-          <FormControl>
+          <FormControl isInvalid={errors.password}>
             <FormLabel>Password</FormLabel>
-          </FormControl>
-          <InputGroup>
-            <Input
-              type={showPassword ? 'text' : 'password'}
-              name="password"
-              {...register('password', {
-                required: 'This field is required',
-                minLength: {
-                  value: 6,
-                  message: 'The minimum of characters is 6',
-                },
-              })}
-            />
-            <InputRightElement>
-              <IconButton
-                onClick={toggleEyeSlash}
-                variant="link"
-                color="#282445"
-                aria-label="EyeSlash"
-                icon={showPassword ? <BsEye /> : <FaEyeSlash />}
+            <InputGroup>
+              <Input
+                type={showPassword ? 'text' : 'password'}
+                name="password"
+                {...register('password', {
+                  required: 'This field is required',
+                  minLength: {
+                    value: 6,
+                    message: 'The minimum of characters is 6',
+                  },
+                })}
               />
-            </InputRightElement>
+              <InputRightElement>
+                <IconButton
+                  onClick={toggleEyeSlash}
+                  variant="link"
+                  color="#282445"
+                  aria-label="EyeSlash"
+                  icon={showPassword ? <BsEye /> : <FaEyeSlash />}
+                />
+              </InputRightElement>
+            </InputGroup>
             <FormErrorMessage>
               {errors.password && errors.password?.message}
             </FormErrorMessage>
-          </InputGroup>
+          </FormControl>
           <Stack direction="column">
             <Button
               mt={4}
