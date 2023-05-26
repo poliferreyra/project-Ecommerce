@@ -9,14 +9,12 @@ import {
   Heading,
   Text,
   StackDivider,
-  List,
   NumberInput,
   NumberInputField,
   NumberInputStepper,
   Button,
   NumberIncrementStepper,
   NumberDecrementStepper,
-  ListItem,
   HStack,
 } from '@chakra-ui/react'
 import { useParams } from 'react-router-dom'
@@ -28,16 +26,27 @@ import { useState } from 'react'
 import { Spinner } from '../../ui/spinner'
 
 // import { useMemo } from 'react'
+import { useContext } from 'react'
+import { CartContext } from '../../context/CartContext'
 
 export const Detail = () => {
-  const [quantity, setQuantity] = useState()
-  console.log(quantity)
+  const [quantity, setQuantity] = useState(1)
+
   const { id } = useParams()
   // console.log(params)
   const { products, error } = useGetProducts()
+  const { addProduct } = useContext(CartContext)
 
   // const product = useMemo(() => products.find((p) => p.id === id), [id])
-  // console.log(products)
+
+  const product = products.find((p) => p.id === id)
+
+  const addProductToCart = () => {
+    addProduct({
+      ...product,
+      quantity,
+    })
+  }
 
   if (!products.length) {
     return (
@@ -46,7 +55,6 @@ export const Detail = () => {
       </HStack>
     )
   } else {
-    const product = products.find((p) => p.id === id)
     return (
       <>
         {error && <Text>There's an error</Text>}
@@ -91,7 +99,7 @@ export const Detail = () => {
                   {product.description}
                 </Text>
 
-                <Box>
+                {/* <Box>
                   <Text
                     fontSize={{ base: '16px', lg: '18px' }}
                     color="black"
@@ -109,15 +117,13 @@ export const Detail = () => {
                       ))}
                     </List>
                   </SimpleGrid>
-                </Box>
+                </Box> */}
               </Stack>
               <NumberInput
                 defaultValue={1}
                 min={1}
                 max={product.stock}
                 onChange={(value) => setQuantity(Number(value))}
-
-                //console.log(value)
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -139,7 +145,7 @@ export const Detail = () => {
                   transform: 'translateY(2px)',
                   boxShadow: 'lg',
                 }}
-                // onClick={addProductToCart}
+                onClick={addProductToCart}
               >
                 Add to cart
               </Button>

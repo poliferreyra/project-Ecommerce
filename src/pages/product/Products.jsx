@@ -18,9 +18,19 @@ import { Filter } from './Filter'
 import { useGetProducts } from '../../hook/useGetProducts'
 import { Link } from 'react-router-dom'
 import { Spinner } from '../../ui/spinner'
+import { useContext } from 'react'
+import { CartContext } from '../../context/CartContext'
 
 export const Products = () => {
   const { products, loading, error } = useGetProducts()
+  const { addProduct } = useContext(CartContext)
+
+  const addProductToCart = (product, quantity) => {
+    addProduct({
+      ...product,
+      quantity,
+    })
+  }
 
   return (
     <>
@@ -62,9 +72,14 @@ export const Products = () => {
                 >
                   See detail
                 </Button>
-                {/* <Button size="sm" variant="ghost" colorScheme="blue">
+                <Button
+                  size="sm"
+                  variant="ghost"
+                  colorScheme="blue"
+                  onClick={() => addProductToCart(product, 1)}
+                >
                   Add to cart
-                </Button> */}
+                </Button>
               </ButtonGroup>
             </CardFooter>
           </Card>

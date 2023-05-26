@@ -9,8 +9,11 @@ import {
   VStack,
 } from '@chakra-ui/react'
 import { CartDetail } from './CartDetail'
+import { CartContext } from '../../context/CartContext'
+import { useContext } from 'react'
 
 export const Cart = () => {
+  const { emptyCart } = useContext(CartContext)
   return (
     <Flex flexDirection="column" minH="75vh" m={6}>
       <Heading>Shopping Cart</Heading>
@@ -23,14 +26,14 @@ export const Cart = () => {
         align="stretch"
       >
         <Box h="40px">
-          <Heading fontSize="md">Total : </Heading>
+          <Heading fontSize="2xl">Total : $ 0</Heading>
         </Box>
         <Box h="40px">
           <ButtonGroup spacing="6">
-            <Button variant="outline" color="tomato">
+            <Button variant="outline" color="tomato" onClick={emptyCart}>
               Empty cart
             </Button>
-            <Button variant="solid" bg="#38A169">
+            <Button variant="solid" color="white" bg="#38A169">
               Check Out
             </Button>
           </ButtonGroup>
