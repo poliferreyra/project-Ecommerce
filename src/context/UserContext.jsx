@@ -9,6 +9,10 @@ export const UserContext = createContext()
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null)
   // console.log(user)
+  const handleLogin = (data) => {
+    // traigo el dato del email del login
+    setUser(data.email)
+  }
   const handleLogout = () => {
     signOut(auth)
       .then(() => {
@@ -33,7 +37,7 @@ export const UserProvider = ({ children }) => {
   }, [])
 
   return (
-    <UserContext.Provider value={{ user, handleLogout }}>
+    <UserContext.Provider value={{ user, handleLogin, handleLogout }}>
       {children}
     </UserContext.Provider>
   )

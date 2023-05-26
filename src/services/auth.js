@@ -4,27 +4,17 @@ import {
 } from 'firebase/auth'
 import { auth } from '../firebase/config'
 
-export const loginWithEmail = async ({ email, password }) => {
-  try {
-    const userCredential = await signInWithEmailAndPassword(
-      auth,
-      email,
-      password
-    )
-    // email y uid cuando me logueo
-    // const uid = userCredential.user.uid
-    // const userEmail = userCredential.user.email
-    const { user } = userCredential
-    return user
-
-    // console.log(userEmail)
-    // console.log(uid)
-  } catch (error) {
-    const errorCode = error.code
-    const errorMessage = error.message
-    console.log(errorCode)
-    console.log(errorMessage)
-  }
+export const loginWithEmail = async (data) => {
+  const userCredential = await signInWithEmailAndPassword(
+    auth,
+    data.email,
+    data.password
+  )
+  const user = userCredential.user
+  // const uid = userCredential.user.uid
+  // console.log(user)
+  // console.log(uid)
+  return user
 }
 
 export const register = async ({ email, password }) => {

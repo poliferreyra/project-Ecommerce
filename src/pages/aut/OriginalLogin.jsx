@@ -16,49 +16,70 @@ import {
 import { FcGoogle } from 'react-icons/fc'
 import { FaEyeSlash } from 'react-icons/fa'
 import { BsEye } from 'react-icons/bs'
-import { NavLink } from 'react-router-dom'
 
+import { NavLink, useNavigate } from 'react-router-dom'
+import { useState } from 'react'
+import { signInWithEmailAndPassword } from 'firebase/auth'
+import { auth } from '../../firebase/config'
 import { useForm } from 'react-hook-form'
-import { useContext, useState } from 'react'
-
-import { loginWithEmail } from '../../services/auth'
-import { UserContext } from '../../context/UserContext'
 
 export const Login = () => {
-  const { handleLogin } = useContext(UserContext)
-  const [showPassword, setShowPassword] = useState(false)
-  const toggleEyeSlash = () => setShowPassword(!showPassword)
-
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm()
-  const onSubmit = async (data) => {
+  const onSubmit = (data) => console.log(data)
+
+  console.log(watch('example'))
+  const navigate = useNavigate()
+  const [values, setValues] = useState({
+    password: '',
+    email: '',
+  })
+  const handleChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value })
+  }
+
+  const [showPassword, setShowPassword] = useState(false)
+  const toggleEyeSlash = () => setShowPassword(!showPassword)
+
+  const userLogin = async (e) => {
+    e.preventDefault()
     try {
-      const user = await loginWithEmail(data)
-      handleLogin(user)
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        values.email,
+        values.password
+      )
+      // email y uid cuando me logueo
+      const uid = userCredential.user.uid
+      // const userEmail = userCredential.user.email
+      // console.log(userEmail)
+      // console.log(uid)
     } catch (error) {
+      const errorCode = error.code
       const errorMessage = error.message
+      console.log(errorCode)
       console.log(errorMessage)
     }
-    console.log(data)
-    // alert('paso la validacion')
+    // navigate('/')
   }
   return (
     <>
+      <Button
+        as={NavLink}
+        to="/"
+        m={5}
+        _hover={{
+          fontWeight: 'semibold',
+          color: '#F29101',
+        }}
+      >
+        Return Home
+      </Button>
       <Stack alignItems="center">
-        <Button
-          as={NavLink}
-          to="/"
-          m={5}
-          _hover={{
-            fontWeight: 'semibold',
-            color: '#F29101',
-          }}
-        >
-          Return Home
-        </Button>
         <Heading mb={2}>Login</Heading>
         <Button
           leftIcon={<FcGoogle />}
@@ -73,12 +94,13 @@ export const Login = () => {
         >
           Login with Google
         </Button>
-        <Box as="form" onSubmit={handleSubmit(onSubmit)} minW="40%">
+        <Box as="form" onSubmit={userLogin} minW="40%">
           <FormControl mt={2}>
             <FormLabel>Email</FormLabel>
             <Input
               type="email"
               name="email"
+              onChange={handleChange}
               {...register('email', {
                 required: 'This field is required',
                 pattern: {
@@ -98,6 +120,7 @@ export const Login = () => {
             <Input
               type={showPassword ? 'text' : 'password'}
               name="password"
+              onChange={handleChange}
               {...register('password', {
                 required: 'This field is required',
                 minLength: {
