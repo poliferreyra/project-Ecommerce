@@ -2,11 +2,9 @@
 // import { useEffect, useState } from 'react'
 // import { getAllProducts } from '../../services/products'
 import {
+  Box,
   Button,
   ButtonGroup,
-  Card,
-  CardBody,
-  CardFooter,
   HStack,
   Heading,
   Image,
@@ -44,8 +42,8 @@ export const Products = () => {
       )}
       <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} p={2}>
         {products.map((product) => (
-          <Card key={product.id} maxW="sm" align="center">
-            <CardBody>
+          <Box key={product.id} maxW="sm" align="center">
+            <Box>
               <Image
                 src={product.img}
                 alt={product.prodName}
@@ -60,8 +58,8 @@ export const Products = () => {
                   {`$ ${product.price}`}
                 </Text>
               </Stack>
-            </CardBody>
-            <CardFooter>
+            </Box>
+            <Box>
               <ButtonGroup m={2}>
                 <Button
                   as={Link}
@@ -81,8 +79,8 @@ export const Products = () => {
                   Add to cart
                 </Button>
               </ButtonGroup>
-            </CardFooter>
-          </Card>
+            </Box>
+          </Box>
         ))}
       </SimpleGrid>
     </>

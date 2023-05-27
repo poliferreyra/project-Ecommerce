@@ -49,6 +49,7 @@ export const Login = () => {
     <>
       <Stack alignItems="center">
         <Button
+          alignSelf="flex-start"
           as={NavLink}
           to="/"
           m={5}
