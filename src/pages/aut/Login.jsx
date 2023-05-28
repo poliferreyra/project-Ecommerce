@@ -17,6 +17,7 @@ import { FcGoogle } from 'react-icons/fc'
 import { FaEyeSlash } from 'react-icons/fa'
 import { BsEye } from 'react-icons/bs'
 import { NavLink } from 'react-router-dom'
+import { useToast } from '@chakra-ui/react'
 
 import { useForm } from 'react-hook-form'
 import { useContext, useState } from 'react'
@@ -27,9 +28,10 @@ import { UserContext } from '../../context/UserContext'
 
 export const Login = () => {
   const navigate = useNavigate()
-  const { user, handleLogin } = useContext(UserContext)
+  const { handleLogin } = useContext(UserContext)
   const [showPassword, setShowPassword] = useState(false)
   const toggleEyeSlash = () => setShowPassword(!showPassword)
+  const toast = useToast()
 
   const {
     register,
@@ -40,13 +42,17 @@ export const Login = () => {
     try {
       const user = await loginWithEmail(data)
       handleLogin(user)
+      toast({
+        title: 'Login',
+        description: 'Your login was successful',
+        status: 'success',
+        duration: 5000,
+        isClosable: true,
+      })
+      navigate('/')
     } catch (error) {
       const errorMessage = error.message
       console.log(errorMessage)
-    } finally {
-      {
-        user && navigate('/')
-      }
     }
     // console.log(data)
     // alert('paso la validacion')

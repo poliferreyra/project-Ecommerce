@@ -27,17 +27,16 @@ import { FaEyeSlash } from 'react-icons/fa'
 import { NavLink } from 'react-router-dom'
 
 import { useContext, useState } from 'react'
-// import { createUserWithEmailAndPassword } from 'firebase/auth'
-// import { auth } from '../firebase/config'
-// import { auth } from '../../firebase/config'
 import { registerAccount } from '../../services/auth'
 import { useNavigate } from 'react-router-dom'
 import { BsEye } from 'react-icons/bs'
 import { FcGoogle } from 'react-icons/fc'
 import { UserContext } from '../../context/UserContext'
 import { useForm } from 'react-hook-form'
+import { useToast } from '@chakra-ui/react'
 
 const Register = () => {
+  const toast = useToast()
   const navigate = useNavigate()
   const { user } = useContext(UserContext)
   const [showPassword, setShowPassword] = useState(false)
@@ -51,13 +50,17 @@ const Register = () => {
   const createAccont = async (data) => {
     try {
       const user = await registerAccount(data)
+      toast({
+        title: 'Account created',
+        description: 'Account created successfully',
+        status: 'success',
+        duration: 5000,
+        isClosable: true,
+      })
+      navigate('/')
     } catch (error) {
       const errorMessage = error.message
       console.log(errorMessage)
-    } finally {
-      {
-        user && navigate('/')
-      }
     }
     console.log(data)
     // alert('paso la validacion')

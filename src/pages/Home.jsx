@@ -40,15 +40,16 @@ export const Home = () => {
           <Link
             p={2}
             ml="30px"
-            color="#282445"
+            color="white"
+            fontWeight="bold"
             borderRadius="10px"
-            fontWeight="semibold"
-            border="1px"
+            bg="#F29101"
             borderColor="#282445"
             as={NavLink}
             to="/aboutUs"
             _hover={{
-              color: 'white',
+              fontWeight: 'semibold',
+              color: '#282445',
             }}
           >
             About us

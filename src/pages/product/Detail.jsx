@@ -57,7 +57,7 @@ export const Detail = () => {
   } else {
     return (
       <>
-        {error && <Text>There's an error</Text>}
+        {error && <Text>There's an error getting the products</Text>}
 
         <Container maxW={'7xl'}>
           <SimpleGrid

@@ -5,6 +5,7 @@ import {
   IconButton,
   MenuList,
   MenuItem,
+  Portal,
 } from '@chakra-ui/react'
 import { AiOutlineHome } from 'react-icons/ai'
 import { TbBrandProducthunt } from 'react-icons/tb'
@@ -19,32 +20,34 @@ export const BurgerMenu = () => {
         icon={<HamburgerIcon />}
         variant="outline"
       />
-      <MenuList>
-        <MenuItem
-          icon={<AiOutlineHome />}
-          p={2}
-          as={NavLink}
-          to="/"
-          _hover={{
-            fontWeight: 'semibold',
-            color: '#F29101',
-          }}
-        >
-          Home
-        </MenuItem>
-        <MenuItem
-          icon={<TbBrandProducthunt />}
-          p={2}
-          as={NavLink}
-          to="/products"
-          _hover={{
-            fontWeight: 'semibold',
-            color: '#F29101',
-          }}
-        >
-          Products
-        </MenuItem>
-      </MenuList>
+      <Portal>
+        <MenuList>
+          <MenuItem
+            icon={<AiOutlineHome />}
+            p={2}
+            as={NavLink}
+            to="/"
+            _hover={{
+              fontWeight: 'semibold',
+              color: '#F29101',
+            }}
+          >
+            Home
+          </MenuItem>
+          <MenuItem
+            icon={<TbBrandProducthunt />}
+            p={2}
+            as={NavLink}
+            to="/products"
+            _hover={{
+              fontWeight: 'semibold',
+              color: '#F29101',
+            }}
+          >
+            Products
+          </MenuItem>
+        </MenuList>
+      </Portal>
     </Menu>
   )
 }
