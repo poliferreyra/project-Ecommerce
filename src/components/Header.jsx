@@ -14,48 +14,58 @@ import {
   MenuItem,
   Text,
   Portal,
+  Hide,
+  Show,
 } from '@chakra-ui/react'
 import { NavLink } from 'react-router-dom'
 import { BsCart3 } from 'react-icons/bs'
-import { BiUser } from 'react-icons/bi'
+import { BiHide, BiUser } from 'react-icons/bi'
 
 import { useContext } from 'react'
 import { UserContext } from '../context/UserContext'
+import { BurgerMenu } from './BurgerMenu'
 
 export const Header = () => {
   const { user, handleLogout } = useContext(UserContext)
   return (
     <>
       <Flex alignItems="center" p={5} fontWeight="bold">
-        <Heading mr={8}>EShop</Heading>
+        <Heading mr={3}>EShop</Heading>
         {/* links de home & product */}
-        <Stack spacing={2} direction="row" align="center" fontWeight="bold">
-          <Link
-            p={2}
-            as={NavLink}
-            to="/"
-            _hover={{
-              fontWeight: 'semibold',
-              color: '#F29101',
-            }}
-          >
-            Home
-          </Link>
-          <Link
-            p={2}
-            as={NavLink}
-            to="/products"
-            _hover={{
-              fontWeight: 'semibold',
-              color: '#F29101',
-            }}
-          >
-            Products
-          </Link>
-        </Stack>
+        <Show breakpoint="(max-width: 500px)">
+          <Stack direction="row" align="center" fontWeight="bold" mr={3}>
+            <BurgerMenu />
+          </Stack>
+        </Show>
+        <Show above="sm">
+          <Stack spacing={2} direction="row" align="center" fontWeight="bold">
+            <Link
+              p={2}
+              as={NavLink}
+              to="/"
+              _hover={{
+                fontWeight: 'semibold',
+                color: '#F29101',
+              }}
+            >
+              Home
+            </Link>
+            <Link
+              p={2}
+              as={NavLink}
+              to="/products"
+              _hover={{
+                fontWeight: 'semibold',
+                color: '#F29101',
+              }}
+            >
+              Products
+            </Link>
+          </Stack>
+        </Show>
         <Spacer />
         {/* links de login & cart */}
-        <Stack direction="row" spacing={4}>
+        <Stack direction="row" spacing={2}>
           {user ? (
             <Menu>
               <Text color="#F29101">Hi! {user}</Text>
@@ -78,7 +88,12 @@ export const Header = () => {
               </Portal>
             </Menu>
           ) : (
-            <Button bg="#F29101" color="white" fontWeight="bold">
+            <Button
+              bg="#F29101"
+              color="white"
+              fontWeight="bold"
+              size={{ base: 'sm', md: 'md' }}
+            >
               <Link
                 p={2}
                 as={NavLink}
@@ -93,7 +108,11 @@ export const Header = () => {
             </Button>
           )}
 
-          <IconButton bg="#F29101" color="white">
+          <IconButton
+            bg="#F29101"
+            color="white"
+            size={{ base: 'sm', md: 'md' }}
+          >
             <Link
               p={2}
               as={NavLink}
