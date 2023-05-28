@@ -20,12 +20,14 @@ import { NavLink } from 'react-router-dom'
 
 import { useForm } from 'react-hook-form'
 import { useContext, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import { loginWithEmail } from '../../services/auth'
 import { UserContext } from '../../context/UserContext'
 
 export const Login = () => {
-  const { handleLogin } = useContext(UserContext)
+  const navigate = useNavigate()
+  const { user, handleLogin } = useContext(UserContext)
   const [showPassword, setShowPassword] = useState(false)
   const toggleEyeSlash = () => setShowPassword(!showPassword)
 
@@ -41,8 +43,12 @@ export const Login = () => {
     } catch (error) {
       const errorMessage = error.message
       console.log(errorMessage)
+    } finally {
+      {
+        user && navigate('/')
+      }
     }
-    console.log(data)
+    // console.log(data)
     // alert('paso la validacion')
   }
   return (

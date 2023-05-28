@@ -7,19 +7,16 @@ import {
   Button,
   Stack,
   IconButton,
-  Divider,
   Menu,
   MenuButton,
   MenuList,
   MenuItem,
-  Text,
   Portal,
-  Hide,
   Show,
 } from '@chakra-ui/react'
 import { NavLink } from 'react-router-dom'
 import { BsCart3 } from 'react-icons/bs'
-import { BiHide, BiUser } from 'react-icons/bi'
+import { BiUser } from 'react-icons/bi'
 
 import { useContext } from 'react'
 import { UserContext } from '../context/UserContext'
@@ -37,7 +34,7 @@ export const Header = () => {
             <BurgerMenu />
           </Stack>
         </Show>
-        <Show above="sm">
+        <Show breakpoint="(min-width: 501px)">
           <Stack spacing={2} direction="row" align="center" fontWeight="bold">
             <Link
               p={2}
@@ -68,7 +65,7 @@ export const Header = () => {
         <Stack direction="row" spacing={2}>
           {user ? (
             <Menu>
-              <Text color="#F29101">Hi! {user}</Text>
+              {/* <Text color="#F29101">Hi! {user}</Text> */}
               <MenuButton
                 bg="#F29101"
                 color="white"
@@ -88,12 +85,7 @@ export const Header = () => {
               </Portal>
             </Menu>
           ) : (
-            <Button
-              bg="#F29101"
-              color="white"
-              fontWeight="bold"
-              size={{ base: 'sm', md: 'md' }}
-            >
+            <Button bg="#F29101" color="white" fontWeight="bold">
               <Link
                 p={2}
                 as={NavLink}
@@ -108,11 +100,7 @@ export const Header = () => {
             </Button>
           )}
 
-          <IconButton
-            bg="#F29101"
-            color="white"
-            size={{ base: 'sm', md: 'md' }}
-          >
+          <IconButton bg="#F29101" color="white">
             <Link
               p={2}
               as={NavLink}
@@ -127,7 +115,6 @@ export const Header = () => {
           </IconButton>
         </Stack>
       </Flex>
-      <Divider />
     </>
   )
 }

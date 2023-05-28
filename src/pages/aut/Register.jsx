@@ -13,6 +13,7 @@ import {
   Box,
   Button,
   FormControl,
+  FormErrorMessage,
   FormLabel,
   Heading,
   IconButton,
@@ -25,91 +26,136 @@ import {
 import { FaEyeSlash } from 'react-icons/fa'
 import { NavLink } from 'react-router-dom'
 
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 // import { createUserWithEmailAndPassword } from 'firebase/auth'
 // import { auth } from '../firebase/config'
 // import { auth } from '../../firebase/config'
-import { register } from '../../services/auth'
+import { registerAccount } from '../../services/auth'
 import { useNavigate } from 'react-router-dom'
 import { BsEye } from 'react-icons/bs'
+import { FcGoogle } from 'react-icons/fc'
+import { UserContext } from '../../context/UserContext'
+import { useForm } from 'react-hook-form'
 
 const Register = () => {
   const navigate = useNavigate()
-  const [values, setValues] = useState({
-    password: '',
-    email: '',
-  })
+  const { user } = useContext(UserContext)
   const [showPassword, setShowPassword] = useState(false)
-
   const toggleEyeSlash = () => setShowPassword(!showPassword)
-  const handleChange = (e) => {
-    setValues({ ...values, [e.target.name]: e.target.value })
-  }
-  const createAccount = async (e) => {
-    e.preventDefault()
-    const user = await register(values)
-    navigate('/')
-    // console.log(user.email)
-  }
-  return (
-    <Stack alignItems="center">
-      <Heading mb={2}>Hello!</Heading>
-      <Heading as="h5" size="sm" mb={2}>
-        Please enter the required information below
-      </Heading>
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm()
 
-      <Box as="form" onSubmit={createAccount} minW="40%">
-        <FormControl mt={2}>
-          <FormLabel>Email</FormLabel>
-          <Input type="email" name="email" onChange={handleChange} />
-        </FormControl>
-        <FormControl>
-          <FormLabel>Password</FormLabel>
-        </FormControl>
-        <InputGroup>
-          <Input
-            type={showPassword ? 'text' : 'password'}
-            name="password"
-            onChange={handleChange}
-          />
-          <InputRightElement>
-            <IconButton
-              onClick={toggleEyeSlash}
-              variant="link"
-              color="#282445"
-              aria-label="EyeSlash"
-              icon={showPassword ? <BsEye /> : <FaEyeSlash />}
+  const createAccont = async (data) => {
+    try {
+      const user = await registerAccount(data)
+    } catch (error) {
+      const errorMessage = error.message
+      console.log(errorMessage)
+    } finally {
+      {
+        user && navigate('/')
+      }
+    }
+    console.log(data)
+    // alert('paso la validacion')
+  }
+
+  return (
+    <>
+      <Stack alignItems="center">
+        <Button
+          alignSelf="flex-start"
+          as={NavLink}
+          to="/"
+          m={5}
+          _hover={{
+            fontWeight: 'semibold',
+            color: '#F29101',
+          }}
+        >
+          Return Home
+        </Button>
+        <Heading mb={2}>Register Account</Heading>
+        <Button
+          leftIcon={<FcGoogle />}
+          mt={4}
+          minW="40%"
+          color="#282445"
+          _hover={{
+            fontWeight: 'semibold',
+            color: '#F29101',
+          }}
+          type="submit"
+        >
+          Login with Google
+        </Button>
+
+        <Box as="form" onSubmit={handleSubmit(createAccont)} minW="40%">
+          <FormControl isInvalid={errors.email} mt={2}>
+            <FormLabel>Email</FormLabel>
+            <Input
+              type="email"
+              name="email"
+              {...register('email', {
+                required: 'This field is required',
+                pattern: {
+                  value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                  message: 'This email is not valid',
+                },
+              })}
             />
-          </InputRightElement>
-        </InputGroup>
-        <Stack direction="column">
-          <Button
-            mt={4}
-            color="#282445"
-            fontWeight="bold"
-            _hover={{
-              fontWeight: 'semibold',
-              color: '#F29101',
-            }}
-            type="submit"
-          >
-            Create Account
-          </Button>
-          <Button
-            as={NavLink}
-            to="/"
-            m={5}
-            fontWeight="bold"
-            _hover={{
-              fontWeight: 'semibold',
-              color: '#F29101',
-            }}
-          >
-            Return Home
-          </Button>
-        </Stack>
-      </Box>
-    </Stack>
+            <FormErrorMessage>
+              {errors.email && errors.email?.message}
+            </FormErrorMessage>
+          </FormControl>
+          <FormControl isInvalid={errors.password}>
+            <FormLabel>Password</FormLabel>
+            <InputGroup>
+              <Input
+                type={showPassword ? 'text' : 'password'}
+                name="password"
+                {...register('password', {
+                  required: 'This field is required',
+                  minLength: {
+                    value: 6,
+                    message: 'The minimum of characters is 6',
+                  },
+                })}
+              />
+              <InputRightElement>
+                <IconButton
+                  onClick={toggleEyeSlash}
+                  variant="link"
+                  color="#282445"
+                  aria-label="EyeSlash"
+                  icon={showPassword ? <BsEye /> : <FaEyeSlash />}
+                />
+              </InputRightElement>
+            </InputGroup>
+            <FormErrorMessage>
+              {errors.password && errors.password?.message}
+            </FormErrorMessage>
+          </FormControl>
+          <Stack direction="column">
+            <Button
+              mt={4}
+              color="#282445"
+              fontWeight="bold"
+              _hover={{
+                fontWeight: 'semibold',
+                color: '#F29101',
+              }}
+              type="submit"
+            >
+              Register
+            </Button>
+          </Stack>
+        </Box>
+      </Stack>
+    </>
   )
 }
 

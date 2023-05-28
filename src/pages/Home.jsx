@@ -11,7 +11,7 @@ import {
   HStack,
 } from '@chakra-ui/react'
 import { NavLink } from 'react-router-dom'
-import womanhome from '../assets/womanhome.png'
+// import womanhome from '../assets/womanhome.png'
 import { useGetProducts } from '../hook/useGetProducts'
 
 export const Home = () => {
@@ -28,14 +28,14 @@ export const Home = () => {
             </Heading>
           </Box>
 
-          <Image
+          {/* <Image
             w={{ base: '48%', md: '38%', lg: '30%', xl: '25%' }}
             src={womanhome}
             alt="Dan Abramov"
             position="absolute"
             bottom="0"
             right="-10"
-          />
+          /> */}
 
           <Link
             p={2}
