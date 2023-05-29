@@ -2,17 +2,11 @@ import { FormControl, FormLabel, Input, Select, Flex } from '@chakra-ui/react'
 import { useGetProducts } from '../../hook/useGetProducts'
 
 export const Filter = () => {
-  const {
-    handleFilterSubmit,
-    filterProd,
-    filterProducts,
-    filterValueProducts,
-  } = useGetProducts()
+  const { handleFilter, filterProd } = useGetProducts()
 
   return (
     <Flex
       as="form"
-      onSubmit={handleFilterSubmit}
       direction={{ base: 'column', md: 'row' }}
       alignItems="center"
       gap={4}
@@ -25,16 +19,12 @@ export const Filter = () => {
           name="prodName"
           value={filterProd.prodName}
           placeholder="Product name"
-          onChange={filterValueProducts}
+          onChange={handleFilter}
         />
       </FormControl>
       <FormControl>
         <FormLabel>Category</FormLabel>
-        <Select
-          placeholder="Select"
-          name="category"
-          onChange={filterValueProducts}
-        >
+        <Select placeholder="Select" name="category" onChange={handleFilter}>
           <option value="woman">For woman</option>
           <option value="men">For men</option>
         </Select>
@@ -45,7 +35,7 @@ export const Filter = () => {
           type="number"
           name="price"
           value={filterProd.price}
-          onChange={filterValueProducts}
+          onChange={handleFilter}
           placeholder="Less than"
         />
       </FormControl>

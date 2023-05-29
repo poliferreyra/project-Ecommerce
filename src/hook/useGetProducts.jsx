@@ -3,7 +3,7 @@ import { getAllProducts } from '../services/products'
 
 export const useGetProducts = () => {
   const [products, setProducts] = useState([])
-  // console.log(products)
+  console.log(products)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
   const [filterProd, setFilterProd] = useState({
@@ -12,22 +12,22 @@ export const useGetProducts = () => {
     price: 0,
   })
   console.log(filterProd)
-  const handleFilterSubmit = (e) => {
-    e.preventDefault()
-    alert('se ejecuto la funcion de onSubmit')
-    filterProducts()
-  }
-  const filterValueProducts = (e) => {
+
+  const handleFilter = (e) => {
     setFilterProd({ ...filterProd, [e.target.name]: e.target.value })
+    filterProducts()
   }
 
   const filterProducts = () => {
-    // const filterProd = filterProd.prodName
-    // const filterCategory = filterProd.category
-    // const filterPrice = filterProd.price
-    // console.log(filterProd)
-    // console.log(filterCategory)
-    // console.log(filterPrice)
+    const newProducts = products.filter((p) => {
+      return (
+        p.prodName.includes(filterProd.prodName) &&
+        p.category === filterProd.category &&
+        p.price <= filterProd.price
+      )
+    })
+
+    setProducts(newProducts)
   }
 
   useEffect(() => {
@@ -50,8 +50,7 @@ export const useGetProducts = () => {
     loading,
     error,
     filterProd,
-    handleFilterSubmit,
-    filterValueProducts,
+    handleFilter,
     filterProducts,
   }
 }
