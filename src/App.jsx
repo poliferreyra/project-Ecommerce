@@ -8,6 +8,8 @@ import { NotFound } from './pages/NotFound'
 import Register from './pages/aut/Register'
 import { AboutUs } from './pages/AboutUs'
 import { Detail } from './pages/product/Detail'
+import { Checkout } from './pages/cart/Checkout'
+import { ProtectedRoute } from './components/ProtectedRoute'
 
 function App() {
   return (
@@ -18,6 +20,15 @@ function App() {
         <Route path="/products/:id" element={<Detail />} />
         <Route path="/aboutUs" element={<AboutUs />} />
         <Route path="/cart" element={<Cart />} />
+        <Route
+          path="/checkout"
+          element={
+            <ProtectedRoute>
+              <Checkout />
+            </ProtectedRoute>
+          }
+        />
+
         <Route path="*" element={<NotFound />} />
       </Route>
       <Route path="/login" element={<Login />} />

@@ -1,9 +1,6 @@
 import { FormControl, FormLabel, Input, Select, Flex } from '@chakra-ui/react'
-import { useGetProducts } from '../../hook/useGetProducts'
 
-export const Filter = () => {
-  const { handleFilter, filterProd } = useGetProducts()
-
+export const Filter = ({ handleFilter, filterProd }) => {
   return (
     <Flex
       as="form"

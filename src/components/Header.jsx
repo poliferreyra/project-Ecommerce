@@ -13,6 +13,7 @@ import {
   MenuItem,
   Portal,
   Show,
+  Text,
 } from '@chakra-ui/react'
 import { NavLink } from 'react-router-dom'
 import { BsCart3 } from 'react-icons/bs'
@@ -24,10 +25,12 @@ import { BurgerMenu } from './BurgerMenu'
 
 export const Header = () => {
   const { user, handleLogout } = useContext(UserContext)
+
   return (
     <>
       <Flex alignItems="center" p={5} fontWeight="bold">
         <Heading mr={3}>EShop</Heading>
+
         {/* links de home & product */}
         <Show breakpoint="(max-width: 500px)">
           <Stack direction="row" align="center" fontWeight="bold" mr={3}>
@@ -62,10 +65,13 @@ export const Header = () => {
         </Show>
         <Spacer />
         {/* links de login & cart */}
+
         <Stack direction="row" spacing={2}>
           {user ? (
             <Menu>
-              {/* <Text color="#F29101">Hi! {user}</Text> */}
+              <Text color="#F29101" textTransform="capitalize">
+                Hi! {user && user.split('.').shift()}
+              </Text>
               <MenuButton
                 bg="#F29101"
                 color="white"

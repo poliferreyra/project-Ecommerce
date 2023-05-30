@@ -1,6 +1,4 @@
 /* eslint-disable react/no-unescaped-entities */
-// import { useEffect, useState } from 'react'
-// import { getAllProducts } from '../../services/products'
 import {
   Box,
   Button,
@@ -20,28 +18,22 @@ import { useContext } from 'react'
 import { CartContext } from '../../context/CartContext'
 
 export const Products = () => {
-  const { products, loading, error } = useGetProducts()
-  const { addProduct } = useContext(CartContext)
-
-  const addProductToCart = (product, quantity) => {
-    addProduct({
-      ...product,
-      quantity,
-    })
-  }
+  const { renderProducts, loading, error, handleFilter, filterProd } =
+    useGetProducts()
+  const { addProductToCart } = useContext(CartContext)
 
   return (
     <>
       {error && <Text>There's an error</Text>}
-      {!products.length && !loading && <Text>There're not products</Text>}
-      <Filter />
+      {!renderProducts.length && !loading && <Text>There're not products</Text>}
+      <Filter handleFilter={handleFilter} filterProd={filterProd} />
       {loading && (
         <HStack justifyContent="center">
           <Spinner />
         </HStack>
       )}
       <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} p={2}>
-        {products.map((product) => (
+        {renderProducts.map((product) => (
           <Box key={product.id} maxW="sm" align="center">
             <Box>
               <Image

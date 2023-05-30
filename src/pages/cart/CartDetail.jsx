@@ -62,7 +62,7 @@ export const CartDetail = () => {
                 w="100%"
                 h="100%"
                 src={cartProduct.img}
-                alt="Dan Abramov"
+                alt="Product Image"
               />
             </Box>
             <Hide below="md">

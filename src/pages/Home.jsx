@@ -13,9 +13,13 @@ import {
 import { NavLink } from 'react-router-dom'
 // import womanhome from '../assets/womanhome.png'
 import { useGetProducts } from '../hook/useGetProducts'
+import { useContext } from 'react'
+import { CartContext } from '../context/CartContext'
 
 export const Home = () => {
-  const { products } = useGetProducts()
+  const { renderProducts } = useGetProducts()
+  const { addProductToCart } = useContext(CartContext)
+
   return (
     <Stack>
       <HStack>
@@ -31,7 +35,7 @@ export const Home = () => {
           {/* <Image
             w={{ base: '48%', md: '38%', lg: '30%', xl: '25%' }}
             src={womanhome}
-            alt="Dan Abramov"
+            alt="Home Imgage"
             position="absolute"
             bottom="0"
             right="-10"
@@ -60,7 +64,7 @@ export const Home = () => {
         <Heading size="md">Favorite Products</Heading>
       </HStack>
       <SimpleGrid columns={{ base: 1, md: 3, lg: 4 }} p={2}>
-        {products.map((product) => (
+        {renderProducts.map((product) => (
           <Box key={product.id} w="90%" h="80%" align="center">
             <Box w="100%" p={2} m={1}>
               <Image
@@ -79,11 +83,11 @@ export const Home = () => {
               </Stack>
               <ButtonGroup m={1}>
                 <Button
-                  as={Link}
+                  as={NavLink}
                   size={{ base: 'xs', md: 'sm' }}
                   variant="solid"
                   colorScheme="blue"
-                  to={product.id}
+                  to={`/products/${product.id}`}
                 >
                   See detail
                 </Button>
@@ -91,6 +95,7 @@ export const Home = () => {
                   size={{ base: 'xs', md: 'sm' }}
                   variant="solid"
                   bg="tomato"
+                  onClick={() => addProductToCart(product, 1)}
                 >
                   Add to cart
                 </Button>

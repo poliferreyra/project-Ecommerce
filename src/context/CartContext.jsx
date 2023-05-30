@@ -1,17 +1,25 @@
 import { useState } from 'react'
 import { createContext } from 'react'
 import { setLocalStorage } from '../utils/localStorage,js'
+import { useNavigate } from 'react-router-dom'
 
 export const CartContext = createContext()
 
 export const CartProvider = ({ children }) => {
+  const navigate = useNavigate()
   const initialCart = JSON.parse(localStorage.getItem('cart')) || []
   const [cart, setCart] = useState(initialCart)
 
-  console.log(cart)
+  // console.log(cart)
   const addProduct = (product) => {
     setCart([...cart, product])
     setLocalStorage('cart', cart)
+  }
+  const addProductToCart = (product, quantity) => {
+    addProduct({
+      ...product,
+      quantity,
+    })
   }
   const resetCart = (newCartQuantity) => setCart(newCartQuantity)
 
@@ -31,7 +39,11 @@ export const CartProvider = ({ children }) => {
     setCart(newCartDelete)
     setLocalStorage('cart', cart)
   }
-  const emptyCart = () => setCart([])
+  const emptyCart = () => {
+    setCart([])
+    setLocalStorage('cart', cart)
+    navigate('/')
+  }
 
   const cartTotalPrice = () => {
     const totalPriceProd = cart.map((prod) => {
@@ -50,6 +62,7 @@ export const CartProvider = ({ children }) => {
       value={{
         cart,
         addProduct,
+        addProductToCart,
         addQuantityToProduct,
         SubstractQuantityToProduct,
         deleteProductCart,

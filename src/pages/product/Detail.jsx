@@ -19,13 +19,10 @@ import {
 } from '@chakra-ui/react'
 import { useParams } from 'react-router-dom'
 
-// import { useEffect, useState } from 'react'
-// import { getAllProducts } from '../../services/products'
 import { useGetProducts } from '../../hook/useGetProducts'
 import { useState } from 'react'
 import { Spinner } from '../../ui/spinner'
 
-// import { useMemo } from 'react'
 import { useContext } from 'react'
 import { CartContext } from '../../context/CartContext'
 
@@ -33,13 +30,12 @@ export const Detail = () => {
   const [quantity, setQuantity] = useState(1)
 
   const { id } = useParams()
-  // console.log(params)
-  const { products, error } = useGetProducts()
+  const { dbProducts, error } = useGetProducts()
   const { addProduct } = useContext(CartContext)
 
   // const product = useMemo(() => products.find((p) => p.id === id), [id])
 
-  const product = products.find((p) => p.id === id)
+  const product = dbProducts.find((p) => p.id === id)
 
   const addProductToCart = () => {
     addProduct({
@@ -48,7 +44,7 @@ export const Detail = () => {
     })
   }
 
-  if (!products.length) {
+  if (!dbProducts.length) {
     return (
       <HStack justifyContent="center">
         <Spinner />
@@ -98,26 +94,6 @@ export const Detail = () => {
                 <Text color="black" fontSize={'2xl'} fontWeight={'300'}>
                   {product.description}
                 </Text>
-
-                {/* <Box>
-                  <Text
-                    fontSize={{ base: '16px', lg: '18px' }}
-                    color="black"
-                    fontWeight={'500'}
-                    textTransform={'uppercase'}
-                    mb={'4'}
-                  >
-                    Categories
-                  </Text>
-
-                  <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
-                    <List spacing={2}>
-                      {product.categories.map((cat) => (
-                        <ListItem key={cat}>{cat}</ListItem>
-                      ))}
-                    </List>
-                  </SimpleGrid>
-                </Box> */}
               </Stack>
               <NumberInput
                 defaultValue={1}

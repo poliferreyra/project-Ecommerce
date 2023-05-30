@@ -4,6 +4,7 @@ import {
   ButtonGroup,
   Flex,
   Heading,
+  Link,
   Stack,
   StackDivider,
   VStack,
@@ -11,6 +12,7 @@ import {
 import { CartDetail } from './CartDetail'
 import { CartContext } from '../../context/CartContext'
 import { useContext } from 'react'
+import { NavLink } from 'react-router-dom'
 
 export const Cart = () => {
   const { emptyCart, cartTotalPrice } = useContext(CartContext)
@@ -34,8 +36,19 @@ export const Cart = () => {
             <Button variant="outline" color="tomato" onClick={emptyCart}>
               Empty cart
             </Button>
-            <Button variant="solid" color="white" bg="#38A169">
-              Check Out
+
+            <Button bg="#38A169" color="white" fontWeight="bold">
+              <Link
+                p={2}
+                as={NavLink}
+                to="/checkout"
+                _hover={{
+                  fontWeight: 'semibold',
+                  color: '#282445',
+                }}
+              >
+                Checkout
+              </Link>
             </Button>
           </ButtonGroup>
         </Box>
