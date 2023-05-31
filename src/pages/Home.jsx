@@ -19,13 +19,15 @@ import { CartContext } from '../context/CartContext'
 import { Spinner } from '../ui/spinner'
 
 export const Home = () => {
-  const { renderProducts, loading, error } = useGetProducts()
+  const { loading, error, filterProductsByLimit } = useGetProducts()
   const { addProductToCart } = useContext(CartContext)
 
   return (
     <>
       {error && <Text>There's an error</Text>}
-      {!renderProducts.length && !loading && <Text>There're not products</Text>}
+      {!filterProductsByLimit.length && !loading && (
+        <Text>There're not products</Text>
+      )}
 
       <Stack>
         <HStack>
@@ -75,7 +77,7 @@ export const Home = () => {
           <Heading size="md">Favorite Products</Heading>
         </HStack>
         <SimpleGrid columns={{ base: 1, md: 3, lg: 4 }} p={2}>
-          {renderProducts.map((product) => (
+          {filterProductsByLimit.map((product) => (
             <Box key={product.id} w="90%" h="80%" align="center">
               <Box w="100%" p={2} m={1}>
                 <Image

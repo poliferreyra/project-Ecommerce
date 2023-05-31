@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
-import { getAllProducts } from '../services/products'
+import { getAllProducts, getProductsByLimit } from '../services/products'
 
 export const useGetProducts = () => {
   const [dbProducts, setDbProducts] = useState([])
+  const [filterProductsByLimit, setFilterProductsByLimit] = useState([])
   // console.log(dbProducts)
   const [renderProducts, setRenderProducts] = useState([])
   const [loading, setLoading] = useState(true)
@@ -14,6 +15,7 @@ export const useGetProducts = () => {
   })
   // console.log(filterProd)
 
+  // filter products functions
   const handleFilter = (e) => {
     setFilterProd({ ...filterProd, [e.target.name]: e.target.value })
   }
@@ -34,6 +36,7 @@ export const useGetProducts = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filterProd])
 
+  // get data - allProducts
   useEffect(() => {
     const getData = async () => {
       try {
@@ -50,6 +53,22 @@ export const useGetProducts = () => {
     }
     getData()
   }, [])
+
+  useEffect(() => {
+    const getFilterProducts = async () => {
+      try {
+        const maxProductsLimit = await getProductsByLimit()
+
+        setLoading(false)
+        setFilterProductsByLimit(maxProductsLimit)
+      } catch (error) {
+        setError(true)
+      } finally {
+        setLoading(false)
+      }
+    }
+    getFilterProducts()
+  }, [])
   return {
     dbProducts,
     loading,
@@ -58,5 +77,6 @@ export const useGetProducts = () => {
     handleFilter,
     filterProducts,
     renderProducts,
+    filterProductsByLimit,
   }
 }

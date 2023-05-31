@@ -1,5 +1,6 @@
 import { collection, getDocs } from 'firebase/firestore'
 import { db } from '../firebase/config'
+import { query, orderBy, limit } from 'firebase/firestore'
 
 // esta funcion me trae toda la data de mi coleccion de productos
 // luego tengo que ejecutarla en el componente que renderiza
@@ -15,4 +16,19 @@ export const getAllProducts = async () => {
   })
   // console.log(allProducts)
   return allProducts
+}
+
+export const getProductsByLimit = async () => {
+  let productsByLimit = []
+  const q = query(collection(db, 'products'), orderBy('prodName'), limit(4))
+  const querySnapshot = await getDocs(q)
+  querySnapshot.forEach((doc) => {
+    // console.log(doc.data(), doc.id)
+    productsByLimit.push({
+      ...doc.data(),
+      id: doc.id,
+    })
+  })
+  // console.log(productsByLimit)
+  return productsByLimit
 }
