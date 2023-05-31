@@ -21,8 +21,10 @@ export const Filter = ({ handleFilter, filterProd }) => {
       </FormControl>
       <FormControl>
         <FormLabel>Category</FormLabel>
-        <Select placeholder="Select" name="category" onChange={handleFilter}>
+        <Select name="category" onChange={handleFilter}>
+          <option value="all">All</option>
           <option value="woman">For woman</option>
+          <option value="makeUp">MakeUp</option>
           <option value="men">For men</option>
         </Select>
       </FormControl>

@@ -70,7 +70,7 @@ export const Header = () => {
           {user ? (
             <Menu>
               <Text color="#F29101" textTransform="capitalize">
-                Hi! {user && user.split('.').shift()}
+                Hi! {user && user.split('@').shift()}
               </Text>
               <MenuButton
                 bg="#F29101"

@@ -21,9 +21,9 @@ export const useGetProducts = () => {
   const filterProducts = () => {
     const newProducts = dbProducts.filter((p) => {
       return (
-        p.prodName.includes(filterProd.prodName) ||
-        p.category === filterProd.category ||
-        p.price < Number(filterProd.price)
+        p.prodName.toLowerCase().includes(filterProd.prodName.toLowerCase()) &&
+        (filterProd.category === 'all' || p.category === filterProd.category) &&
+        (filterProd.price === '' || p.price < Number(filterProd.price))
       )
     })
     setRenderProducts(newProducts)
