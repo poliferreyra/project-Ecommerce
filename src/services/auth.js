@@ -11,9 +11,6 @@ export const loginWithEmail = async (data) => {
     data.password
   )
   const user = userCredential.user
-  // const uid = userCredential.user.uid
-  // console.log(user)
-  // console.log(uid)
   return user
 }
 
@@ -23,11 +20,6 @@ export const registerAccount = async ({ email, password }) => {
     email,
     password
   )
-  // email y uid cuando creo la cuenta
-  // const uid = userCredential.user.uid
-  // const userEmail = userCredential.user.email
-  // console.log(userEmail)
-  // console.log(uid)
   const { user } = userCredential
   return user
 }

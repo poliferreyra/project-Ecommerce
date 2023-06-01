@@ -26,19 +26,18 @@ import {
 import { FaEyeSlash } from 'react-icons/fa'
 import { NavLink } from 'react-router-dom'
 
-import { useContext, useState } from 'react'
+import { useState } from 'react'
 import { registerAccount } from '../../services/auth'
 import { useNavigate } from 'react-router-dom'
 import { BsEye } from 'react-icons/bs'
 import { FcGoogle } from 'react-icons/fc'
-import { UserContext } from '../../context/UserContext'
 import { useForm } from 'react-hook-form'
 import { useToast } from '@chakra-ui/react'
 
 const Register = () => {
   const toast = useToast()
   const navigate = useNavigate()
-  const { user } = useContext(UserContext)
+
   const [showPassword, setShowPassword] = useState(false)
   const toggleEyeSlash = () => setShowPassword(!showPassword)
   const {
@@ -49,7 +48,7 @@ const Register = () => {
 
   const createAccont = async (data) => {
     try {
-      const user = await registerAccount(data)
+      await registerAccount(data)
       toast({
         title: 'Account created',
         description: 'Account created successfully',
