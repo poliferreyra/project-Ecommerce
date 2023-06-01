@@ -9,6 +9,7 @@ import {
   ButtonGroup,
   Text,
   HStack,
+  Spinner,
 } from '@chakra-ui/react'
 import { NavLink } from 'react-router-dom'
 // import womanhome from '../assets/womanhome.png'
@@ -16,7 +17,6 @@ import { NavLink } from 'react-router-dom'
 import { useGetProducts } from '../hook/useGetProducts'
 import { useContext } from 'react'
 import { CartContext } from '../context/CartContext'
-import { Spinner } from '../ui/Spinner'
 
 export const Home = () => {
   const { loading, error, filterProductsByLimit } = useGetProducts()
