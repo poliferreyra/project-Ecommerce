@@ -21,7 +21,7 @@ import { useParams } from 'react-router-dom'
 
 import { useGetProducts } from '../../hook/useGetProducts'
 import { useState } from 'react'
-import { Spinner } from '../../ui/spinner'
+import { Spinner } from '../../ui/Spinner'
 
 import { useContext } from 'react'
 import { CartContext } from '../../context/CartContext'

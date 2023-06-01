@@ -13,7 +13,7 @@ import {
 import { Filter } from './Filter'
 import { useGetProducts } from '../../hook/useGetProducts'
 import { Link } from 'react-router-dom'
-import { Spinner } from '../../ui/spinner'
+import { Spinner } from '../../ui/Spinner'
 import { useContext } from 'react'
 import { CartContext } from '../../context/CartContext'
 
