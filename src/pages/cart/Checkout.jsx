@@ -1,6 +1,6 @@
 import { Box, Stack } from '@chakra-ui/react'
 import { CartDetail } from './CartDetail'
-import { InfoCheckout } from './infoCheckout'
+import { InfoCheckout } from './InfoCheckout'
 
 export const Checkout = () => {
   return (
