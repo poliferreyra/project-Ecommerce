@@ -16,7 +16,7 @@ import { NavLink } from 'react-router-dom'
 import { useGetProducts } from '../hook/useGetProducts'
 import { useContext } from 'react'
 import { CartContext } from '../context/CartContext'
-import { Spinner } from '../../ui/Spinner'
+import { Spinner } from '../ui/Spinner'
 
 export const Home = () => {
   const { loading, error, filterProductsByLimit } = useGetProducts()
