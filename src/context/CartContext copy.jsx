@@ -10,23 +10,15 @@ export const CartProvider = ({ children }) => {
   const initialCart = JSON.parse(localStorage.getItem('cart')) || []
   const [cart, setCart] = useState(initialCart)
 
-  console.log(cart)
+  // console.log(cart)
   const addProduct = (product) => {
     setCart([...cart, product])
   }
   const addProductToCart = (product, quantity) => {
-    const existingProduct = cart.some((p) => p.id === product.id)
-    if (existingProduct) {
-      const newCart = cart.map((p) =>
-        p.id === product.id ? { ...p, quantity: p.quantity + quantity } : p
-      )
-      setCart(newCart)
-    } else {
-      addProduct({
-        ...product,
-        quantity,
-      })
-    }
+    addProduct({
+      ...product,
+      quantity,
+    })
   }
   const resetCart = (newCartQuantity) => setCart(newCartQuantity)
 
