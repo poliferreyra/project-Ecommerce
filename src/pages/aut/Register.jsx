@@ -60,6 +60,14 @@ const Register = () => {
       navigate('/')
     } catch (error) {
       const errorMessage = error.message
+      toast({
+        title: 'error',
+        description: error.message,
+        status: 'error',
+        position: 'top',
+        duration: 6000,
+        isClosable: true,
+      })
       console.log(errorMessage)
     }
     console.log(data)

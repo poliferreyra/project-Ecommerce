@@ -18,23 +18,16 @@ export const loginWithEmail = async (data) => {
 }
 
 export const registerAccount = async ({ email, password }) => {
-  try {
-    const userCredential = await createUserWithEmailAndPassword(
-      auth,
-      email,
-      password
-    )
-    // email y uid cuando creo la cuenta
-    // const uid = userCredential.user.uid
-    // const userEmail = userCredential.user.email
-    // console.log(userEmail)
-    // console.log(uid)
-    const { user } = userCredential
-    return user
-  } catch (error) {
-    const errorCode = error.code
-    const errorMessage = error.message
-    console.log(errorCode)
-    console.log(errorMessage)
-  }
+  const userCredential = await createUserWithEmailAndPassword(
+    auth,
+    email,
+    password
+  )
+  // email y uid cuando creo la cuenta
+  // const uid = userCredential.user.uid
+  // const userEmail = userCredential.user.email
+  // console.log(userEmail)
+  // console.log(uid)
+  const { user } = userCredential
+  return user
 }

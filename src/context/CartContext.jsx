@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { createContext } from 'react'
 import { setLocalStorage } from '../utils/localStorage,js'
 import { useNavigate } from 'react-router-dom'
@@ -13,7 +13,6 @@ export const CartProvider = ({ children }) => {
   // console.log(cart)
   const addProduct = (product) => {
     setCart([...cart, product])
-    setLocalStorage('cart', cart)
   }
   const addProductToCart = (product, quantity) => {
     addProduct({
@@ -26,22 +25,19 @@ export const CartProvider = ({ children }) => {
   const addQuantityToProduct = (index) => {
     cart[index].quantity++
     resetCart([...cart])
-    setLocalStorage('cart', cart)
   }
   const SubstractQuantityToProduct = (index) => {
     cart[index].quantity--
     resetCart([...cart])
-    setLocalStorage('cart', cart)
   }
 
   const deleteProductCart = (id) => {
     const newCartDelete = [...cart].filter((p) => p.id !== id)
+    console.log(newCartDelete)
     setCart(newCartDelete)
-    setLocalStorage('cart', cart)
   }
   const emptyCart = () => {
     setCart([])
-    setLocalStorage('cart', cart)
     navigate('/')
   }
 
@@ -56,6 +52,10 @@ export const CartProvider = ({ children }) => {
     }, 0)
     return totalPrice
   }
+
+  useEffect(() => {
+    setLocalStorage('cart', cart)
+  }, [cart])
 
   return (
     <CartContext.Provider
