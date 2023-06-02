@@ -88,6 +88,7 @@ export const CartDetail = ({ hideQuanitity }) => {
                     color="black"
                     borderRadius="50%"
                     size={{ base: 'xs', md: 'sm' }}
+                    isDisabled={cartProduct.quantity === 1}
                     onClick={() => SubstractQuantityToProduct(index)}
                   >
                     -
@@ -102,6 +103,7 @@ export const CartDetail = ({ hideQuanitity }) => {
                     color="black"
                     borderRadius="50%"
                     size={{ base: 'xs', md: 'sm' }}
+                    isDisabled={cartProduct.quantity === cartProduct.stock}
                     onClick={() => addQuantityToProduct(index)}
                   >
                     +
