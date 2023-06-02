@@ -1,20 +1,19 @@
 import {
   Box,
-  IconButton,
-  HStack,
-  Hide,
+  Button,
   Image,
-  Grid,
-  Heading,
+  SimpleGrid,
   Stack,
   Text,
-  Button,
+  IconButton,
+  HStack,
+  Heading,
 } from '@chakra-ui/react'
 import { useContext } from 'react'
 import { AiFillDelete } from 'react-icons/ai'
 import { CartContext } from '../../context/CartContext'
 
-export const CartDetail = () => {
+export const CartDetail = ({ hideQuanitity }) => {
   const {
     cart,
     addQuantityToProduct,
@@ -23,17 +22,15 @@ export const CartDetail = () => {
   } = useContext(CartContext)
 
   return (
-    <Grid columns={{ base: '1', md: '3' }} gap={4} mt={6}>
+    <Stack mt={6} w={{ base: '90%', md: '50%', lg: '80%' }}>
       {cart.map((cartProduct, index) => (
-        <Stack
-          key={index}
-          border="solid 1px gray"
-          maxW="50%"
-          justifyContent="space-between"
-          alignContent="center"
-          p={4}
-        >
-          <HStack justifyContent="space-between">
+        <Stack key={index} border="1px solid black" p={5}>
+          <HStack
+            justifyContent="space-between"
+            mb={3}
+            border="1px solid black"
+            p={1}
+          >
             <Box>
               <Heading size="xs">Product detail</Heading>
             </Box>
@@ -48,61 +45,101 @@ export const CartDetail = () => {
               />
             </Box>
           </HStack>
-
-          <HStack
-            maxW="500px"
-            textAlign="center"
-            justifyContent="center"
-            alignItems="center"
-          >
-            <Box w="60%">
+          <SimpleGrid columns={3}>
+            <Box
+              height="100%"
+              w={{ base: '100%', md: '60%' }}
+              display="flex"
+              justifyContent="center"
+              mt={4}
+            >
               <Image
                 objectFit="cover"
                 objectPosition="center"
-                w="100%"
-                h="100%"
+                boxSize="100px"
+                maxW="100%"
+                maxH="100%"
                 src={cartProduct.img}
                 alt="Product Image"
               />
             </Box>
-            <Hide below="md">
-              <Box w="100%" h="130px">
-                <Text>Quantity</Text>
+            {!hideQuanitity && (
+              <Box
+                height="100%"
+                textAlign="center"
+                w={{ base: '100%', md: '50%' }}
+                m={4}
+              >
+                <Text
+                  colorScheme="teal"
+                  size="sm"
+                  fontWeight="bold"
+                  fontSize={{ base: '12px', md: '14px', lg: '16px' }}
+                >
+                  Quantity
+                </Text>
                 <Stack
                   w="100%"
-                  h="130px"
-                  direction="row"
+                  direction={{ base: 'column', sm: 'row' }}
                   align="center"
                   justifyContent="center"
-                  alignItems="start"
                 >
                   <Button
-                    color="red"
-                    size="sm"
+                    color="black"
+                    borderRadius="50%"
+                    size={{ base: 'xs', md: 'sm' }}
                     onClick={() => SubstractQuantityToProduct(index)}
                   >
                     -
                   </Button>
-                  <Text colorScheme="teal" size="sm">
+                  <Text
+                    fontWeight="bold"
+                    fontSize={{ base: '12px', md: '14px', lg: '16px' }}
+                  >
                     {cartProduct.quantity}
                   </Text>
                   <Button
-                    color="red"
-                    size="sm"
+                    color="black"
+                    borderRadius="50%"
+                    size={{ base: 'xs', md: 'sm' }}
                     onClick={() => addQuantityToProduct(index)}
                   >
                     +
                   </Button>
                 </Stack>
               </Box>
-            </Hide>
-            <Box w="100%" h="130px">
-              <Text>Total</Text>
-              {cartProduct.quantity * cartProduct.price}
+            )}
+
+            <Box
+              height="100%"
+              textAlign="center"
+              w={{ base: '100%', md: '50%' }}
+              m={4}
+            >
+              <Text
+                fontSize={{ base: '12px', md: '14px', lg: '16px' }}
+                fontWeight="bold"
+              >
+                Total
+              </Text>
+              <Stack
+                w="100%"
+                direction={{ base: 'column', sm: 'row' }}
+                align="center"
+                justifyContent="center"
+              >
+                <Text
+                  fontWeight="bold"
+                  fontSize={{ base: '12px', md: '14px', lg: '16px' }}
+                >
+                  {' '}
+                  $ {cartProduct.quantity * cartProduct.price}
+                </Text>
+              </Stack>
             </Box>
-          </HStack>
+          </SimpleGrid>
         </Stack>
       ))}
-    </Grid>
+    </Stack>
   )
 }

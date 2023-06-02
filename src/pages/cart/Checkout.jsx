@@ -4,11 +4,11 @@ import { InfoCheckout } from './InfoCheckout'
 
 export const Checkout = () => {
   return (
-    <Stack direction={{ base: 'column', md: 'row' }}>
-      <Box w="100%" bg="yellow.100" p={3}>
-        <CartDetail />
+    <Stack direction={{ base: 'column', lg: 'row' }}>
+      <Box w="100%" p={3}>
+        <CartDetail hideQuanitity={true} />
       </Box>
-      <Box w="100%" bg="green.300" p={3}>
+      <Box w="100%" p={3} alignSelf="center">
         <InfoCheckout />
       </Box>
     </Stack>

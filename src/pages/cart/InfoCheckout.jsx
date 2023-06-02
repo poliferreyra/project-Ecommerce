@@ -47,7 +47,7 @@ export const InfoCheckout = () => {
 
         <Box as="form" onSubmit={handleSubmit(onSubmit)} minW="60%">
           <FormControl isInvalid={errors.name}>
-            <FormLabel>Name</FormLabel>
+            <FormLabel p={2}>Name</FormLabel>
             <Input
               type="text"
               name="name"
@@ -65,7 +65,7 @@ export const InfoCheckout = () => {
             </FormErrorMessage>
           </FormControl>
           <FormControl isInvalid={errors.email} mt={2}>
-            <FormLabel>Email</FormLabel>
+            <FormLabel p={2}>Email</FormLabel>
             <Input
               type="email"
               name="email"
@@ -82,7 +82,7 @@ export const InfoCheckout = () => {
             </FormErrorMessage>
           </FormControl>
           <FormControl isInvalid={errors.address}>
-            <FormLabel>Address</FormLabel>
+            <FormLabel p={2}>Address</FormLabel>
             <Input
               type="text"
               name="address"
@@ -101,7 +101,7 @@ export const InfoCheckout = () => {
             </FormErrorMessage>
           </FormControl>
           <FormControl isInvalid={errors.state}>
-            <FormLabel>State</FormLabel>
+            <FormLabel p={2}>State</FormLabel>
             <Input
               type="text"
               name="state"
@@ -120,7 +120,9 @@ export const InfoCheckout = () => {
             </FormErrorMessage>
           </FormControl>
           <Box h="40px" p={3}>
-            <Heading fontSize="2xl">Total : $ {cartTotalPrice()}</Heading>
+            <Heading fontSize="2xl" p={2}>
+              Total : $ {cartTotalPrice()}
+            </Heading>
           </Box>
           <Stack direction="column">
             <Button

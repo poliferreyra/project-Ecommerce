@@ -10,7 +10,7 @@ export const CartProvider = ({ children }) => {
   const initialCart = JSON.parse(localStorage.getItem('cart')) || []
   const [cart, setCart] = useState(initialCart)
 
-  console.log(cart)
+  // console.log(cart)
   const addProduct = (product) => {
     setCart([...cart, product])
   }
@@ -41,7 +41,6 @@ export const CartProvider = ({ children }) => {
 
   const deleteProductCart = (id) => {
     const newCartDelete = [...cart].filter((p) => p.id !== id)
-    console.log(newCartDelete)
     setCart(newCartDelete)
   }
   const emptyCart = () => {
