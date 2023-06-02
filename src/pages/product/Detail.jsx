@@ -55,7 +55,7 @@ export const Detail = () => {
       <>
         {error && <Text>There's an error getting the products</Text>}
 
-        <Container maxW={'7xl'}>
+        <Container maxW="xl">
           <SimpleGrid
             columns={{ base: 1, lg: 2 }}
             spacing={{ base: 8, md: 10 }}
@@ -69,7 +69,7 @@ export const Detail = () => {
                 fit={'cover'}
                 align={'center'}
                 w={'100%'}
-                h={{ base: '100%', sm: '400px', lg: '500px' }}
+                h={{ base: '100%', sm: '400px', lg: '300px' }}
               />
             </Flex>
             <Stack spacing={{ base: 6, md: 10 }}>
@@ -77,11 +77,11 @@ export const Detail = () => {
                 <Heading
                   lineHeight={1.1}
                   fontWeight={600}
-                  fontSize={{ base: '2xl', sm: '4xl', lg: '5xl' }}
+                  fontSize={{ base: 'md', sm: 'lg', lg: 'xl' }}
                 >
                   {product.prodName}
                 </Heading>
-                <Text color="black" fontWeight={300} fontSize={'2xl'}>
+                <Text color="black" fontWeight={300} fontSize={'xl'}>
                   $ {product.price}
                 </Text>
               </Box>
@@ -91,7 +91,11 @@ export const Detail = () => {
                 direction={'column'}
                 divider={<StackDivider borderColor="black" />}
               >
-                <Text color="black" fontSize={'2xl'} fontWeight={'300'}>
+                <Text
+                  color="black"
+                  fontSize={{ base: 'sm', md: 'xl' }}
+                  fontWeight={'300'}
+                >
                   {product.description}
                 </Text>
               </Stack>
@@ -112,14 +116,14 @@ export const Detail = () => {
                 rounded={'none'}
                 w={'full'}
                 mt={8}
-                size={'lg'}
+                size={'sm'}
                 py={'7'}
-                bg="#F29101"
-                color="black"
+                bg="#F5E90C"
                 textTransform={'uppercase'}
                 _hover={{
                   transform: 'translateY(2px)',
-                  boxShadow: 'lg',
+                  boxShadow: 'md',
+                  color: '#DF166D',
                 }}
                 onClick={addProductToCart}
               >

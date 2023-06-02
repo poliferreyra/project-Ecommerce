@@ -32,11 +32,10 @@ export const Header = () => {
     <Stack>
       <Box
         w="100%"
-        bg="#F5E90C"
-        ml={4}
+        mt={4}
         display="flex"
         justifyContent="center"
-        borderRadius="29% 71% 23% 77% / 77% 28% 72% 23%"
+        // borderRadius="29% 71% 23% 77% / 77% 28% 72% 23%"
       >
         <Image
           w={{ base: '60%', md: '30%' }}
