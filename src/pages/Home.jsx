@@ -62,11 +62,13 @@ export const Home = () => {
           </HStack>
         )}
         <HStack>
-          <Heading size="md">Favorite Products</Heading>
+          <Heading ml={3} size="md">
+            Favorite Products
+          </Heading>
         </HStack>
         <SimpleGrid columns={{ base: 1, md: 3, lg: 4 }} p={2}>
           {filterProductsByLimit.map((product) => (
-            <Box key={product.id} w="90%" h="80%" align="center">
+            <Box key={product.id} w="100%" h="80%" align="center">
               <Box w="100%" p={2} m={1}>
                 <Image
                   src={product.img}
@@ -76,8 +78,10 @@ export const Home = () => {
                   maxH="40%"
                 />
                 <Stack mt="6">
-                  <Heading size="md">{product.prodName}</Heading>
-                  {/* <Text>{product.description}</Text> */}
+                  <Text fontWeight="semibold" fontSize="sm">
+                    {product.prodName}
+                  </Text>
+
                   <Text color="blue.600" fontSize="1xl">
                     {`$ ${product.price}`}
                   </Text>
