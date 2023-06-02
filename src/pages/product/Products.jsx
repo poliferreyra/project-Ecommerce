@@ -58,15 +58,19 @@ export const Products = () => {
                   as={Link}
                   size="sm"
                   variant="solid"
-                  colorScheme="blue"
+                  bg="#A2EAF4"
                   to={product.id}
+                  _hover={{
+                    fontWeight: 'semibold',
+                    color: '#DF166D',
+                  }}
                 >
                   See detail
                 </Button>
                 <Button
                   size="sm"
                   variant="ghost"
-                  colorScheme="blue"
+                  color="#DF166D"
                   onClick={() => addProductToCart(product, 1)}
                 >
                   Add to cart

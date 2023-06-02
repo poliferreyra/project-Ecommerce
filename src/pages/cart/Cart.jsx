@@ -33,18 +33,18 @@ export const Cart = () => {
         </Box>
         <Box h="40px">
           <ButtonGroup spacing="6">
-            <Button variant="outline" color="tomato" onClick={emptyCart}>
+            <Button variant="outline" color="#DF166D" onClick={emptyCart}>
               Empty cart
             </Button>
 
-            <Button bg="#38A169" color="white" fontWeight="bold">
+            <Button bg="#F5E90C" fontWeight="bold">
               <Link
                 p={2}
                 as={NavLink}
                 to="/checkout"
                 _hover={{
                   fontWeight: 'semibold',
-                  color: '#282445',
+                  color: '#DF166D',
                 }}
               >
                 Checkout

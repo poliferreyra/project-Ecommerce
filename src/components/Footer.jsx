@@ -15,7 +15,7 @@ export const Footer = () => {
             to="/"
             _hover={{
               fontWeight: 'semibold',
-              color: '#F29101',
+              color: '#DF166D',
             }}
           >
             Home
@@ -26,7 +26,7 @@ export const Footer = () => {
             to="/products"
             _hover={{
               fontWeight: 'semibold',
-              color: '#F29101',
+              color: '#DF166D',
             }}
           >
             Shop
@@ -37,7 +37,7 @@ export const Footer = () => {
             to="/aboutUs"
             _hover={{
               fontWeight: 'semibold',
-              color: '#F29101',
+              color: '#DF166D',
             }}
           >
             About us
@@ -51,7 +51,7 @@ export const Footer = () => {
             alignItems="center"
             justifyContent="center"
             borderRadius="50%"
-            bg="#F29101"
+            bg="#A2EAF4"
             w={12}
             h={12}
             color="white"
@@ -69,7 +69,7 @@ export const Footer = () => {
             alignItems="center"
             justifyContent="center"
             borderRadius="50%"
-            bg="#F29101"
+            bg="#A2EAF4"
             w={12}
             h={12}
             color="white"
@@ -87,7 +87,7 @@ export const Footer = () => {
             alignItems="center"
             justifyContent="center"
             borderRadius="50%"
-            bg="#F29101"
+            bg="#A2EAF4"
             w={12}
             h={12}
             color="white"

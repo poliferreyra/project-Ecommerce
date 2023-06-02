@@ -39,29 +39,17 @@ export const Home = () => {
                 natural beauty and highlight your personal style.
               </Heading>
             </Box>
-
-            {/* <Image
-            w={{ base: '48%', md: '38%', lg: '30%', xl: '25%' }}
-            src={womanhome}
-            alt="Home Imgage"
-            position="absolute"
-            bottom="0"
-            right="-10"
-          /> */}
-
             <Link
               p={2}
               ml="30px"
-              color="white"
               fontWeight="bold"
               borderRadius="10px"
-              bg="#F29101"
-              borderColor="#282445"
+              bg="#F5E90C"
               as={NavLink}
               to="/aboutUs"
               _hover={{
                 fontWeight: 'semibold',
-                color: '#282445',
+                color: '#DF166D',
               }}
             >
               About us
@@ -99,15 +87,23 @@ export const Home = () => {
                     as={NavLink}
                     size={{ base: 'xs', md: 'sm' }}
                     variant="solid"
-                    colorScheme="blue"
+                    bg="#A2EAF4"
                     to={`/products/${product.id}`}
+                    _hover={{
+                      fontWeight: 'semibold',
+                      color: '#DF166D',
+                    }}
                   >
                     See detail
                   </Button>
                   <Button
                     size={{ base: 'xs', md: 'sm' }}
                     variant="solid"
-                    bg="tomato"
+                    bg="#F5E90C"
+                    _hover={{
+                      fontWeight: 'semibold',
+                      color: '#DF166D',
+                    }}
                     onClick={() => addProductToCart(product, 1)}
                   >
                     Add to cart

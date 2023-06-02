@@ -85,7 +85,7 @@ export const CartDetail = ({ hideQuanitity }) => {
                   justifyContent="center"
                 >
                   <Button
-                    color="black"
+                    color="red"
                     borderRadius="50%"
                     size={{ base: 'xs', md: 'sm' }}
                     isDisabled={cartProduct.quantity === 1}
@@ -100,7 +100,7 @@ export const CartDetail = ({ hideQuanitity }) => {
                     {cartProduct.quantity}
                   </Text>
                   <Button
-                    color="black"
+                    color="red"
                     borderRadius="50%"
                     size={{ base: 'xs', md: 'sm' }}
                     isDisabled={cartProduct.quantity === cartProduct.stock}

@@ -29,7 +29,7 @@ export const BurgerMenu = () => {
             to="/"
             _hover={{
               fontWeight: 'semibold',
-              color: '#F29101',
+              color: '#DF166D',
             }}
           >
             Home
@@ -41,7 +41,7 @@ export const BurgerMenu = () => {
             to="/products"
             _hover={{
               fontWeight: 'semibold',
-              color: '#F29101',
+              color: '#DF166D',
             }}
           >
             Products

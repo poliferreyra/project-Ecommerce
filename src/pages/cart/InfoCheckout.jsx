@@ -127,11 +127,12 @@ export const InfoCheckout = () => {
           <Stack direction="column">
             <Button
               mt={4}
+              bg="#F5E90C"
               color="#282445"
               fontWeight="bold"
               _hover={{
                 fontWeight: 'semibold',
-                color: '#F29101',
+                color: '#DF166D',
               }}
               type="submit"
             >
