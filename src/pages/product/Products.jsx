@@ -10,6 +10,9 @@ import {
   Spinner,
   Stack,
   Text,
+  Alert,
+  AlertIcon,
+  AlertTitle,
 } from '@chakra-ui/react'
 import { Filter } from './Filter'
 import { useGetProducts } from '../../hook/useGetProducts'
@@ -25,9 +28,23 @@ export const Products = () => {
 
   return (
     <>
-      {error && <Text>There's an error</Text>}
-      {!renderProducts.length && !loading && <Text>There're not products</Text>}
       <Filter handleFilter={handleFilter} filterProd={filterProd} />
+      {!renderProducts.length && !loading && (
+        <>
+          <Alert status="error">
+            <AlertIcon />
+            <AlertTitle>There're not products for this search</AlertTitle>
+          </Alert>
+        </>
+      )}
+      {error && (
+        <>
+          <Alert status="error">
+            <AlertIcon />
+            <AlertTitle>Oops! an error happended</AlertTitle>
+          </Alert>
+        </>
+      )}
       {loading && (
         <HStack justifyContent="center">
           <Spinner />

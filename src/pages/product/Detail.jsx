@@ -17,6 +17,9 @@ import {
   NumberDecrementStepper,
   HStack,
   Spinner,
+  Alert,
+  AlertIcon,
+  AlertTitle,
 } from '@chakra-ui/react'
 import { useParams } from 'react-router-dom'
 
@@ -53,7 +56,14 @@ export const Detail = () => {
   } else {
     return (
       <>
-        {error && <Text>There's an error getting the products</Text>}
+        {error && (
+          <>
+            <Alert status="error">
+              <AlertIcon />
+              <AlertTitle>Your request couldn't be completed</AlertTitle>
+            </Alert>
+          </>
+        )}
 
         <Container maxW="xl">
           <SimpleGrid

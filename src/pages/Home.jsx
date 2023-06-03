@@ -10,6 +10,9 @@ import {
   Text,
   HStack,
   Spinner,
+  Alert,
+  AlertIcon,
+  AlertTitle,
 } from '@chakra-ui/react'
 import { NavLink } from 'react-router-dom'
 // import womanhome from '../assets/womanhome.png'
@@ -24,10 +27,17 @@ export const Home = () => {
 
   return (
     <>
-      {error && <Text>There's an error</Text>}
-      {!filterProductsByLimit.length && !loading && (
-        <Text>There're not products</Text>
+      {error && (
+        <>
+          <Alert status="error">
+            <AlertIcon />
+            <AlertTitle>Oops! an error happended</AlertTitle>
+          </Alert>
+        </>
       )}
+      {/* {!filterProductsByLimit.length && !loading && (
+        <Text>There're not products</Text>
+      )} */}
 
       <Stack>
         <HStack>
