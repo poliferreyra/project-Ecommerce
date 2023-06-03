@@ -22,7 +22,7 @@ export const Filter = ({ handleFilter, filterProd }) => {
       <FormControl>
         <FormLabel>Category</FormLabel>
         <Select name="category" onChange={handleFilter}>
-          <option value="all">All</option>
+          <option value="">All</option>
           <option value="woman">For woman</option>
           <option value="makeUp">MakeUp</option>
           <option value="men">For men</option>

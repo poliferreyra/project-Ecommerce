@@ -4,7 +4,6 @@ import { getAllProducts, getProductsByLimit } from '../services/products'
 export const useGetProducts = () => {
   const [dbProducts, setDbProducts] = useState([])
   const [filterProductsByLimit, setFilterProductsByLimit] = useState([])
-  // console.log(dbProducts)
   const [renderProducts, setRenderProducts] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
@@ -13,7 +12,6 @@ export const useGetProducts = () => {
     category: '',
     price: '',
   })
-  // console.log(filterProd)
 
   // filter products functions
   const handleFilter = (e) => {
@@ -24,7 +22,7 @@ export const useGetProducts = () => {
     const newProducts = dbProducts.filter((p) => {
       return (
         p.prodName.toLowerCase().includes(filterProd.prodName.toLowerCase()) &&
-        (filterProd.category === 'all' || p.category === filterProd.category) &&
+        (filterProd.category === '' || p.category === filterProd.category) &&
         (filterProd.price === '' || p.price < Number(filterProd.price))
       )
     })
