@@ -19,6 +19,7 @@ import {
   ModalBody,
   ModalCloseButton,
 } from '@chakra-ui/react'
+import { CartDetail } from './cart/CartDetail'
 
 export const Orders = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -60,23 +61,6 @@ export const Orders = () => {
             </Stack>
 
             <Box>
-              <Button onClick={onOpen}>Open Modal</Button>
-
-              <Modal isOpen={isOpen} onClose={onClose}>
-                <ModalOverlay />
-                <ModalContent>
-                  <ModalHeader>Modal Title</ModalHeader>
-                  <ModalCloseButton />
-                  <ModalBody>dkfjakfjakjagkljagklaj</ModalBody>
-
-                  <ModalFooter>
-                    <Button colorScheme="blue" mr={3} onClick={onClose}>
-                      Close
-                    </Button>
-                    <Button variant="ghost">Secondary Action</Button>
-                  </ModalFooter>
-                </ModalContent>
-              </Modal>
               <Button
                 size="sm"
                 variant="solid"
@@ -85,9 +69,36 @@ export const Orders = () => {
                   fontWeight: 'semibold',
                   color: '#DF166D',
                 }}
+                onClick={onOpen}
               >
-                See detail
+                See Detail
               </Button>
+
+              <Modal isOpen={isOpen} onClose={onClose}>
+                <ModalOverlay />
+                <ModalContent>
+                  <ModalHeader>Order Detail</ModalHeader>
+                  <ModalCloseButton />
+                  <ModalBody>
+                    <CartDetail hideQuanitity={true} />
+                  </ModalBody>
+
+                  <ModalFooter>
+                    <Button
+                      size="sm"
+                      variant="solid"
+                      bg="#A2EAF4"
+                      _hover={{
+                        fontWeight: 'semibold',
+                        color: '#DF166D',
+                      }}
+                      onClick={onClose}
+                    >
+                      Close
+                    </Button>
+                  </ModalFooter>
+                </ModalContent>
+              </Modal>
             </Box>
           </Box>
         </SimpleGrid>

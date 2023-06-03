@@ -14,7 +14,6 @@ import {
   Show,
   Text,
   Image,
-  Box,
 } from '@chakra-ui/react'
 import { NavLink } from 'react-router-dom'
 import { BsCart3 } from 'react-icons/bs'
@@ -23,41 +22,28 @@ import { BiUser } from 'react-icons/bi'
 import { useContext } from 'react'
 import { UserContext } from '../context/UserContext'
 import { BurgerMenu } from './BurgerMenu'
-import glamourXpressions from '../assets/glamourXpressions.png'
+import logo from '../assets/logo.png'
 
 export const Header = () => {
   const { user, handleLogout } = useContext(UserContext)
 
   return (
-    <Stack>
-      <Box
-        w="100%"
-        mt={4}
-        display="flex"
-        justifyContent="center"
-        // borderRadius="29% 71% 23% 77% / 77% 28% 72% 23%"
-      >
+    <Stack m={2}>
+      <Flex alignItems="center" fontWeight="bold">
         <Image
-          w={{ base: '60%', md: '30%' }}
-          src={glamourXpressions}
+          w={{ base: '25%', sm: '20%', md: '15%' }}
+          src={logo}
           alt="Home Imgage"
         />
-      </Box>
-      <Flex alignItems="center" p={5} fontWeight="bold">
+
         {/* links de home & product */}
         <Show breakpoint="(max-width: 500px)">
-          <Stack direction="row" align="center" fontWeight="bold" ml={2}>
+          <Stack direction="row" align="center" fontWeight="bold">
             <BurgerMenu />
           </Stack>
         </Show>
         <Show breakpoint="(min-width: 501px)">
-          <Stack
-            spacing={2}
-            direction="row"
-            align="center"
-            fontWeight="bold"
-            ml={5}
-          >
+          <Stack spacing={2} direction="row" align="center" fontWeight="bold">
             <Link
               p={2}
               as={NavLink}
@@ -85,10 +71,10 @@ export const Header = () => {
         <Spacer />
         {/* links de login & cart */}
 
-        <Stack direction="row" spacing={2} mr={2}>
+        <Stack direction="row" spacing={2}>
           {user ? (
             <Menu>
-              <Text color="#DF166D" textTransform="capitalize" mt={3}>
+              <Text color="#DF166D" textTransform="capitalize">
                 Hi! {user && user.split('@').shift()}
               </Text>
               <MenuButton

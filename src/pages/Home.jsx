@@ -13,6 +13,7 @@ import {
   Alert,
   AlertIcon,
   AlertTitle,
+  VStack,
 } from '@chakra-ui/react'
 import { NavLink } from 'react-router-dom'
 // import womanhome from '../assets/womanhome.png'
@@ -35,15 +36,11 @@ export const Home = () => {
           </Alert>
         </>
       )}
-      {/* {!filterProductsByLimit.length && !loading && (
-        <Text>There're not products</Text>
-      )} */}
-
       <Stack>
         <HStack>
-          <Box w="100%" h="330px" position="relative">
+          <Box w="100%" h="250px" position="relative">
             <Box w="75%">
-              <Heading size="sm" p={10} color="black">
+              <Heading size="sm" p={5} color="black" textAlign="start">
                 Welcome to our online perfume and cosmetics store! <br />
                 Discover a wide variety of high-quality products to enhance your
                 natural beauty and highlight your personal style.
@@ -72,13 +69,14 @@ export const Home = () => {
             <Spinner />
           </HStack>
         )}
-        <HStack justifyContent="center" alignItems="center">
+        <VStack justifyContent="center" alignItems="center">
           <Heading
             ml={3}
             size="xl"
             color="#DF166D"
-            borderRadius="26% 74% 26% 74% / 29% 66% 34% 71% "
-            bg="#F5E90C"
+            // borderRadius="26% 74% 26% 74% / 29% 66% 34% 71% "
+            // bg="#F5E90C"
+
             w="300px"
             h="80px"
             lineHeight="80px"
@@ -86,58 +84,58 @@ export const Home = () => {
           >
             New Arrivals
           </Heading>
-        </HStack>
-        <SimpleGrid columns={{ base: 1, md: 3 }} p={2}>
-          {filterProdOrderBy.map((product) => (
-            <Box key={product.id} w="100%" h="80%" align="center">
-              <Box w="100%" p={2} m={1}>
-                <Image
-                  src={product.img}
-                  alt={product.prodName}
-                  borderRadius="lg"
-                  maxW="70%"
-                  maxH="40%"
-                />
-                <Stack mt="6">
-                  <Text fontWeight="semibold" fontSize="sm">
-                    {product.prodName}
-                  </Text>
+          <SimpleGrid columns={{ base: 1, md: 3 }}>
+            {filterProdOrderBy.map((product) => (
+              <Box key={product.id} w="100%" h="80%" align="center">
+                <Box w="100%" p={2} m={1}>
+                  <Image
+                    src={product.img}
+                    alt={product.prodName}
+                    borderRadius="lg"
+                    maxW="70%"
+                    maxH="40%"
+                  />
+                  <Stack mt="6">
+                    <Text fontWeight="semibold" fontSize="sm">
+                      {product.prodName}
+                    </Text>
 
-                  <Text color="blue.600" fontSize="1xl">
-                    {`$ ${product.price}`}
-                  </Text>
-                </Stack>
-                <ButtonGroup m={1}>
-                  <Button
-                    as={NavLink}
-                    size={{ base: 'xs', md: 'sm' }}
-                    variant="solid"
-                    bg="#A2EAF4"
-                    to={`/products/${product.id}`}
-                    _hover={{
-                      fontWeight: 'semibold',
-                      color: '#DF166D',
-                    }}
-                  >
-                    See detail
-                  </Button>
-                  <Button
-                    size={{ base: 'xs', md: 'sm' }}
-                    variant="solid"
-                    bg="#F5E90C"
-                    _hover={{
-                      fontWeight: 'semibold',
-                      color: '#DF166D',
-                    }}
-                    onClick={() => addProductToCart(product, 1)}
-                  >
-                    Add to cart
-                  </Button>
-                </ButtonGroup>
+                    <Text color="blue.600" fontSize="1xl">
+                      {`$ ${product.price}`}
+                    </Text>
+                  </Stack>
+                  <ButtonGroup m={1}>
+                    <Button
+                      as={NavLink}
+                      size={{ base: 'xs', md: 'sm' }}
+                      variant="solid"
+                      bg="#A2EAF4"
+                      to={`/products/${product.id}`}
+                      _hover={{
+                        fontWeight: 'semibold',
+                        color: '#DF166D',
+                      }}
+                    >
+                      See detail
+                    </Button>
+                    <Button
+                      size={{ base: 'xs', md: 'sm' }}
+                      variant="solid"
+                      bg="#F5E90C"
+                      _hover={{
+                        fontWeight: 'semibold',
+                        color: '#DF166D',
+                      }}
+                      onClick={() => addProductToCart(product, 1)}
+                    >
+                      Add to cart
+                    </Button>
+                  </ButtonGroup>
+                </Box>
               </Box>
-            </Box>
-          ))}
-        </SimpleGrid>
+            ))}
+          </SimpleGrid>
+        </VStack>
       </Stack>
     </>
   )
