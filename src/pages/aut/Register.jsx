@@ -27,7 +27,7 @@ import { FaEyeSlash } from 'react-icons/fa'
 import { NavLink } from 'react-router-dom'
 
 import { useState } from 'react'
-import { registerAccount } from '../../services/auth'
+import { loginWithGoogle, registerAccount } from '../../services/auth'
 import { useNavigate } from 'react-router-dom'
 import { BsEye } from 'react-icons/bs'
 import { FcGoogle } from 'react-icons/fc'
@@ -49,6 +49,33 @@ const Register = () => {
   const createAccont = async (data) => {
     try {
       await registerAccount(data)
+      toast({
+        title: 'Account created',
+        description: 'Account created successfully',
+        status: 'success',
+        duration: 5000,
+        isClosable: true,
+      })
+      navigate('/')
+    } catch (error) {
+      const errorMessage = error.message
+      toast({
+        title: 'error',
+        description: error.message,
+        status: 'error',
+        position: 'top',
+        duration: 6000,
+        isClosable: true,
+      })
+      console.log(errorMessage)
+    }
+    console.log(data)
+    // alert('paso la validacion')
+  }
+  // create with google
+  const createAccontWithGoogle = async (data) => {
+    try {
+      await loginWithGoogle(data)
       toast({
         title: 'Account created',
         description: 'Account created successfully',
@@ -99,8 +126,9 @@ const Register = () => {
             color: '#F29101',
           }}
           type="submit"
+          onClick={createAccontWithGoogle}
         >
-          Login with Google
+          Register with Google
         </Button>
 
         <Box as="form" onSubmit={handleSubmit(createAccont)} minW="40%">

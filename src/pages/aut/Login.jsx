@@ -23,7 +23,7 @@ import { useForm } from 'react-hook-form'
 import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { loginWithEmail } from '../../services/auth'
+import { loginWithEmail, loginWithGoogle } from '../../services/auth'
 import { UserContext } from '../../context/UserContext'
 
 export const Login = () => {
@@ -38,9 +38,40 @@ export const Login = () => {
     handleSubmit,
     formState: { errors },
   } = useForm()
+  // login with email
   const onSubmit = async (data) => {
     try {
       const user = await loginWithEmail(data)
+      handleLogin(user)
+      toast({
+        title: 'Login',
+        description: 'Your login was successful',
+        status: 'success',
+        duration: 5000,
+        isClosable: true,
+      })
+      navigate('/')
+    } catch (error) {
+      const errorMessage = error.message
+      toast({
+        title: 'error',
+        description: error.message,
+        status: 'error',
+        position: 'top',
+        duration: 6000,
+        isClosable: true,
+      })
+
+      console.log(errorMessage)
+    }
+    // console.log(data)
+    // alert('paso la validacion')
+  }
+
+  // login with google
+  const logWithGoogle = async (data) => {
+    try {
+      const user = await loginWithGoogle(data)
       handleLogin(user)
       toast({
         title: 'Login',
@@ -92,6 +123,7 @@ export const Login = () => {
             color: '#F29101',
           }}
           type="submit"
+          onClick={logWithGoogle}
         >
           Login with Google
         </Button>

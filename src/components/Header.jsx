@@ -31,14 +31,14 @@ export const Header = () => {
     <Stack m={2}>
       <Flex alignItems="center" fontWeight="bold">
         <Image
-          w={{ base: '25%', sm: '20%', md: '15%' }}
+          w={{ base: '15%', sm: '20%', md: '15%' }}
           src={logo}
           alt="Home Imgage"
         />
 
         {/* links de home & product */}
         <Show breakpoint="(max-width: 500px)">
-          <Stack direction="row" align="center" fontWeight="bold">
+          <Stack direction="row" align="center" fontWeight="bold" p={2}>
             <BurgerMenu />
           </Stack>
         </Show>
@@ -74,8 +74,12 @@ export const Header = () => {
         <Stack direction="row" spacing={2}>
           {user ? (
             <Menu>
-              <Text color="#DF166D" textTransform="capitalize">
-                Hi! {user && user.split('@').shift()}
+              <Text
+                fontSize={{ base: 'xs', sm: 'sm', md: 'md' }}
+                color="#DF166D"
+                textTransform="capitalize"
+              >
+                Hi! {user && user.split(/[@.]/).shift()}
               </Text>
               <MenuButton
                 bg="#F5E90C"
