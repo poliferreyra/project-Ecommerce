@@ -4,8 +4,8 @@ import glamourXpressions from '../assets/glamourXpressions.png'
 export const AboutUs = () => {
   return (
     <Stack align="center">
-      <Box w="100%" h="70vh">
-        <Heading size="sm" p={10} color="black">
+      <Box w="100%" h="60vh">
+        <Heading size="sm" p={5} color="black">
           We are a team passionate about beauty and we are pleased to present
           you with a wide selection of high-quality products that will help you
           bring out your unique beauty. <br />
@@ -19,7 +19,7 @@ export const AboutUs = () => {
           advice, our customer service team will be happy to help you at any
           time.
         </Heading>
-        <Box w="100%" mt={4} display="flex" justifyContent="center">
+        <Box w="100%" display="flex" justifyContent="center">
           <Image
             w={{ base: '60%', md: '50%' }}
             src={glamourXpressions}
