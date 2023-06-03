@@ -10,6 +10,7 @@ import { AboutUs } from './pages/AboutUs'
 import { Detail } from './pages/product/Detail'
 import { Checkout } from './pages/cart/Checkout'
 import { ProtectedRoute } from './components/ProtectedRoute'
+import { Orders } from './pages/Orders'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/products/:id" element={<Detail />} />
         <Route path="/aboutUs" element={<AboutUs />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/orders" element={<Orders />} />
         <Route
           path="/checkout"
           element={
@@ -28,7 +30,6 @@ function App() {
             </ProtectedRoute>
           }
         />
-
         <Route path="*" element={<NotFound />} />
       </Route>
       <Route path="/login" element={<Login />} />

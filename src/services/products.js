@@ -18,9 +18,13 @@ export const getAllProducts = async () => {
   return allProducts
 }
 
-export const getProductsByLimit = async () => {
+export const getProductsOrderBy = async () => {
   let productsByLimit = []
-  const q = query(collection(db, 'products'), orderBy('prodName'), limit(4))
+  const q = query(
+    collection(db, 'products'),
+    orderBy('createdAt', 'desc'),
+    limit(6)
+  )
   const querySnapshot = await getDocs(q)
   querySnapshot.forEach((doc) => {
     // console.log(doc.data(), doc.id)

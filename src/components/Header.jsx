@@ -104,7 +104,9 @@ export const Header = () => {
               </MenuButton>
               <Portal>
                 <MenuList>
-                  <MenuItem>My orders</MenuItem>
+                  <MenuItem as={NavLink} to="/orders">
+                    My orders
+                  </MenuItem>
                   <MenuItem onClick={handleLogout}>Logout</MenuItem>
                 </MenuList>
               </Portal>

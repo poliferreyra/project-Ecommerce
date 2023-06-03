@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
-import { getAllProducts, getProductsByLimit } from '../services/products'
+import { getAllProducts, getProductsOrderBy } from '../services/products'
 
 export const useGetProducts = () => {
   const [dbProducts, setDbProducts] = useState([])
-  const [filterProductsByLimit, setFilterProductsByLimit] = useState([])
+  const [filterProdOrderBy, setFilterProdOrderBy] = useState([])
   const [renderProducts, setRenderProducts] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
@@ -52,13 +52,14 @@ export const useGetProducts = () => {
     getData()
   }, [])
 
+  // filter new Arrivals products - orderBy & limit
   useEffect(() => {
     const getFilterProducts = async () => {
       try {
-        const maxProductsLimit = await getProductsByLimit()
+        const maxProductsLimit = await getProductsOrderBy()
 
         setLoading(false)
-        setFilterProductsByLimit(maxProductsLimit)
+        setFilterProdOrderBy(maxProductsLimit)
       } catch (error) {
         setError(true)
       } finally {
@@ -75,6 +76,6 @@ export const useGetProducts = () => {
     handleFilter,
     filterProducts,
     renderProducts,
-    filterProductsByLimit,
+    filterProdOrderBy,
   }
 }

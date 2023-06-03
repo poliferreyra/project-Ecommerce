@@ -22,7 +22,7 @@ import { useContext } from 'react'
 import { CartContext } from '../context/CartContext'
 
 export const Home = () => {
-  const { loading, error, filterProductsByLimit } = useGetProducts()
+  const { loading, error, filterProdOrderBy } = useGetProducts()
   const { addProductToCart } = useContext(CartContext)
 
   return (
@@ -53,6 +53,7 @@ export const Home = () => {
               p={2}
               ml="30px"
               fontWeight="bold"
+              color="#DF166D"
               borderRadius="10px"
               bg="#F5E90C"
               as={NavLink}
@@ -71,13 +72,23 @@ export const Home = () => {
             <Spinner />
           </HStack>
         )}
-        <HStack>
-          <Heading ml={3} size="md">
-            Favorite Products
+        <HStack justifyContent="center" alignItems="center">
+          <Heading
+            ml={3}
+            size="xl"
+            color="#DF166D"
+            borderRadius="26% 74% 26% 74% / 29% 66% 34% 71% "
+            bg="#F5E90C"
+            w="300px"
+            h="80px"
+            lineHeight="80px"
+            textAlign="center"
+          >
+            New Arrivals
           </Heading>
         </HStack>
-        <SimpleGrid columns={{ base: 1, md: 3, lg: 4 }} p={2}>
-          {filterProductsByLimit.map((product) => (
+        <SimpleGrid columns={{ base: 1, md: 3 }} p={2}>
+          {filterProdOrderBy.map((product) => (
             <Box key={product.id} w="100%" h="80%" align="center">
               <Box w="100%" p={2} m={1}>
                 <Image
