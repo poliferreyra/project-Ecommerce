@@ -5,13 +5,10 @@ export const AboutUs = () => {
   return (
     <Stack align="center">
       <Box w="100%" h="60vh">
-        <Heading size="sm" p={5} color="black">
-          We are a team passionate about beauty and we are pleased to present
-          you with a wide selection of high-quality products that will help you
-          bring out your unique beauty. <br />
-          <br />
-          We work closely with trusted suppliers to ensure that each item we
-          offer meets the highest quality standards. <br />
+        <Heading size="sm" p={2} color="black">
+          We are a team passionate about beauty. We work closely with trusted
+          suppliers to ensure that each item we offer meets the highest quality
+          standards. <br />
           <br />
           At our ecommerce, we value customer satisfaction above all else. We
           are committed to guaranteeing your full satisfaction with every
