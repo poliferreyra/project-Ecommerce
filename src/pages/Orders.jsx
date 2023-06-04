@@ -19,7 +19,6 @@ import {
   ModalBody,
   ModalCloseButton,
 } from '@chakra-ui/react'
-import { CartDetail } from './cart/CartDetail'
 
 export const Orders = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -80,9 +79,8 @@ export const Orders = () => {
                   <ModalHeader>Order Detail</ModalHeader>
                   <ModalCloseButton />
                   <ModalBody>
-                    <CartDetail hideQuanitity={true} />
+                    <Box>Aca se mostrara el detalle</Box>
                   </ModalBody>
-
                   <ModalFooter>
                     <Button
                       size="sm"

@@ -29,18 +29,27 @@ export const Home = () => {
   return (
     <>
       {error && (
-        <>
-          <Alert status="error">
+        <HStack justifyContent="center">
+          <Alert w="400px" status="error">
             <AlertIcon />
             <AlertTitle>Oops! an error happended</AlertTitle>
           </Alert>
-        </>
+        </HStack>
       )}
       <Stack>
         <HStack>
-          <Box w="100%" h="250px" position="relative">
-            <Box w="75%">
-              <Heading size="sm" p={5} color="black" textAlign="start">
+          <Box w="100%" h="300px" position="relative">
+            <Box w="70%" mt={4}>
+              <Heading
+                as="i"
+                size="md"
+                p={3}
+                color="#DF166D"
+                textShadow="0px 2px 4px #A2EAF4, 0px 4px 6px #F5E90C"
+              >
+                GlamourXpressions
+              </Heading>
+              <Heading size="sm" p={3} color="black" textAlign="start" mb={3}>
                 Welcome to our online perfume and cosmetics store! <br />
                 Discover a wide variety of high-quality products to enhance your
                 natural beauty and highlight your personal style.

@@ -30,12 +30,12 @@ export const Products = () => {
     <>
       <Filter handleFilter={handleFilter} filterProd={filterProd} />
       {!renderProducts.length && !loading && (
-        <>
-          <Alert status="error">
+        <HStack justifyContent="center">
+          <Alert w="400px" status="error">
             <AlertIcon />
             <AlertTitle>There're not products for this search</AlertTitle>
           </Alert>
-        </>
+        </HStack>
       )}
       {error && (
         <>

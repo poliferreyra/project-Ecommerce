@@ -57,12 +57,12 @@ export const Detail = () => {
     return (
       <>
         {error && (
-          <>
-            <Alert status="error">
+          <HStack justifyContent="center">
+            <Alert w="400px" status="error">
               <AlertIcon />
               <AlertTitle>Your request couldn't be completed</AlertTitle>
             </Alert>
-          </>
+          </HStack>
         )}
 
         <Container maxW="xl">

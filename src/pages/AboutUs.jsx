@@ -21,7 +21,7 @@ export const AboutUs = () => {
         </Heading>
         <Box w="100%" display="flex" justifyContent="center">
           <Image
-            w={{ base: '60%', md: '50%' }}
+            w={{ base: '50%', md: '50%', lg: '30%' }}
             src={glamourXpressions}
             alt="Home Imgage"
           />

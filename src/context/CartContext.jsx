@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { createContext } from 'react'
 import { setLocalStorage } from '../utils/localStorage,js'
 import { useNavigate } from 'react-router-dom'
+import { useToast } from '@chakra-ui/react'
 
 export const CartContext = createContext()
 
@@ -9,6 +10,7 @@ export const CartProvider = ({ children }) => {
   const navigate = useNavigate()
   const initialCart = JSON.parse(localStorage.getItem('cart')) || []
   const [cart, setCart] = useState(initialCart)
+  const toast = useToast()
 
   // console.log(cart)
   const addProduct = (product) => {
@@ -25,6 +27,13 @@ export const CartProvider = ({ children }) => {
       addProduct({
         ...product,
         quantity,
+      })
+      toast({
+        title: 'Add Product',
+        description: 'Your product was added to the cart',
+        status: 'success',
+        duration: 3000,
+        isClosable: true,
       })
     }
   }
