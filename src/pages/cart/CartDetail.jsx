@@ -14,25 +14,15 @@ import { AiFillDelete } from 'react-icons/ai'
 import { CartContext } from '../../context/CartContext'
 
 export const CartDetail = ({ hideQuanitity }) => {
-  const {
-    cart,
-    addQuantityToProduct,
-    SubstractQuantityToProduct,
-    deleteProductCart,
-  } = useContext(CartContext)
+  const { cart, addProductToCart, deleteProductCart } = useContext(CartContext)
 
   return (
     <Stack mt={6} w={{ base: '90%', md: '50%', lg: '80%' }}>
       {cart.map((cartProduct, index) => (
         <Stack key={index} border="1px solid black" p={5}>
-          <HStack
-            justifyContent="space-between"
-            mb={3}
-            border="1px solid black"
-            p={1}
-          >
+          <HStack justifyContent="space-between" mb={3} p={1}>
             <Box>
-              <Heading size="xs">Product detail</Heading>
+              <Heading size="xs">{cartProduct.prodName}</Heading>
             </Box>
             <Box alignSelf="flex-end">
               <IconButton
@@ -89,7 +79,7 @@ export const CartDetail = ({ hideQuanitity }) => {
                     borderRadius="50%"
                     size={{ base: 'xs', md: 'sm' }}
                     isDisabled={cartProduct.quantity === 1}
-                    onClick={() => SubstractQuantityToProduct(index)}
+                    onClick={() => addProductToCart(cartProduct, -1)}
                   >
                     -
                   </Button>
@@ -104,7 +94,8 @@ export const CartDetail = ({ hideQuanitity }) => {
                     borderRadius="50%"
                     size={{ base: 'xs', md: 'sm' }}
                     isDisabled={cartProduct.quantity === cartProduct.stock}
-                    onClick={() => addQuantityToProduct(index)}
+                    //onClick={() => addQuantityToProduct(index)}
+                    onClick={() => addProductToCart(cartProduct, 1)}
                   >
                     +
                   </Button>

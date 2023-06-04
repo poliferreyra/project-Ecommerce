@@ -28,15 +28,44 @@ import { useState } from 'react'
 
 import { useContext } from 'react'
 import { CartContext } from '../../context/CartContext'
+import { useToast } from '@chakra-ui/react'
 
 export const Detail = () => {
   const [quantity, setQuantity] = useState(1)
+  console.log(quantity)
 
   const { id } = useParams()
   const { dbProducts, error } = useGetProducts()
-  const { addProductToCart } = useContext(CartContext)
+  const { addProduct, cart } = useContext(CartContext)
+  const toast = useToast()
 
   const product = dbProducts.find((p) => p.id === id)
+
+  const addProductToCart = () => {
+    const existingProduct = cart.some((p) => p.id === product.id)
+    if (existingProduct) {
+      const newQuantity = cart.map((p) =>
+        p.id === product.id ? { ...p, quantity: p.quantity + 1 } : p
+      )
+      setQuantity(newQuantity)
+    } else {
+      addProduct({
+        ...product,
+        quantity,
+      })
+      toast({
+        title: 'Add Product',
+        description: 'Your product was added to the cart',
+        status: 'success',
+        duration: 3000,
+        isClosable: true,
+      })
+    }
+    // addProduct({
+    //   ...product,
+    //   quantity,
+    // })
+  }
 
   if (!dbProducts.length) {
     return (
@@ -126,7 +155,7 @@ export const Detail = () => {
                   boxShadow: 'md',
                   color: '#DF166D',
                 }}
-                onClick={() => addProductToCart(product, quantity)}
+                onClick={addProductToCart}
               >
                 Add to cart
               </Button>

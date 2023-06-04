@@ -38,18 +38,6 @@ export const CartProvider = ({ children }) => {
     }
   }
 
-  // suma cantidad
-  const resetCart = (newCartQuantity) => setCart(newCartQuantity)
-
-  const addQuantityToProduct = (index) => {
-    cart[index].quantity++
-    resetCart([...cart])
-  }
-  const SubstractQuantityToProduct = (index) => {
-    cart[index].quantity--
-    resetCart([...cart])
-  }
-
   // borra producto
   const deleteProductCart = (id) => {
     const newCartDelete = [...cart].filter((p) => p.id !== id)
@@ -85,8 +73,6 @@ export const CartProvider = ({ children }) => {
         cart,
         addProduct,
         addProductToCart,
-        addQuantityToProduct,
-        SubstractQuantityToProduct,
         deleteProductCart,
         emptyCart,
         cartTotalPrice,
