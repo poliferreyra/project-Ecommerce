@@ -52,7 +52,6 @@ export const Login = () => {
       })
       navigate('/')
     } catch (error) {
-      const errorMessage = error.message
       toast({
         title: 'error',
         description: error.message,
@@ -61,13 +60,8 @@ export const Login = () => {
         duration: 6000,
         isClosable: true,
       })
-
-      console.log(errorMessage)
     }
-    // console.log(data)
-    // alert('paso la validacion')
   }
-
   // login with google
   const logWithGoogle = async (data) => {
     try {
@@ -82,7 +76,6 @@ export const Login = () => {
       })
       navigate('/')
     } catch (error) {
-      const errorMessage = error.message
       toast({
         title: 'error',
         description: error.message,
@@ -91,11 +84,7 @@ export const Login = () => {
         duration: 6000,
         isClosable: true,
       })
-
-      console.log(errorMessage)
     }
-    // console.log(data)
-    // alert('paso la validacion')
   }
   return (
     <>

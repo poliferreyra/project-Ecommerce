@@ -36,8 +36,6 @@ export const Detail = () => {
   const { dbProducts, error } = useGetProducts()
   const { addProduct } = useContext(CartContext)
 
-  // const product = useMemo(() => products.find((p) => p.id === id), [id])
-
   const product = dbProducts.find((p) => p.id === id)
 
   const addProductToCart = () => {

@@ -34,8 +34,6 @@ provider.setCustomParameters({
 
 export const loginWithGoogle = async () => {
   const userGoogle = await signInWithPopup(auth, provider)
-
   const user = userGoogle.user
-  console.log(user)
   return user
 }

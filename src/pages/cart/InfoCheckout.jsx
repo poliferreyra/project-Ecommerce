@@ -36,9 +36,6 @@ export const InfoCheckout = () => {
       isClosable: true,
     })
     emptyCart()
-
-    // console.log(data)
-    // alert('paso la validacion')
   }
   return (
     <>

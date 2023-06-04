@@ -8,26 +8,23 @@ export const UserContext = createContext()
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null)
-  // console.log(user)
+
+  // Login
   const handleLogin = (data) => {
-    // traigo el dato del email del login
     setUser(data.email)
   }
+
+  //Logout
   const handleLogout = () => {
-    signOut(auth)
-      .then(() => {
-        setUser(null)
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+    signOut(auth).then(() => {
+      setUser(null)
+    })
   }
 
+  // ususario autenticado
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/firebase.User
         const uid = user.email
         setUser(uid)
       } else {

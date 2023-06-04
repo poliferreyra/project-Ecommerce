@@ -36,12 +36,13 @@ export const Header = () => {
           alt="Home Imgage"
         />
 
-        {/* links de home & product */}
+        {/* menu hamburguesa */}
         <Show breakpoint="(max-width: 500px)">
           <Stack direction="row" align="center" fontWeight="bold" p={1}>
             <BurgerMenu />
           </Stack>
         </Show>
+        {/* Home & productos  */}
         <Show breakpoint="(min-width: 501px)">
           <Stack spacing={2} direction="row" align="center" fontWeight="bold">
             <Link
@@ -69,8 +70,7 @@ export const Header = () => {
           </Stack>
         </Show>
         <Spacer />
-        {/* links de login & cart */}
-
+        {/* Login & carrito */}
         <Stack direction="row" spacing={2}>
           {user ? (
             <Menu>

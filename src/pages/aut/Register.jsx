@@ -58,7 +58,6 @@ const Register = () => {
       })
       navigate('/')
     } catch (error) {
-      const errorMessage = error.message
       toast({
         title: 'error',
         description: error.message,
@@ -67,10 +66,7 @@ const Register = () => {
         duration: 6000,
         isClosable: true,
       })
-      console.log(errorMessage)
     }
-    console.log(data)
-    // alert('paso la validacion')
   }
   // create with google
   const createAccontWithGoogle = async (data) => {
@@ -85,7 +81,6 @@ const Register = () => {
       })
       navigate('/')
     } catch (error) {
-      const errorMessage = error.message
       toast({
         title: 'error',
         description: error.message,
@@ -94,10 +89,7 @@ const Register = () => {
         duration: 6000,
         isClosable: true,
       })
-      console.log(errorMessage)
     }
-    console.log(data)
-    // alert('paso la validacion')
   }
 
   return (

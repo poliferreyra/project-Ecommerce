@@ -79,7 +79,7 @@ export const Orders = () => {
                   <ModalHeader>Order Detail</ModalHeader>
                   <ModalCloseButton />
                   <ModalBody>
-                    <Box>Aca se mostrara el detalle</Box>
+                    <Box>Here the detail will be shown</Box>
                   </ModalBody>
                   <ModalFooter>
                     <Button
