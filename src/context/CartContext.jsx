@@ -24,10 +24,10 @@ export const CartProvider = ({ children }) => {
       )
       setCart(newCart)
       toast({
-        title: 'Add Product',
-        description: 'Your product was added to the cart',
-        status: 'success',
-        duration: 3000,
+        title: 'Existing product',
+        description: 'An unit of this product is added to the cart',
+        status: 'warning',
+        duration: 4000,
         isClosable: true,
       })
     } else {
