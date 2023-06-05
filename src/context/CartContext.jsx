@@ -23,6 +23,13 @@ export const CartProvider = ({ children }) => {
         p.id === product.id ? { ...p, quantity: p.quantity + quantity } : p
       )
       setCart(newCart)
+      toast({
+        title: 'Add Product',
+        description: 'Your product was added to the cart',
+        status: 'success',
+        duration: 3000,
+        isClosable: true,
+      })
     } else {
       addProduct({
         ...product,
@@ -42,12 +49,26 @@ export const CartProvider = ({ children }) => {
   const deleteProductCart = (id) => {
     const newCartDelete = [...cart].filter((p) => p.id !== id)
     setCart(newCartDelete)
+    toast({
+      title: 'Delete product',
+      description: 'The product was deleted from the cart',
+      status: 'info',
+      duration: 3000,
+      isClosable: true,
+    })
   }
 
   // vacia carrito
   const emptyCart = () => {
     setCart([])
     navigate('/')
+    toast({
+      title: 'Empty cart',
+      description: 'The cart is empty',
+      status: 'info',
+      duration: 3000,
+      isClosable: true,
+    })
   }
 
   // suma totales
