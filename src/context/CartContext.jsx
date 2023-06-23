@@ -23,13 +23,6 @@ export const CartProvider = ({ children }) => {
         p.id === product.id ? { ...p, quantity: p.quantity + quantity } : p
       )
       setCart(newCart)
-      toast({
-        title: 'Existing product',
-        description: 'An unit of this product is added to the cart',
-        status: 'warning',
-        duration: 4000,
-        isClosable: true,
-      })
     } else {
       addProduct({
         ...product,
