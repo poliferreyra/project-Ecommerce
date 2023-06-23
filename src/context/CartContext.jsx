@@ -32,7 +32,7 @@ export const CartProvider = ({ children }) => {
         title: 'Add Product',
         description: 'Your product was added to the cart',
         status: 'success',
-        duration: 3000,
+        duration: 1000,
         isClosable: true,
       })
     }
@@ -46,7 +46,7 @@ export const CartProvider = ({ children }) => {
       title: 'Delete product',
       description: 'The product was deleted from the cart',
       status: 'info',
-      duration: 3000,
+      duration: 1000,
       isClosable: true,
     })
   }
@@ -59,7 +59,7 @@ export const CartProvider = ({ children }) => {
       title: 'Empty cart',
       description: 'The cart is empty',
       status: 'info',
-      duration: 3000,
+      duration: 1000,
       isClosable: true,
     })
   }

@@ -1,4 +1,4 @@
-import { collection, getDocs } from 'firebase/firestore'
+import { addDoc, collection, getDocs } from 'firebase/firestore'
 import { db } from '../firebase/config'
 import { query, orderBy, limit } from 'firebase/firestore'
 
@@ -31,4 +31,11 @@ export const getProductsOrderBy = async () => {
     })
   })
   return productsByLimit
+}
+
+// Crear collection Orders
+
+export const createOrders = async (order) => {
+  const docRef = await addDoc(collection(db, 'orders'), order)
+  return docRef
 }

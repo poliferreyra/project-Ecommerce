@@ -25,8 +25,8 @@ export const UserProvider = ({ children }) => {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        const uid = user.email
-        setUser(uid)
+        const userEmail = user.email
+        setUser(userEmail)
       } else {
         setUser(null)
       }

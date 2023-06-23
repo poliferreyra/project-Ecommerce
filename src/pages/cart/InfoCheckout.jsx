@@ -16,23 +16,29 @@ import { useContext } from 'react'
 
 import { UserContext } from '../../context/UserContext'
 import { CartContext } from '../../context/CartContext'
+import { createOrders } from '../../services/products'
 
 export const InfoCheckout = () => {
   const toast = useToast()
   const { user } = useContext(UserContext)
-  const { emptyCart, cartTotalPrice } = useContext(CartContext)
+  const { emptyCart, cartTotalPrice, cart } = useContext(CartContext)
 
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm()
-  const onSubmit = () => {
+  const onSubmit = async (data) => {
+    await createOrders({
+      user: { ...data },
+      products: cart,
+      totPrice: cartTotalPrice(),
+    })
     toast({
       title: 'Checkout',
       description: 'Your order was successful',
       status: 'success',
-      duration: 5000,
+      duration: 1000,
       isClosable: true,
     })
     emptyCart()
@@ -88,8 +94,8 @@ export const InfoCheckout = () => {
               {...register('address', {
                 required: 'This field is required',
                 minLength: {
-                  value: 10,
-                  message: 'The minimum of characters is 10',
+                  value: 6,
+                  message: 'The minimum of characters is 6',
                 },
               })}
             />
