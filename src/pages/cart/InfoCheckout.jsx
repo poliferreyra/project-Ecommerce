@@ -30,7 +30,7 @@ export const InfoCheckout = () => {
   } = useForm()
   const onSubmit = async (data) => {
     await createOrders({
-      user: { ...data },
+      user: { ...data, uid: user.uid },
       products: cart,
       totPrice: cartTotalPrice(),
     })
@@ -72,7 +72,7 @@ export const InfoCheckout = () => {
             <Input
               type="email"
               name="email"
-              defaultValue={user}
+              defaultValue={user.email}
               {...register('email', {
                 pattern: {
                   value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,

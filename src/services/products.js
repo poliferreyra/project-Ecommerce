@@ -33,7 +33,7 @@ export const getProductsOrderBy = async () => {
   return productsByLimit
 }
 
-// Crear collection Orders
+// Crea coleccion/documentos - Orders
 
 export const createOrders = async (order) => {
   const docRef = await addDoc(collection(db, 'orders'), order)
