@@ -79,7 +79,7 @@ export const Header = () => {
                 color="#DF166D"
                 textTransform="capitalize"
               >
-                Hi! {user && user.email.split(/[@.]/).shift()}
+                Hi! {user && user.split(/[@.]/).shift()}
               </Text>
               <MenuButton
                 bg="#F5E90C"

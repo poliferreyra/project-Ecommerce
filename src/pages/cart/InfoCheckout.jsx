@@ -16,11 +16,11 @@ import { useContext } from 'react'
 
 import { UserContext } from '../../context/UserContext'
 import { CartContext } from '../../context/CartContext'
-import { createOrders } from '../../services/products'
+import { createOrders } from '../../services/orders'
 
 export const InfoCheckout = () => {
   const toast = useToast()
-  const { user } = useContext(UserContext)
+  const { user, uid } = useContext(UserContext)
   const { emptyCart, cartTotalPrice, cart } = useContext(CartContext)
 
   const {
@@ -30,7 +30,7 @@ export const InfoCheckout = () => {
   } = useForm()
   const onSubmit = async (data) => {
     await createOrders({
-      user: { ...data, uid: user.uid },
+      user: { ...data, uid: uid },
       products: cart,
       totPrice: cartTotalPrice(),
     })
@@ -72,7 +72,7 @@ export const InfoCheckout = () => {
             <Input
               type="email"
               name="email"
-              defaultValue={user.email}
+              defaultValue={user}
               {...register('email', {
                 pattern: {
                   value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,

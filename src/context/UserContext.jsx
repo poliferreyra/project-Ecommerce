@@ -8,6 +8,7 @@ export const UserContext = createContext()
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null)
+  const [uid, setUid] = useState(null)
 
   // Login
   const handleLogin = (data) => {
@@ -25,8 +26,10 @@ export const UserProvider = ({ children }) => {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        const authUser = user
-        setUser(authUser)
+        const userEmail = user.email
+        const uid = user.uid
+        setUser(userEmail)
+        setUid(uid)
       } else {
         setUser(null)
       }
@@ -34,7 +37,7 @@ export const UserProvider = ({ children }) => {
   }, [])
 
   return (
-    <UserContext.Provider value={{ user, handleLogin, handleLogout }}>
+    <UserContext.Provider value={{ user, uid, handleLogin, handleLogout }}>
       {children}
     </UserContext.Provider>
   )
