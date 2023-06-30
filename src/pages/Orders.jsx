@@ -22,6 +22,7 @@ import {
   AlertIcon,
   AlertTitle,
   Spinner,
+  Image,
 } from '@chakra-ui/react'
 
 import { getOrdersbyUid } from '../services/orders'
@@ -32,9 +33,9 @@ export const Orders = () => {
   const { uid, user } = useContext(UserContext)
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [orders, setOrders] = useState([])
-  console.log(orders)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
+  const [prodOrderId, setProdOrderId] = useState([])
 
   useEffect(() => {
     const getOrders = async () => {
@@ -43,7 +44,6 @@ export const Orders = () => {
         setLoading(false)
         setOrders(ordersUid)
       } catch (error) {
-        console.log(error)
         setError(true)
       } finally {
         setLoading(false)
@@ -53,10 +53,11 @@ export const Orders = () => {
   }, [uid])
 
   const findDoc = (id) => {
-    const orderID = orders.find((o) => o.id === id)
-    console.log(orderID)
+    onOpen()
+    const findOrder = orders.find((o) => o.id === id)
+    setProdOrderId(findOrder.products)
   }
-  findDoc('0GZglcq4uzGO3HKM2fPC')
+
   return (
     <>
       {!orders.length && !loading && (
@@ -121,9 +122,11 @@ export const Orders = () => {
                 fontWeight: 'semibold',
                 color: '#DF166D',
               }}
-              onClick={onOpen}
+              onClick={() => {
+                findDoc(o.id)
+              }}
             >
-              See Detail
+              Products detail
             </Button>
             <Modal isOpen={isOpen} onClose={onClose}>
               <ModalOverlay />
@@ -131,7 +134,52 @@ export const Orders = () => {
                 <ModalHeader>Order Detail</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody>
-                  <Box>Here the detail will be shown</Box>
+                  <SimpleGrid
+                    spacing={4}
+                    columns={{ base: 1, md: 2, lg: 3 }}
+                    minmax="150px, 1fr"
+                  >
+                    {prodOrderId.map((p) => (
+                      <VStack
+                        key={p.id}
+                        textAlign="center"
+                        boxShadow="-5px 3px 12px 0px rgba(201,201,201,0.75)"
+                      >
+                        <Box
+                          height="100%"
+                          w={{ base: '100%', md: '60%' }}
+                          display="flex"
+                          justifyContent="center"
+                          mt={4}
+                        >
+                          <Image
+                            objectFit="cover"
+                            objectPosition="center"
+                            boxSize="100px"
+                            maxW="100%"
+                            maxH="100%"
+                            src={p.img}
+                            alt="Product Image"
+                          />
+                        </Box>
+                        <Text
+                          colorScheme="teal"
+                          size="sm"
+                          fontWeight="bold"
+                          fontSize={{ base: '12px', md: '14px', lg: '16px' }}
+                        >
+                          {p.prodName}
+                        </Text>
+                        <Text
+                          colorScheme="teal"
+                          size="sm"
+                          fontSize={{ base: '12px', md: '14px', lg: '16px' }}
+                        >
+                          X {p.quantity} $ {p.quantity * p.price}
+                        </Text>
+                      </VStack>
+                    ))}
+                  </SimpleGrid>
                 </ModalBody>
                 <ModalFooter>
                   <Button
