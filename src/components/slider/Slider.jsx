@@ -1,5 +1,10 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules'
 import './slider.css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
+import 'swiper/css/scrollbar'
+
 import { useGetProducts } from '../../hook/useGetProducts'
 import { Image, Box, Text, Stack, Button } from '@chakra-ui/react'
 import { useContext } from 'react'
@@ -11,8 +16,12 @@ export const Slider = () => {
   const { addProductToCart } = useContext(CartContext)
   return (
     <Swiper
+      modules={[Navigation, Pagination, Scrollbar, A11y]}
       spaceBetween={50}
       slidesPerView={2}
+      navigation
+      pagination={{ clickable: true }}
+      scrollbar={{ draggable: true }}
       // onSlideChange={() => console.log('slide change')}
       // onSwiper={(swiper) => console.log(swiper)}
     >
