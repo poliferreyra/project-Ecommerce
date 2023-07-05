@@ -1,6 +1,8 @@
 import {
+  Flex,
   Link,
   Icon,
+  Spacer,
   Button,
   Stack,
   IconButton,
@@ -12,10 +14,6 @@ import {
   Show,
   Text,
   Image,
-  HStack,
-  Center,
-  Heading,
-  Box,
 } from '@chakra-ui/react'
 import { NavLink } from 'react-router-dom'
 import { BsCart3 } from 'react-icons/bs'
@@ -30,23 +28,23 @@ export const Header = () => {
   const { user, handleLogout } = useContext(UserContext)
 
   return (
-    <Stack>
-      <HStack justifyContent="space-between">
+    <Stack m={2}>
+      <Flex alignItems="center" fontWeight="bold">
+        <Image
+          w={{ base: '28%', sm: '25%', md: '15%' }}
+          src={logo}
+          alt="Home Imgage"
+        />
+
         {/* menu hamburguesa */}
         <Show breakpoint="(max-width: 500px)">
-          <Stack direction="row" align="center" fontWeight="bold" p={1} mt={9}>
+          <Stack direction="row" align="center" fontWeight="bold" p={1}>
             <BurgerMenu />
           </Stack>
         </Show>
         {/* Home & productos  */}
         <Show breakpoint="(min-width: 501px)">
-          <Stack
-            spacing={2}
-            direction="row"
-            align="center"
-            fontWeight="bold"
-            mt={9}
-          >
+          <Stack spacing={2} direction="row" align="center" fontWeight="bold">
             <Link
               p={2}
               as={NavLink}
@@ -71,84 +69,9 @@ export const Header = () => {
             </Link>
           </Stack>
         </Show>
-
-        <Image
-          w={{ base: '20%', sm: '25%', md: '15%' }}
-          src={logo}
-          alt="Home Imgage"
-        />
-
+        <Spacer />
         {/* Login & carrito */}
-        <Box>
-          <Box p={2}>
-            {user && (
-              <Text
-                fontSize={{ base: 'xs', md: 'md' }}
-                color="#DF166D"
-                textTransform="capitalize"
-                fontWeight="bold"
-              >
-                Hi! {user && user.split(/[@.]/).shift()}
-              </Text>
-            )}
-          </Box>
-          <HStack>
-            {user ? (
-              <Menu>
-                <MenuButton
-                  bg="#F5E90C"
-                  color="#DF166D"
-                  _hover={{
-                    fontWeight: 'semibold',
-                    color: '#DF166D',
-                  }}
-                  as={Button}
-                >
-                  <Icon as={BiUser} />
-                </MenuButton>
-                <Portal>
-                  <MenuList>
-                    <MenuItem as={NavLink} to="/orders">
-                      My orders
-                    </MenuItem>
-                    <MenuItem onClick={handleLogout}>Logout</MenuItem>
-                  </MenuList>
-                </Portal>
-              </Menu>
-            ) : (
-              <Button bg="#F5E90C" fontWeight="bold">
-                <Link
-                  p={2}
-                  as={NavLink}
-                  to="/login"
-                  _hover={{
-                    fontWeight: 'semibold',
-                    color: '#DF166D',
-                  }}
-                >
-                  Login
-                </Link>
-              </Button>
-            )}
-            <Box>
-              <IconButton bg="#F5E90C">
-                <Link
-                  p={2}
-                  as={NavLink}
-                  to="/cart"
-                  _hover={{
-                    fontWeight: 'semibold',
-                    color: '#DF166D',
-                  }}
-                >
-                  <Icon as={BsCart3} />
-                </Link>
-              </IconButton>
-            </Box>
-          </HStack>
-        </Box>
-
-        {/* <Stack direction="row" spacing={2} bg="blue.200">
+        <Stack direction="row" spacing={2}>
           {user ? (
             <Menu>
               <Text
@@ -207,17 +130,8 @@ export const Header = () => {
               <Icon as={BsCart3} />
             </Link>
           </IconButton>
-        </Stack> */}
-      </HStack>
-      {/* <Center p={6}>
-        <Heading
-          textAlign="center"
-          fontFamily="sans-serif"
-          size={{ base: 'xs', md: 'md' }}
-        >
-          Welcome to our online perfume and cosmetics store!
-        </Heading>
-      </Center> */}
+        </Stack>
+      </Flex>
     </Stack>
   )
 }

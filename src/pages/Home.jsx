@@ -37,7 +37,7 @@ export const Home = () => {
         </HStack>
       )}
       <Stack>
-        <HStack>
+        {/* <HStack>
           <Box w="100%" h="300px" position="relative">
             <Box w="70%" mt={4}>
               <Heading
@@ -72,7 +72,7 @@ export const Home = () => {
               About us
             </Link>
           </Box>
-        </HStack>
+        </HStack> */}
         {loading && (
           <HStack justifyContent="center">
             <Spinner />
@@ -93,7 +93,12 @@ export const Home = () => {
           >
             New Arrivals
           </Heading>
-          <SimpleGrid columns={{ base: 1, md: 3 }}>
+
+          {/* <SimpleGrid
+            spacing={4}
+            columns={{ base: 1, md: 2, lg: 3 }}
+            minmax="100px, 1fr"
+          >
             {filterProdOrderBy.map((product) => (
               <Box key={product.id} w="100%" h="80%" align="center">
                 <Box w="100%" p={2} m={1}>
@@ -143,7 +148,7 @@ export const Home = () => {
                 </Box>
               </Box>
             ))}
-          </SimpleGrid>
+          </SimpleGrid> */}
         </VStack>
       </Stack>
     </>
