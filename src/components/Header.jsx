@@ -13,8 +13,6 @@ import {
   Text,
   Image,
   HStack,
-  Center,
-  Heading,
   Box,
 } from '@chakra-ui/react'
 import { NavLink } from 'react-router-dom'
@@ -147,77 +145,7 @@ export const Header = () => {
             </Box>
           </HStack>
         </Box>
-
-        {/* <Stack direction="row" spacing={2} bg="blue.200">
-          {user ? (
-            <Menu>
-              <Text
-                fontSize={{ base: 'xs', md: 'md' }}
-                color="#DF166D"
-                textTransform="capitalize"
-              >
-                Hi! {user && user.split(/[@.]/).shift()}
-              </Text>
-              <MenuButton
-                bg="#F5E90C"
-                color="#DF166D"
-                _hover={{
-                  fontWeight: 'semibold',
-                  color: '#DF166D',
-                }}
-                as={Button}
-              >
-                <Icon as={BiUser} />
-              </MenuButton>
-              <Portal>
-                <MenuList>
-                  <MenuItem as={NavLink} to="/orders">
-                    My orders
-                  </MenuItem>
-                  <MenuItem onClick={handleLogout}>Logout</MenuItem>
-                </MenuList>
-              </Portal>
-            </Menu>
-          ) : (
-            <Button bg="#F5E90C" fontWeight="bold">
-              <Link
-                p={2}
-                as={NavLink}
-                to="/login"
-                _hover={{
-                  fontWeight: 'semibold',
-                  color: '#DF166D',
-                }}
-              >
-                Login
-              </Link>
-            </Button>
-          )}
-
-          <IconButton bg="#F5E90C">
-            <Link
-              p={2}
-              as={NavLink}
-              to="/cart"
-              _hover={{
-                fontWeight: 'semibold',
-                color: '#DF166D',
-              }}
-            >
-              <Icon as={BsCart3} />
-            </Link>
-          </IconButton>
-        </Stack> */}
       </HStack>
-      {/* <Center p={6}>
-        <Heading
-          textAlign="center"
-          fontFamily="sans-serif"
-          size={{ base: 'xs', md: 'md' }}
-        >
-          Welcome to our online perfume and cosmetics store!
-        </Heading>
-      </Center> */}
     </Stack>
   )
 }
