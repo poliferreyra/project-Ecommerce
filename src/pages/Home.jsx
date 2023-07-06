@@ -13,6 +13,7 @@ import {
 import { useGetProducts } from '../hook/useGetProducts'
 
 import { Slider } from '../components/slider/Slider'
+import { NavLink } from 'react-router-dom'
 
 export const Home = () => {
   const { loading, error } = useGetProducts()
@@ -30,7 +31,7 @@ export const Home = () => {
 
       <Stack>
         {/* <HStack>
-          <Box w="100%" h="300px" position="relative">
+          <Box w="100%" h="250px" position="relative">
             <Box w="70%" mt={4}>
               <Heading
                 as="i"
