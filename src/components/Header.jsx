@@ -70,11 +70,7 @@ export const Header = () => {
           </Stack>
         </Show>
 
-        <Image
-          w={{ base: '20%', sm: '25%', md: '15%' }}
-          src={logo}
-          alt="Home Imgage"
-        />
+        <Image w={{ base: '15%', md: '15%' }} src={logo} alt="logo" />
 
         {/* Login & carrito */}
         <Box>
