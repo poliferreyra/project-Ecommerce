@@ -13,6 +13,9 @@ import {
   Alert,
   AlertIcon,
   AlertTitle,
+  Card,
+  CardBody,
+  Textarea,
 } from '@chakra-ui/react'
 import { Filter } from './Filter'
 import { useGetProducts } from '../../hook/useGetProducts'
@@ -50,30 +53,52 @@ export const Products = () => {
           <Spinner />
         </HStack>
       )}
-      <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} p={2}>
+
+      <SimpleGrid columns={{ base: 1, sm: 2, md: 3 }} p={2}>
         {renderProducts.map((product) => (
           <Box key={product.id} maxW="sm" align="center">
-            <Box>
-              <Image
-                src={product.img}
-                alt={product.prodName}
-                borderRadius="lg"
-                maxW="200px"
-                maxH="200px"
-              />
-              <Stack mt="6" spacing="3">
-                <Heading size="md">{product.prodName}</Heading>
-                <Text>{product.description}</Text>
-                <Text color="blue.600" fontSize="1xl">
-                  {`$ ${product.price}`}
-                </Text>
-              </Stack>
-            </Box>
+            <Card borderColor="transparent" variant="outline">
+              <CardBody>
+                <Image
+                  src={product.img}
+                  alt={product.prodName}
+                  p={2}
+                  objectFit="cover"
+                  maxW={{ base: '40%', sm: '50%', md: '60%' }}
+                  maxH={{ base: '45%', sm: '55%', md: '70%' }}
+                />
+                <Stack mt="6" spacing="3">
+                  <Heading size={{ base: 'sm', md: 'md' }}>
+                    {product.prodName}
+                  </Heading>
+                  <Textarea
+                    defaultValue={product.description}
+                    h={{ base: '18vh', sm: '35vh', md: '30vh', lg: '40vh' }}
+                    borderColor="transparent"
+                    fontSize={{ base: 'sm', md: 'md' }}
+                    isReadOnly
+                    overflow="auto"
+                    css={{
+                      '&::-webkit-scrollbar': {
+                        width: '3px', // Ancho barra de desplazamiento
+                      },
+                      '&::-webkit-scrollbar-thumb': {
+                        background: 'gray', // Color barra de desplazamiento
+                        borderRadius: '4px', // Borde barra de desplazamiento
+                      },
+                    }}
+                  />
+                  <Text color="blue.600" fontSize={{ base: 'md', md: 'lg' }}>
+                    {`$ ${product.price}`}
+                  </Text>
+                </Stack>
+              </CardBody>
+            </Card>
             <Box>
               <ButtonGroup m={2}>
                 <Button
                   as={Link}
-                  size="sm"
+                  size={{ base: 'xs', md: 'sm' }}
                   variant="solid"
                   bg="#A2EAF4"
                   to={product.id}
@@ -85,7 +110,7 @@ export const Products = () => {
                   See detail
                 </Button>
                 <Button
-                  size="sm"
+                  size={{ base: 'xs', md: 'sm' }}
                   variant="ghost"
                   color="#DF166D"
                   onClick={() => addProductToCart(product, 1)}

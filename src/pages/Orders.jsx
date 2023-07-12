@@ -60,6 +60,19 @@ export const Orders = () => {
 
   return (
     <>
+      {loading && (
+        <HStack justifyContent="center">
+          <Spinner />
+        </HStack>
+      )}
+      <VStack justifyContent="center">
+        <Heading>Customer Email</Heading> <Text>{user}</Text>
+      </VStack>
+
+      <Box p={4}>
+        <Text as="u">Custumer ID:</Text>
+        <Text fontWeight="bold">{uid}</Text>
+      </Box>
       {!orders.length && !loading && (
         <HStack justifyContent="center">
           <Alert w="400px" status="error">
@@ -77,19 +90,6 @@ export const Orders = () => {
           </Alert>
         </>
       )}
-      {loading && (
-        <HStack justifyContent="center">
-          <Spinner />
-        </HStack>
-      )}
-      <VStack justifyContent="center">
-        <Heading>Customer Email</Heading> <Text>{user}</Text>
-      </VStack>
-
-      <Box p={4}>
-        <Text as="u">Custumer ID:</Text>
-        <Text fontWeight="bold">{uid}</Text>
-      </Box>
       <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }}>
         {orders.map((o) => (
           <Box key={o.id} mt="1" p={4}>

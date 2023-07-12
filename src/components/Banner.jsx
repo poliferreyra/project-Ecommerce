@@ -1,9 +1,10 @@
-import { Box, Heading, Button, Stack, Image } from '@chakra-ui/react'
+import { Box, Heading, Stack, Image, Link } from '@chakra-ui/react'
 import imgBanner from '../assets/imgBanner.png'
+import { NavLink } from 'react-router-dom'
 
 export const Banner = () => {
   return (
-    <Stack>
+    <Stack bg="#27C4BF">
       <Box
         display="flex"
         justifyContent="center"
@@ -18,10 +19,23 @@ export const Banner = () => {
           p={2}
           order={{ base: 2, md: 1 }}
         >
-          <Heading fontSize={['md', 'lg', 'xl']} p={2}>
-            Welcome to our online perfume and cosmetics store
+          <Heading fontSize={['sm', 'md', 'lg']} p={2} mb={3}>
+            Welcome to our online perfume and cosmetics store. Discover a wide
+            variety of high-quality products to enhance your natural beauty and
+            highlight your personal style.
           </Heading>
-          <Button>Shop Now!</Button>
+          <Link
+            p={2}
+            as={NavLink}
+            to="/products"
+            bg="#F5E90C"
+            _hover={{
+              fontWeight: 'semibold',
+              color: '#DF166D',
+            }}
+          >
+            Shop
+          </Link>
         </Box>
         <Box order={{ base: 1, md: 2 }}>
           <Image src={imgBanner} maxH={{ base: '15vh', md: '50vh' }} />

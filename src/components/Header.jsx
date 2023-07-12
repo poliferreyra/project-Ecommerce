@@ -28,8 +28,8 @@ export const Header = () => {
   const { user, handleLogout } = useContext(UserContext)
 
   return (
-    <Stack>
-      <HStack justifyContent="space-between">
+    <Stack position="fixed" top={0} left={0} right={0} zIndex={2} bg="white">
+      <HStack justifyContent="space-between" mb={3}>
         {/* menu hamburguesa */}
         <Show breakpoint="(max-width: 500px)">
           <Stack direction="row" align="center" fontWeight="bold" p={1} mt={9}>
@@ -70,7 +70,7 @@ export const Header = () => {
           </Stack>
         </Show>
 
-        <Image w={{ base: '15%', md: '15%' }} src={logo} alt="logo" />
+        <Image w={{ base: '15%', md: '10%' }} src={logo} alt="logo" />
 
         {/* Login & carrito */}
         <Box>
@@ -90,6 +90,7 @@ export const Header = () => {
             {user ? (
               <Menu>
                 <MenuButton
+                  size={{ base: 'sm', md: 'md' }}
                   bg="#F5E90C"
                   color="#DF166D"
                   _hover={{
@@ -110,7 +111,11 @@ export const Header = () => {
                 </Portal>
               </Menu>
             ) : (
-              <Button bg="#F5E90C" fontWeight="bold">
+              <Button
+                bg="#F5E90C"
+                fontWeight="bold"
+                size={{ base: 'sm', md: 'md' }}
+              >
                 <Link
                   p={2}
                   as={NavLink}
@@ -125,7 +130,7 @@ export const Header = () => {
               </Button>
             )}
             <Box>
-              <IconButton bg="#F5E90C">
+              <IconButton bg="#F5E90C" boxSize={{ base: '8', md: '10' }}>
                 <Link
                   p={2}
                   as={NavLink}
