@@ -15,7 +15,7 @@ import { Box } from '@chakra-ui/react'
 
 function App() {
   return (
-    <Box mt="110px">
+    <Box bg="body">
       <Routes>
         <Route element={<AppLayout />}>
           <Route path="/" element={<Home />} />

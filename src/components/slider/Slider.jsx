@@ -30,7 +30,7 @@ export const Slider = () => {
       <Heading
         ml={3}
         size="xl"
-        color="#DF166D"
+        color="text"
         lineHeight="80px"
         textAlign="center"
       >
@@ -48,7 +48,7 @@ export const Slider = () => {
           <SwiperSlide key={item.id}>
             <Card
               m={3}
-              h="55vh"
+              h={{ base: '47vh', sm: '35vh' }}
               borderColor="transparent"
               direction={{ base: 'column', sm: 'row' }}
               overflow="hidden"
@@ -69,7 +69,7 @@ export const Slider = () => {
                 </Heading>
                 <Textarea
                   defaultValue={item.description}
-                  h={{ base: '18vh', sm: '35vh', md: '30vh', lg: '40vh' }}
+                  h={{ base: '18vh', md: '15vh', lg: '10vh' }}
                   borderColor="transparent"
                   fontSize={{ base: 'sm', md: 'md' }}
                   isReadOnly
@@ -79,19 +79,20 @@ export const Slider = () => {
                       width: '3px', // Ancho barra de desplazamiento
                     },
                     '&::-webkit-scrollbar-thumb': {
-                      background: 'gray', // Color barra de desplazamiento
+                      background: '#643FE6', // Color barra de desplazamiento
                       borderRadius: '4px', // Borde barra de desplazamiento
                     },
                   }}
                 />
                 <Button
-                  mt={2}
-                  size={{ base: 'xs', md: 'sm' }}
+                  mt={4}
+                  size={{ base: 'sm', md: 'sm' }}
                   variant="solid"
-                  bg="#F5E90C"
+                  bg="primary"
+                  color="body"
                   _hover={{
                     fontWeight: 'semibold',
-                    color: '#DF166D',
+                    color: 'secondary',
                   }}
                   onClick={() => addProductToCart(item, 1)}
                 >

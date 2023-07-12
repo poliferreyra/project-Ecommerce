@@ -1,11 +1,11 @@
-import { Box, Heading, Image, Stack, Text } from '@chakra-ui/react'
+import { Box, Container, Image, Text } from '@chakra-ui/react'
 import glamourXpressions from '../assets/glamourXpressions.png'
 
 export const AboutUs = () => {
   return (
-    <Stack align="center">
+    <Container align="justify" maxW="container.sm" mt={10}>
       <Box w="100%" h="60vh">
-        <Heading fontSize={['sm', 'md', 'lg']} p={2} color="black">
+        <Text fontSize={['sm', 'md', 'lg']} p={2} color="text">
           We are a team passionate about beauty. We work closely with trusted
           suppliers to ensure that each item we offer meets the highest quality
           standards. <br />
@@ -15,7 +15,7 @@ export const AboutUs = () => {
           purchase you make with us. If you have any questions, concerns or need
           advice, our customer service team will be happy to help you at any
           time.
-        </Heading>
+        </Text>
         <Box w="100%" display="flex" flexDirection="column" alignItems="center">
           <Image
             w={{ base: '50%', md: '50%', lg: '30%' }}
@@ -23,12 +23,12 @@ export const AboutUs = () => {
             alt="Home Imgage"
           />
           {/* eslint-disable-next-line react/no-unescaped-entities */}
-          <Text as="i" textAlign="center">
+          <Text as="i" textAlign="center" color="text">
             {/* eslint-disable-next-line react/no-unescaped-entities */}
             "Beauty begins when you decide to be YOURSELF"
           </Text>
         </Box>
       </Box>
-    </Stack>
+    </Container>
   )
 }

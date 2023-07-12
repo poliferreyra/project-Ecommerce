@@ -54,7 +54,7 @@ export const Products = () => {
         </HStack>
       )}
 
-      <SimpleGrid columns={{ base: 1, sm: 2, md: 3 }} p={2}>
+      <SimpleGrid columns={{ base: 1, sm: 2, md: 3, lg: 4 }} p={2} gap={1}>
         {renderProducts.map((product) => (
           <Box key={product.id} maxW="sm" align="center">
             <Card borderColor="transparent" variant="outline">
@@ -68,12 +68,12 @@ export const Products = () => {
                   maxH={{ base: '45%', sm: '55%', md: '70%' }}
                 />
                 <Stack mt="6" spacing="3">
-                  <Heading size={{ base: 'sm', md: 'md' }}>
+                  <Heading size={{ base: 'xs', md: 'sm' }}>
                     {product.prodName}
                   </Heading>
                   <Textarea
                     defaultValue={product.description}
-                    h={{ base: '18vh', sm: '35vh', md: '30vh', lg: '40vh' }}
+                    h={{ base: '18vh', sm: '20vh', md: '25vh', lg: '20vh' }}
                     borderColor="transparent"
                     fontSize={{ base: 'sm', md: 'md' }}
                     isReadOnly
@@ -93,32 +93,33 @@ export const Products = () => {
                   </Text>
                 </Stack>
               </CardBody>
+              {/* buttons - detail - add to cart */}
+              <Box>
+                <ButtonGroup m={2}>
+                  <Button
+                    as={Link}
+                    size={{ base: 'xs', md: 'sm' }}
+                    variant="solid"
+                    bg="#A2EAF4"
+                    to={product.id}
+                    _hover={{
+                      fontWeight: 'semibold',
+                      color: '#DF166D',
+                    }}
+                  >
+                    See detail
+                  </Button>
+                  <Button
+                    size={{ base: 'xs', md: 'sm' }}
+                    variant="ghost"
+                    color="#DF166D"
+                    onClick={() => addProductToCart(product, 1)}
+                  >
+                    Add to cart
+                  </Button>
+                </ButtonGroup>
+              </Box>
             </Card>
-            <Box>
-              <ButtonGroup m={2}>
-                <Button
-                  as={Link}
-                  size={{ base: 'xs', md: 'sm' }}
-                  variant="solid"
-                  bg="#A2EAF4"
-                  to={product.id}
-                  _hover={{
-                    fontWeight: 'semibold',
-                    color: '#DF166D',
-                  }}
-                >
-                  See detail
-                </Button>
-                <Button
-                  size={{ base: 'xs', md: 'sm' }}
-                  variant="ghost"
-                  color="#DF166D"
-                  onClick={() => addProductToCart(product, 1)}
-                >
-                  Add to cart
-                </Button>
-              </ButtonGroup>
-            </Box>
           </Box>
         ))}
       </SimpleGrid>

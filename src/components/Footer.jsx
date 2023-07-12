@@ -7,43 +7,48 @@ import { NavLink } from 'react-router-dom'
 export const Footer = () => {
   return (
     <>
+      {/* Links */}
       <Flex justifyContent="center" alignItems="center" p={2}>
         <Stack spacing={4} direction="row" align="center" fontWeight="bold">
           <Link
+            color="text"
             p={2}
             as={NavLink}
             to="/"
             _hover={{
               fontWeight: 'semibold',
-              color: '#DF166D',
+              color: 'primary',
             }}
           >
             Home
           </Link>
           <Link
+            color="text"
             p={2}
             as={NavLink}
             to="/products"
             _hover={{
               fontWeight: 'semibold',
-              color: '#DF166D',
+              color: 'primary',
             }}
           >
             Shop
           </Link>
           <Link
+            color="text"
             p={2}
             as={NavLink}
             to="/aboutUs"
             _hover={{
               fontWeight: 'semibold',
-              color: '#DF166D',
+              color: 'primary',
             }}
           >
             About us
           </Link>
         </Stack>
       </Flex>
+      {/* avatars */}
       <Flex justifyContent="center" alignItems="center" p={2}>
         <Stack direction="row" spacing="20px">
           <Link
@@ -51,7 +56,7 @@ export const Footer = () => {
             alignItems="center"
             justifyContent="center"
             borderRadius="50%"
-            bg="#A2EAF4"
+            bg="primary"
             w={12}
             h={12}
             color="white"
@@ -59,7 +64,7 @@ export const Footer = () => {
             isExternal
             _hover={{
               fontWeight: 'semibold',
-              color: '#282445',
+              color: 'secondary',
             }}
           >
             <FiTwitter size="25px" />
@@ -69,7 +74,7 @@ export const Footer = () => {
             alignItems="center"
             justifyContent="center"
             borderRadius="50%"
-            bg="#A2EAF4"
+            bg="primary"
             w={12}
             h={12}
             color="white"
@@ -77,7 +82,7 @@ export const Footer = () => {
             isExternal
             _hover={{
               fontWeight: 'semibold',
-              color: '#282445',
+              color: 'secondary',
             }}
           >
             <FiInstagram size="25px" />
@@ -87,7 +92,7 @@ export const Footer = () => {
             alignItems="center"
             justifyContent="center"
             borderRadius="50%"
-            bg="#A2EAF4"
+            bg="primary"
             w={12}
             h={12}
             color="white"
@@ -95,7 +100,7 @@ export const Footer = () => {
             isExternal
             _hover={{
               fontWeight: 'semibold',
-              color: '#282445',
+              color: 'secondary',
             }}
           >
             <AiOutlineMail size="25px" />

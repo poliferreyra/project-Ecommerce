@@ -28,7 +28,7 @@ export const Header = () => {
   const { user, handleLogout } = useContext(UserContext)
 
   return (
-    <Stack position="fixed" top={0} left={0} right={0} zIndex={2} bg="white">
+    <Stack bg="body">
       <HStack justifyContent="space-between" mb={3}>
         {/* menu hamburguesa */}
         <Show breakpoint="(max-width: 500px)">
@@ -46,23 +46,25 @@ export const Header = () => {
             mt={9}
           >
             <Link
+              color="text"
               p={2}
               as={NavLink}
               to="/"
               _hover={{
                 fontWeight: 'semibold',
-                color: '#DF166D',
+                color: 'primary',
               }}
             >
               Home
             </Link>
             <Link
+              color="text"
               p={2}
               as={NavLink}
               to="/products"
               _hover={{
                 fontWeight: 'semibold',
-                color: '#DF166D',
+                color: 'primary',
               }}
             >
               Products
@@ -78,7 +80,7 @@ export const Header = () => {
             {user && (
               <Text
                 fontSize={{ base: 'xs', md: 'md' }}
-                color="#DF166D"
+                color="text"
                 textTransform="capitalize"
                 fontWeight="bold"
               >
@@ -91,11 +93,12 @@ export const Header = () => {
               <Menu>
                 <MenuButton
                   size={{ base: 'sm', md: 'md' }}
-                  bg="#F5E90C"
-                  color="#DF166D"
+                  bg="secondary"
+                  color="text"
                   _hover={{
                     fontWeight: 'semibold',
-                    color: '#DF166D',
+                    color: 'text',
+                    bg: '#E2E8F0',
                   }}
                   as={Button}
                 >
@@ -112,17 +115,18 @@ export const Header = () => {
               </Menu>
             ) : (
               <Button
-                bg="#F5E90C"
+                bg="secondary"
                 fontWeight="bold"
                 size={{ base: 'sm', md: 'md' }}
               >
                 <Link
+                  color="text"
                   p={2}
                   as={NavLink}
                   to="/login"
                   _hover={{
                     fontWeight: 'semibold',
-                    color: '#DF166D',
+                    color: 'text',
                   }}
                 >
                   Login
@@ -130,17 +134,19 @@ export const Header = () => {
               </Button>
             )}
             <Box>
-              <IconButton bg="#F5E90C" boxSize={{ base: '8', md: '10' }}>
-                <Link
-                  p={2}
-                  as={NavLink}
-                  to="/cart"
-                  _hover={{
-                    fontWeight: 'semibold',
-                    color: '#DF166D',
-                  }}
-                >
-                  <Icon as={BsCart3} />
+              <IconButton
+                color="text"
+                boxSize={{ base: '8', md: '10' }}
+                bg="secondary"
+              >
+                <Link p={2} as={NavLink} to="/cart">
+                  <Icon
+                    as={BsCart3}
+                    _hover={{
+                      fontWeight: 'semibold',
+                      color: 'text',
+                    }}
+                  />
                 </Link>
               </IconButton>
             </Box>

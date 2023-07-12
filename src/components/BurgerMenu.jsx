@@ -15,6 +15,8 @@ export const BurgerMenu = () => {
   return (
     <Menu>
       <MenuButton
+        bg="secondary"
+        color="text"
         as={IconButton}
         aria-label="Options"
         icon={<HamburgerIcon />}
@@ -29,7 +31,7 @@ export const BurgerMenu = () => {
             to="/"
             _hover={{
               fontWeight: 'semibold',
-              color: '#DF166D',
+              color: 'text',
             }}
           >
             Home
@@ -41,7 +43,7 @@ export const BurgerMenu = () => {
             to="/products"
             _hover={{
               fontWeight: 'semibold',
-              color: '#DF166D',
+              color: 'text',
             }}
           >
             Products

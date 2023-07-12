@@ -1,25 +1,17 @@
-import {
-  FormControl,
-  FormLabel,
-  Input,
-  Select,
-  Flex,
-  Heading,
-} from '@chakra-ui/react'
+import { FormControl, FormLabel, Input, Select, Flex } from '@chakra-ui/react'
 
 export const Filter = ({ handleFilter, filterProd }) => {
   return (
     <Flex
-      position="sticky"
-      top="90px" // se ajusta según la altura del header
-      zIndex={1} // valor menor que el z-index del header
+      // position="sticky"
+      // top={{ base: '90px', sm: '115px', md: '99px', lg: '120px' }} // se ajusta según la altura del header
+      // zIndex={1} // valor menor que el z-index del header
       as="form"
       direction={{ base: 'column', md: 'row' }}
       alignItems="center"
       gap={4}
       m={3}
-      p={3}
-      bg="white"
+      bg="body"
     >
       <FormControl>
         <FormLabel fontSize={{ base: 'sm', md: 'md' }}>Name</FormLabel>
@@ -56,9 +48,6 @@ export const Filter = ({ handleFilter, filterProd }) => {
           placeholder="Less than"
         />
       </FormControl>
-      <Heading size="xl" color="#DF166D" lineHeight="80px" textAlign="center">
-        All Products
-      </Heading>
     </Flex>
   )
 }

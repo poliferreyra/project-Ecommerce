@@ -1,4 +1,4 @@
-import { Box, Heading, Stack, Image, Link } from '@chakra-ui/react'
+import { Box, Stack, Image, Link, Text } from '@chakra-ui/react'
 import imgBanner from '../assets/imgBanner.png'
 import { NavLink } from 'react-router-dom'
 
@@ -19,22 +19,30 @@ export const Banner = () => {
           p={2}
           order={{ base: 2, md: 1 }}
         >
-          <Heading fontSize={['sm', 'md', 'lg']} p={2} mb={3}>
+          <Text
+            fontSize={['sm', 'md', 'lg']}
+            p={2}
+            mb={3}
+            color="body"
+            align="justify"
+          >
             Welcome to our online perfume and cosmetics store. Discover a wide
             variety of high-quality products to enhance your natural beauty and
             highlight your personal style.
-          </Heading>
+          </Text>
           <Link
             p={2}
             as={NavLink}
             to="/products"
-            bg="#F5E90C"
+            bg="secondary"
+            color="text"
+            borderRadius={10}
             _hover={{
-              fontWeight: 'semibold',
-              color: '#DF166D',
+              color: 'text',
+              bg: '#E2E8F0',
             }}
           >
-            Shop
+            Shop Now!!
           </Link>
         </Box>
         <Box order={{ base: 1, md: 2 }}>

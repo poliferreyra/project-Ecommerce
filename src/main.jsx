@@ -9,13 +9,13 @@ import { CartProvider } from './context/CartContext.jsx'
 import '@fontsource/fredoka-one/400.css'
 import '@fontsource/varela-round/400.css'
 
-import themes from './components/themes/themes.js'
+import myNewThemes from './components/themes/themes.js'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
       <UserProvider>
-        <ChakraProvider themes={themes}>
+        <ChakraProvider theme={myNewThemes}>
           <CartProvider>
             <App />
           </CartProvider>
