@@ -123,19 +123,20 @@ export const InfoCheckout = () => {
             </FormErrorMessage>
           </FormControl>
           <Box h="40px" p={3}>
-            <Heading fontSize="2xl" p={2}>
+            <Heading fontSize="xl" p={2}>
               Total : $ {cartTotalPrice()}
             </Heading>
           </Box>
           <Stack direction="column">
             <Button
               mt={4}
-              bg="#F5E90C"
-              color="#282445"
-              fontWeight="bold"
+              size={{ base: 'xs', md: 'sm' }}
+              variant="solid"
+              bg="primary"
+              color="body"
               _hover={{
                 fontWeight: 'semibold',
-                color: '#DF166D',
+                color: 'secondary',
               }}
               type="submit"
             >

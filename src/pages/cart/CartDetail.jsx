@@ -8,6 +8,8 @@ import {
   IconButton,
   HStack,
   Heading,
+  Card,
+  CardBody,
 } from '@chakra-ui/react'
 import { useContext } from 'react'
 import { AiFillDelete } from 'react-icons/ai'
@@ -17,32 +19,30 @@ export const CartDetail = ({ hideQuanitity }) => {
   const { cart, addProductToCart, deleteProductCart } = useContext(CartContext)
 
   return (
-    <Stack mt={6} w={{ base: '90%', md: '50%', lg: '80%' }}>
+    <SimpleGrid columns={{ base: 1, lg: 2 }} gap={3}>
       {cart.map((cartProduct, index) => (
-        <Stack key={index} border="1px solid black" p={5}>
-          <HStack justifyContent="space-between" mb={3} p={1}>
-            <Box>
-              <Heading size="xs">{cartProduct.prodName}</Heading>
-            </Box>
-            <Box alignSelf="flex-end">
-              <IconButton
-                size={{ base: 'xs', md: 'sm' }}
-                variant="outline"
-                color="tomato"
-                aria-label="Delete-Product"
-                onClick={() => deleteProductCart(cartProduct.id)}
-                icon={<AiFillDelete />}
-              />
-            </Box>
-          </HStack>
-          <SimpleGrid columns={3}>
-            <Box
-              height="100%"
-              w={{ base: '100%', md: '60%' }}
-              display="flex"
-              justifyContent="center"
-              mt={4}
-            >
+        <Card key={index} p={1}>
+          <CardBody>
+            {/* heading and icon delete */}
+            <HStack justifyContent="space-between">
+              <Box>
+                <Heading size={{ base: 'xs', md: 'sm' }}>
+                  {cartProduct.prodName}
+                </Heading>
+              </Box>
+              <Box alignSelf="flex-end">
+                <IconButton
+                  size={{ base: 'xs', md: 'sm' }}
+                  variant="outline"
+                  color="tomato"
+                  aria-label="Delete-Product"
+                  onClick={() => deleteProductCart(cartProduct.id)}
+                  icon={<AiFillDelete />}
+                />
+              </Box>
+            </HStack>
+            {/* detail - img/quantity/total */}
+            <HStack justifyContent="space-between" mb={3} p={1}>
               <Image
                 objectFit="cover"
                 objectPosition="center"
@@ -52,87 +52,78 @@ export const CartDetail = ({ hideQuanitity }) => {
                 src={cartProduct.img}
                 alt="Product Image"
               />
-            </Box>
-            {!hideQuanitity && (
-              <Box
-                height="100%"
-                textAlign="center"
-                w={{ base: '100%', md: '50%' }}
-                m={4}
-              >
+              {/* quantity */}
+              {!hideQuanitity && (
+                <Box align="center">
+                  <Text
+                    colorScheme="teal"
+                    size="sm"
+                    fontWeight="bold"
+                    fontSize={{ base: '10px', md: '12px', lg: '14px' }}
+                  >
+                    Quantity
+                  </Text>
+                  <Stack
+                    w="100%"
+                    direction="row"
+                    align="center"
+                    justifyContent="center"
+                  >
+                    <Button
+                      color="red"
+                      borderRadius="50%"
+                      size={{ base: 'xs', md: 'sm' }}
+                      isDisabled={cartProduct.quantity === 1}
+                      onClick={() => addProductToCart(cartProduct, -1)}
+                    >
+                      -
+                    </Button>
+                    <Text
+                      fontWeight="bold"
+                      fontSize={{ base: '12px', md: '14px', lg: '16px' }}
+                    >
+                      {cartProduct.quantity}
+                    </Text>
+                    <Button
+                      color="red"
+                      borderRadius="50%"
+                      size={{ base: 'xs', md: 'sm' }}
+                      isDisabled={cartProduct.quantity === cartProduct.stock}
+                      //onClick={() => addQuantityToProduct(index)}
+                      onClick={() => addProductToCart(cartProduct, 1)}
+                    >
+                      +
+                    </Button>
+                  </Stack>
+                </Box>
+              )}
+              {/* total */}
+              <Box align="center">
                 <Text
-                  colorScheme="teal"
-                  size="sm"
+                  fontSize={{ base: '12px', md: '12px', lg: '14px' }}
                   fontWeight="bold"
-                  fontSize={{ base: '12px', md: '14px', lg: '16px' }}
                 >
-                  Quantity
+                  Total
                 </Text>
                 <Stack
                   w="100%"
-                  direction={{ base: 'column', sm: 'row' }}
+                  direction="row"
                   align="center"
                   justifyContent="center"
                 >
-                  <Button
-                    color="red"
-                    borderRadius="50%"
-                    size={{ base: 'xs', md: 'sm' }}
-                    isDisabled={cartProduct.quantity === 1}
-                    onClick={() => addProductToCart(cartProduct, -1)}
-                  >
-                    -
-                  </Button>
                   <Text
                     fontWeight="bold"
-                    fontSize={{ base: '12px', md: '14px', lg: '16px' }}
+                    fontSize={{ base: '10px', md: '12px', lg: '14px' }}
                   >
-                    {cartProduct.quantity}
+                    {' '}
+                    $ {cartProduct.quantity * cartProduct.price}
                   </Text>
-                  <Button
-                    color="red"
-                    borderRadius="50%"
-                    size={{ base: 'xs', md: 'sm' }}
-                    isDisabled={cartProduct.quantity === cartProduct.stock}
-                    //onClick={() => addQuantityToProduct(index)}
-                    onClick={() => addProductToCart(cartProduct, 1)}
-                  >
-                    +
-                  </Button>
                 </Stack>
               </Box>
-            )}
-
-            <Box
-              height="100%"
-              textAlign="center"
-              w={{ base: '100%', md: '50%' }}
-              m={4}
-            >
-              <Text
-                fontSize={{ base: '12px', md: '14px', lg: '16px' }}
-                fontWeight="bold"
-              >
-                Total
-              </Text>
-              <Stack
-                w="100%"
-                direction={{ base: 'column', sm: 'row' }}
-                align="center"
-                justifyContent="center"
-              >
-                <Text
-                  fontWeight="bold"
-                  fontSize={{ base: '12px', md: '14px', lg: '16px' }}
-                >
-                  {' '}
-                  $ {cartProduct.quantity * cartProduct.price}
-                </Text>
-              </Stack>
-            </Box>
-          </SimpleGrid>
-        </Stack>
+            </HStack>
+          </CardBody>
+        </Card>
       ))}
-    </Stack>
+    </SimpleGrid>
   )
 }

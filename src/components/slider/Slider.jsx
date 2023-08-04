@@ -27,15 +27,6 @@ export const Slider = () => {
   const { addProductToCart } = useContext(CartContext)
   return (
     <VStack>
-      <Heading
-        ml={3}
-        size="xl"
-        color="text"
-        lineHeight="80px"
-        textAlign="center"
-      >
-        New Arrivals
-      </Heading>
       <Swiper
         className="styleNav"
         modules={[Navigation, Pagination, EffectFlip]}
@@ -47,8 +38,7 @@ export const Slider = () => {
         {filterProdOrderBy.map((item) => (
           <SwiperSlide key={item.id}>
             <Card
-              m={3}
-              h={{ base: '47vh', sm: '35vh' }}
+              m={4}
               borderColor="transparent"
               direction={{ base: 'column', sm: 'row' }}
               overflow="hidden"
@@ -64,29 +54,30 @@ export const Slider = () => {
               />
 
               <CardBody>
-                <Heading size={{ base: 'sm', md: 'md' }}>
+                <Heading size={{ base: 'xs', md: 'md' }}>
                   {item.prodName}
                 </Heading>
                 <Textarea
                   defaultValue={item.description}
-                  h={{ base: '18vh', md: '15vh', lg: '10vh' }}
+                  h={{ base: '15vh', md: '15vh', lg: '10vh' }}
                   borderColor="transparent"
-                  fontSize={{ base: 'sm', md: 'md' }}
+                  fontSize={{ base: 'xs', md: 'md' }}
                   isReadOnly
                   overflow="auto"
+                  // scrollbar
                   css={{
                     '&::-webkit-scrollbar': {
-                      width: '3px', // Ancho barra de desplazamiento
+                      width: '3px',
                     },
                     '&::-webkit-scrollbar-thumb': {
-                      background: '#643FE6', // Color barra de desplazamiento
-                      borderRadius: '4px', // Borde barra de desplazamiento
+                      background: '#F5E90C',
+                      borderRadius: '4px',
                     },
                   }}
                 />
                 <Button
                   mt={4}
-                  size={{ base: 'sm', md: 'sm' }}
+                  size={{ base: 'xs', md: 'sm' }}
                   variant="solid"
                   bg="primary"
                   color="body"

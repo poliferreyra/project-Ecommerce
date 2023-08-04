@@ -23,6 +23,8 @@ import {
   AlertTitle,
   Spinner,
   Image,
+  Card,
+  CardBody,
 } from '@chakra-ui/react'
 
 import { getOrdersbyUid } from '../services/orders'
@@ -30,7 +32,7 @@ import { useContext, useEffect, useState } from 'react'
 import { UserContext } from '../context/UserContext'
 
 export const Orders = () => {
-  const { uid, user } = useContext(UserContext)
+  const { uid } = useContext(UserContext)
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [orders, setOrders] = useState([])
   const [loading, setLoading] = useState(true)
@@ -65,14 +67,18 @@ export const Orders = () => {
           <Spinner />
         </HStack>
       )}
-      <VStack justifyContent="center">
-        <Heading>Customer Email</Heading> <Text>{user}</Text>
-      </VStack>
-
-      <Box p={4}>
-        <Text as="u">Custumer ID:</Text>
-        <Text fontWeight="bold">{uid}</Text>
+      <Box bg="primary" w="100%">
+        <Heading
+          ml={3}
+          size="xl"
+          color="secondary"
+          lineHeight="80px"
+          textAlign="center"
+        >
+          My Orders
+        </Heading>
       </Box>
+
       {!orders.length && !loading && (
         <HStack justifyContent="center">
           <Alert w="400px" status="error">
@@ -90,37 +96,42 @@ export const Orders = () => {
           </Alert>
         </>
       )}
-      <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }}>
+      <SimpleGrid columns={{ base: 1, sm: 2, md: 3, lg: 5 }} gap={3}>
         {orders.map((o) => (
-          <Box key={o.id} mt="1" p={4}>
-            <List>
-              <Tag w="50px" bg="yellow.200">
+          <Card key={o.id}>
+            <CardBody>
+              <Tag borderRadius="full" bg="yellow.200">
                 Payed
               </Tag>
-              <ListItem>
-                Name: <strong>{o.user.name}</strong>
-              </ListItem>
-              <ListItem>
-                Email: <strong>{o.user.email}</strong>
-              </ListItem>
-              <ListItem>
-                Address: <strong>{o.user.address}</strong>
-              </ListItem>
-              <ListItem>
-                State: <strong>{o.user.state}</strong>
-              </ListItem>
-              <ListItem>
-                Total: <strong>{o.totPrice}</strong>
-              </ListItem>
-            </List>
+
+              <List fontSize={{ base: 'sm', md: 'md' }}>
+                <ListItem>
+                  Name: <strong>{o.user.name}</strong>
+                </ListItem>
+                <ListItem>
+                  Email: <strong>{o.user.email}</strong>
+                </ListItem>
+                <ListItem>
+                  Address: <strong>{o.user.address}</strong>
+                </ListItem>
+                <ListItem>
+                  State: <strong>{o.user.state}</strong>
+                </ListItem>
+                <ListItem>
+                  Total: <strong>{o.totPrice}</strong>
+                </ListItem>
+              </List>
+            </CardBody>
 
             <Button
-              size="sm"
+              m={4}
+              size={{ base: 'xs', md: 'sm' }}
               variant="solid"
-              bg="#A2EAF4"
+              bg="primary"
+              color="body"
               _hover={{
                 fontWeight: 'semibold',
-                color: '#DF166D',
+                color: 'secondary',
               }}
               onClick={() => {
                 findDoc(o.id)
@@ -183,12 +194,13 @@ export const Orders = () => {
                 </ModalBody>
                 <ModalFooter>
                   <Button
-                    size="sm"
+                    size={{ base: 'sm', md: 'md' }}
                     variant="solid"
-                    bg="#A2EAF4"
+                    bg="primary"
+                    color="body"
                     _hover={{
                       fontWeight: 'semibold',
-                      color: '#DF166D',
+                      color: 'secondary',
                     }}
                     onClick={onClose}
                   >
@@ -197,7 +209,7 @@ export const Orders = () => {
                 </ModalFooter>
               </ModalContent>
             </Modal>
-          </Box>
+          </Card>
         ))}
       </SimpleGrid>
     </>

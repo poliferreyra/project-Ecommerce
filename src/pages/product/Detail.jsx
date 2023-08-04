@@ -62,15 +62,15 @@ export const Detail = () => {
             spacing={{ base: 8, md: 10 }}
             py={{ base: 18, md: 24 }}
           >
-            <Flex>
+            <Flex alignItems="center">
               <Image
                 rounded={'md'}
                 alt={product.prodName}
                 src={product.img}
                 fit={'cover'}
                 align={'center'}
-                w={'100%'}
-                h={{ base: '100%', sm: '400px', lg: '300px' }}
+                w={{ base: '70%', lg: '100%' }}
+                h={{ base: '90%', sm: '250px', lg: '400px' }}
               />
             </Flex>
             <Stack spacing={{ base: 6, md: 10 }}>
@@ -94,7 +94,7 @@ export const Detail = () => {
               >
                 <Text
                   color="black"
-                  fontSize={{ base: 'sm', md: 'xl' }}
+                  fontSize={{ base: 'sm', md: 'md' }}
                   fontWeight={'300'}
                 >
                   {product.description}
@@ -104,6 +104,7 @@ export const Detail = () => {
                 defaultValue={1}
                 min={1}
                 max={product.stock}
+                size={{ base: 'sm', md: 'md' }}
                 onChange={(value) => setQuantity(Number(value))}
               >
                 <NumberInputField />
@@ -117,14 +118,15 @@ export const Detail = () => {
                 rounded={'none'}
                 w={'full'}
                 mt={8}
-                size={'sm'}
-                py={'7'}
-                bg="#F5E90C"
+                py={'4'}
                 textTransform={'uppercase'}
+                size={{ base: 'xs', md: 'sm' }}
+                variant="solid"
+                bg="primary"
+                color="body"
                 _hover={{
-                  transform: 'translateY(2px)',
-                  boxShadow: 'md',
-                  color: '#DF166D',
+                  fontWeight: 'semibold',
+                  color: 'secondary',
                 }}
                 onClick={() => addProductToCart(product, quantity)}
               >

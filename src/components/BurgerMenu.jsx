@@ -15,8 +15,8 @@ export const BurgerMenu = () => {
   return (
     <Menu>
       <MenuButton
-        bg="secondary"
-        color="text"
+        border="1px solid #F5F5F5"
+        color="primary"
         as={IconButton}
         aria-label="Options"
         icon={<HamburgerIcon />}

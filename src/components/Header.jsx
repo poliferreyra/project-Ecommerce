@@ -29,10 +29,10 @@ export const Header = () => {
 
   return (
     <Stack bg="body">
-      <HStack justifyContent="space-between" mb={3}>
+      <HStack justifyContent="space-between" mb={1}>
         {/* menu hamburguesa */}
         <Show breakpoint="(max-width: 500px)">
-          <Stack direction="row" align="center" fontWeight="bold" p={1} mt={9}>
+          <Stack direction="row" align="center" fontWeight="bold" p={1} mt={5}>
             <BurgerMenu />
           </Stack>
         </Show>
@@ -43,7 +43,7 @@ export const Header = () => {
             direction="row"
             align="center"
             fontWeight="bold"
-            mt={9}
+            mt={5}
           >
             <Link
               color="text"
@@ -72,15 +72,16 @@ export const Header = () => {
           </Stack>
         </Show>
 
-        <Image w={{ base: '15%', md: '10%' }} src={logo} alt="logo" />
+        <Image w={{ base: '35%', md: '20%' }} src={logo} alt="logo" />
 
         {/* Login & carrito */}
         <Box>
           <Box p={2}>
             {user && (
               <Text
-                fontSize={{ base: 'xs', md: 'md' }}
-                color="text"
+                fontSize={{ base: 'sm', md: 'md' }}
+                align="center"
+                color="primary"
                 textTransform="capitalize"
                 fontWeight="bold"
               >
@@ -93,8 +94,8 @@ export const Header = () => {
               <Menu>
                 <MenuButton
                   size={{ base: 'sm', md: 'md' }}
-                  bg="secondary"
-                  color="text"
+                  border="1px solid #F5F5F5"
+                  color="primary"
                   _hover={{
                     fontWeight: 'semibold',
                     color: 'text',
@@ -115,7 +116,8 @@ export const Header = () => {
               </Menu>
             ) : (
               <Button
-                bg="secondary"
+                border="1px solid #F5F5F5"
+                color="primary"
                 fontWeight="bold"
                 size={{ base: 'sm', md: 'md' }}
               >
@@ -135,9 +137,9 @@ export const Header = () => {
             )}
             <Box>
               <IconButton
-                color="text"
                 boxSize={{ base: '8', md: '10' }}
-                bg="secondary"
+                border="1px solid #F5F5F5"
+                color="primary"
               >
                 <Link p={2} as={NavLink} to="/cart">
                   <Icon

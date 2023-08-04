@@ -3,14 +3,12 @@ import { FormControl, FormLabel, Input, Select, Flex } from '@chakra-ui/react'
 export const Filter = ({ handleFilter, filterProd }) => {
   return (
     <Flex
-      // position="sticky"
-      // top={{ base: '90px', sm: '115px', md: '99px', lg: '120px' }} // se ajusta según la altura del header
-      // zIndex={1} // valor menor que el z-index del header
       as="form"
       direction={{ base: 'column', md: 'row' }}
       alignItems="center"
       gap={4}
       m={3}
+      p={3}
       bg="body"
     >
       <FormControl>

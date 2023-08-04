@@ -1,9 +1,8 @@
-import { Box, Container, Image, Text } from '@chakra-ui/react'
-import glamourXpressions from '../assets/glamourXpressions.png'
+import { Box, Container, Text } from '@chakra-ui/react'
 
 export const AboutUs = () => {
   return (
-    <Container align="justify" maxW="container.sm" mt={10}>
+    <Container align="justify" maxW="container.sm">
       <Box w="100%" h="60vh">
         <Text fontSize={['sm', 'md', 'lg']} p={2} color="text">
           We are a team passionate about beauty. We work closely with trusted
@@ -17,11 +16,6 @@ export const AboutUs = () => {
           time.
         </Text>
         <Box w="100%" display="flex" flexDirection="column" alignItems="center">
-          <Image
-            w={{ base: '50%', md: '50%', lg: '30%' }}
-            src={glamourXpressions}
-            alt="Home Imgage"
-          />
           {/* eslint-disable-next-line react/no-unescaped-entities */}
           <Text as="i" textAlign="center" color="text">
             {/* eslint-disable-next-line react/no-unescaped-entities */}

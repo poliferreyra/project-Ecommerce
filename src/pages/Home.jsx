@@ -6,12 +6,13 @@ import {
   AlertIcon,
   AlertTitle,
   VStack,
+  Box,
+  Heading,
 } from '@chakra-ui/react'
 
 /* eslint-disable react/no-unescaped-entities */
 import { useGetProducts } from '../hook/useGetProducts'
 
-import { Slider } from '../components/slider/Slider'
 import { Banner } from '../components/Banner'
 
 export const Home = () => {
@@ -27,12 +28,20 @@ export const Home = () => {
           </Alert>
         </HStack>
       )}
-
+      <Box bg="primary" w="100%">
+        <Heading
+          ml={3}
+          size="xl"
+          color="secondary"
+          lineHeight="80px"
+          textAlign="center"
+        >
+          New Arrivals
+        </Heading>
+      </Box>
       <Stack>
         <Banner />
-        <VStack justifyContent="center" alignItems="center">
-          <Slider />
-        </VStack>
+        <VStack justifyContent="center" alignItems="center"></VStack>
         {loading && (
           <HStack justifyContent="center">
             <Spinner />
