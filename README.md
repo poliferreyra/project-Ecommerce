@@ -10,19 +10,21 @@ _Comunicación en redes sociales y contacto_: Se incluyen iconos de redes social
 
 _Productos (Shop)_: En esta sección se puede explorar todos los productos disponibles. Y utilizar filtros para buscar por nombre, categoría y precio.
 
-_New Arrivals_: En la página de inicio, se pueden descubrir las últimas novedades de la tienda.
+_New Arrivals_: En la página de inicio se muestran las últimas novedades de la tienda de manera dinámica y atractiva a través de un slider.
 
 _Carrito de compras_: En el carrito se puede ver un resumen de los productos seleccionados, ajustar las cantidades, eliminar productos individuales o vaciar completamente el carrito.
 
-_Checkout_: Aquí podes proceder al proceso de pago. Si bien la funcionalidad de pago no está activada en este momento, desde el checkout se pueden completar los datos necesarios para el proceso de compra, como la dirección de envío etc.
+_Checkout_: Aquí podes proceder al proceso de pago y completar los datos necesarios para realizar tus compras, como dirección de envío, entre otros. Funcionalidad de pago pendiente.
+
+_My orders_: Podes visualizar todas las órdenes de compra realizadas teniendo acceso así al historial de tus compras. Además tenés la posibilidad de acceder también al detalle de los productos adquiridos en cada una de ellas.
 
 ## Tecnologías utilizadas en este proyecto
 
 Javascript
 
-Firebase
-
 Reactjs
+
+Firebase
 
 React Hook Forms
 
@@ -31,6 +33,8 @@ React Router DOM
 Chakra UI
 
 React Icon
+
+Swiperjs
 
 Vitejs
 
@@ -45,7 +49,7 @@ Vitejs
 
 Deberás crear un archivo `.env` en la raiz del proyecto y hace una copia de las mismas.
 
-Puede usar el archivo `.env.example` como ejemplo y copiar ahi las claver proporcionadas.
+Puede usar el archivo `.env.example` como ejemplo y copiar ahi las claves proporcionadas.
 Estas son las que luego se van a importar en tu archivo config.js
 
 `const firebaseConfig = {`

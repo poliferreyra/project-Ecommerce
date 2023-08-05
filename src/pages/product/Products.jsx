@@ -95,7 +95,7 @@ export const Products = () => {
                         width: '3px',
                       },
                       '&::-webkit-scrollbar-thumb': {
-                        background: 'gray',
+                        background: '#F5E90C',
                         borderRadius: '4px',
                       },
                     }}
