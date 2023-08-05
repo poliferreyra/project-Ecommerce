@@ -6,7 +6,6 @@ import { BrowserRouter } from 'react-router-dom'
 import { UserProvider } from './context/UserContext.jsx'
 import { CartProvider } from './context/CartContext.jsx'
 
-import '@fontsource/fredoka-one/400.css'
 import '@fontsource/varela-round/400.css'
 
 import myNewThemes from './components/themes/themes.js'
