@@ -135,23 +135,43 @@ export const Header = () => {
                 </Link>
               </Button>
             )}
-            <Box>
-              <IconButton
-                boxSize={{ base: '8', md: '10' }}
-                border="1px solid #F5F5F5"
-                color="primary"
-              >
-                <Link p={2} as={NavLink} to="/cart">
-                  <Icon
-                    as={BsCart3}
-                    _hover={{
-                      fontWeight: 'semibold',
-                      color: 'text',
-                    }}
-                  />
-                </Link>
-              </IconButton>
-            </Box>
+            {!user ? (
+              <Box>
+                <IconButton
+                  boxSize={{ base: '8', md: '10' }}
+                  border="1px solid #F5F5F5"
+                  color="primary"
+                >
+                  <Link p={2} as={NavLink} to="/login">
+                    <Icon
+                      as={BsCart3}
+                      _hover={{
+                        fontWeight: 'semibold',
+                        color: 'text',
+                      }}
+                    />
+                  </Link>
+                </IconButton>
+              </Box>
+            ) : (
+              <Box>
+                <IconButton
+                  boxSize={{ base: '8', md: '10' }}
+                  border="1px solid #F5F5F5"
+                  color="primary"
+                >
+                  <Link p={2} as={NavLink} to="/cart">
+                    <Icon
+                      as={BsCart3}
+                      _hover={{
+                        fontWeight: 'semibold',
+                        color: 'text',
+                      }}
+                    />
+                  </Link>
+                </IconButton>
+              </Box>
+            )}
           </HStack>
         </Box>
       </HStack>
